@@ -53,7 +53,8 @@ input, select, textarea, button { font-family: inherit; }
 /* ── TOPBAR ── */
 .topbar { background: var(--navy); padding: 14px 18px 12px; color: #fff; flex-shrink: 0; position: relative; }
 .topbar::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: rgba(255,255,255,.1); }
-.tb-eyebrow { font-size: 10px; font-weight: 500; opacity: .5; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 3px; font-family: 'DM Mono', monospace; }
+.tb-eyebrow { font-size: 10px; font-weight: 500; opacity: .45; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 3px; font-family: 'DM Mono', monospace; display: flex; align-items: center; gap: 5px; }
+.hove-mark { width: 11px; height: 11px; flex-shrink: 0; }
 .tb-row { display: flex; align-items: center; justify-content: space-between; }
 .tb-title { font-size: 18px; font-weight: 600; letter-spacing: -.02em; }
 .tb-action { background: rgba(255,255,255,.15); border: none; color: #fff; border-radius: 8px; padding: 5px 12px; font-size: 12px; font-weight: 500; cursor: pointer; font-family: inherit; transition: background .15s; }
@@ -161,40 +162,29 @@ input, select, textarea, button { font-family: inherit; }
    ══════════════════════════════════════════ */
 #s-login { background: var(--navy); justify-content: center; align-items: center; }
 .login-wrap { width: 100%; padding: 32px 28px; display: flex; flex-direction: column; align-items: center; }
-.login-logo { width: 70px; height: 70px; border-radius: 20px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+.login-logo { width: 72px; height: 72px; border-radius: 22px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
 .login-logo svg { width: 34px; height: 34px; stroke: #fff; fill: none; stroke-width: 1.5; }
-.login-title { font-size: 26px; font-weight: 600; color: #fff; letter-spacing: -.03em; margin-bottom: 4px; }
-.login-sub { font-size: 12px; color: rgba(255,255,255,.45); margin-bottom: 32px; font-family: 'DM Mono', monospace; letter-spacing: .05em; }
-.profile-select { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
-.profile-opt { display: flex; align-items: center; gap: 13px; padding: 13px 15px; border-radius: 12px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); cursor: pointer; transition: all .15s; }
-.profile-opt:hover { background: rgba(255,255,255,.14); }
-.profile-opt.sel { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.35); }
-.po-av { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
-.po-name { font-size: 13px; font-weight: 600; color: #fff; }
-.po-role { font-size: 11px; color: rgba(255,255,255,.45); margin-top: 1px; }
-.po-badge { margin-left: auto; font-size: 9px; font-weight: 700; padding: 3px 7px; border-radius: 20px; letter-spacing: .05em; }
-.po-badge.admin { background: rgba(201,168,76,.25); color: var(--gold); }
-.po-badge.pilot { background: rgba(59,91,169,.4); color: #93c5fd; }
-.po-badge.client { background: rgba(16,185,129,.2); color: #6ee7b7; }
-.pin-input { width: 100%; padding: 13px 16px; border-radius: 12px; border: none; background: rgba(255,255,255,.1); color: #fff; font-size: 14px; letter-spacing: .15em; text-align: center; outline: none; font-family: 'DM Mono', monospace; }
-.pin-input::placeholder { color: rgba(255,255,255,.3); letter-spacing: .05em; }
-.login-btn { width: 100%; padding: 13px; border-radius: 12px; background: #fff; color: var(--navy); font-size: 14px; font-weight: 700; border: none; cursor: pointer; margin-top: 10px; font-family: inherit; letter-spacing: -.01em; transition: opacity .15s; }
+.login-title { font-size: 27px; font-weight: 600; color: #fff; letter-spacing: -.03em; margin-bottom: 4px; }
+.login-sub { font-size: 11px; color: rgba(255,255,255,.35); margin-bottom: 36px; font-family: 'DM Mono', monospace; letter-spacing: .08em; text-transform: uppercase; }
+.pin-input { width: 100%; padding: 13px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.07); color: #fff; font-size: 14px; outline: none; font-family: inherit; margin-bottom: 10px; transition: border .15s; }
+.pin-input:focus { border-color: rgba(255,255,255,.3); background: rgba(255,255,255,.1); }
+.pin-input::placeholder { color: rgba(255,255,255,.3); }
+.login-btn { width: 100%; padding: 14px; border-radius: 12px; background: #fff; color: var(--navy); font-size: 14px; font-weight: 700; border: none; cursor: pointer; margin-top: 4px; font-family: inherit; letter-spacing: -.01em; transition: opacity .15s; }
 .login-btn:hover { opacity: .9; }
-.login-version { font-size: 10px; color: rgba(255,255,255,.2); margin-top: 24px; font-family: 'DM Mono', monospace; letter-spacing: .08em; }
+.login-version { font-size: 10px; color: rgba(255,255,255,.18); margin-top: 28px; font-family: 'DM Mono', monospace; letter-spacing: .08em; }
 #login-error { color: #fca5a5; font-size: 12px; text-align: center; margin-top: 8px; min-height: 16px; }
 
 /* ══════════════════════════════════════════
    HOME SCREEN
    ══════════════════════════════════════════ */
-.crew-banner { background: linear-gradient(135deg, var(--navy) 0%, var(--mid) 100%); border-radius: var(--radius); padding: 16px; color: #fff; margin-bottom: 14px; position: relative; overflow: hidden; }
-.crew-banner::before { content: ''; position: absolute; top: -20px; right: -20px; width: 100px; height: 100px; background: rgba(255,255,255,.05); border-radius: 50%; }
+.crew-banner { background: var(--navy); border-radius: var(--radius); padding: 16px; color: #fff; margin-bottom: 14px; cursor: pointer; }
 .crew-banner-row { display: flex; align-items: center; gap: 13px; }
-.cb-av { width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,.15); border: 2px solid rgba(255,255,255,.25); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; flex-shrink: 0; }
+.cb-av { width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,.15); border: 2px solid rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; flex-shrink: 0; }
 .cb-name { font-size: 16px; font-weight: 600; }
-.cb-role { font-size: 11px; opacity: .65; margin-top: 2px; font-family: 'DM Mono', monospace; }
+.cb-role { font-size: 11px; opacity: .55; margin-top: 2px; font-family: 'DM Mono', monospace; }
 .cb-badges { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 11px; }
-.cb-badge { font-size: 10px; padding: 3px 9px; border-radius: 20px; background: rgba(255,255,255,.12); color: rgba(255,255,255,.85); font-weight: 500; font-family: 'DM Mono', monospace; }
-.cb-badge.warn { background: rgba(239,68,68,.25); color: #fca5a5; }
+.cb-badge { font-size: 10px; padding: 3px 9px; border-radius: 20px; background: rgba(255,255,255,.1); color: rgba(255,255,255,.8); font-weight: 500; font-family: 'DM Mono', monospace; }
+.cb-badge.warn { background: rgba(239,68,68,.2); color: #fca5a5; }
 .home-quick { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
 .hq-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 13px; cursor: pointer; transition: all .15s; }
 .hq-card:hover { border-color: var(--navy); box-shadow: var(--shadow-md); }
@@ -210,28 +200,27 @@ input, select, textarea, button { font-family: inherit; }
 .badge-inner { width: 100%; height: 100%; transition: transform .65s cubic-bezier(.4,0,.2,1); transform-style: preserve-3d; position: relative; }
 .badge-scene.flipped .badge-inner { transform: rotateY(180deg); }
 .badge-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,.18); }
-.badge-front { background: linear-gradient(135deg, #f8faff 0%, #edf2ff 100%); border: 1px solid #c7d5f5; }
-.badge-back { background: linear-gradient(135deg, #f8faff 0%, #edf2ff 100%); border: 1px solid #c7d5f5; transform: rotateY(180deg); }
+.badge-front { background: #f8fafc; border: 1px solid #dde5f5; }
+.badge-back { background: #f8fafc; border: 1px solid #dde5f5; transform: rotateY(180deg); }
 .bf-header { background: var(--navy); padding: 8px 12px; display: flex; align-items: center; justify-content: space-between; }
 .bf-logo { font-size: 12px; font-weight: 700; color: #fff; letter-spacing: .06em; }
 .bf-arrow { display: flex; align-items: center; gap: 4px; }
-.bf-arrow span { width: 20px; height: 1.5px; background: rgba(255,255,255,.5); }
-.bf-arrow svg { width: 14px; height: 14px; stroke: rgba(255,255,255,.5); fill: none; stroke-width: 2; }
+.bf-arrow span { width: 20px; height: 1.5px; background: rgba(255,255,255,.4); }
+.bf-arrow svg { width: 14px; height: 14px; stroke: rgba(255,255,255,.4); fill: none; stroke-width: 2; }
 .bf-body { display: flex; gap: 12px; padding: 11px 12px; }
-.bf-photo { width: 58px; height: 72px; border-radius: 7px; background: linear-gradient(135deg, #dde4f5, #c5d0eb); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; color: var(--navy); flex-shrink: 0; border: 1.5px solid #b0bcd4; overflow: hidden; font-family: 'DM Mono', monospace; }
+.bf-photo { width: 58px; height: 72px; border-radius: 7px; background: #e8edf7; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; color: var(--navy); flex-shrink: 0; border: 1.5px solid #c5d0e8; overflow: hidden; font-family: 'DM Mono', monospace; }
 .bf-photo img { width: 100%; height: 100%; object-fit: cover; }
 .bf-info { flex: 1; }
-.bf-serial { font-size: 8.5px; color: #6b7280; font-family: 'DM Mono', monospace; letter-spacing: .04em; }
+.bf-serial { font-size: 8.5px; color: #9ca3af; font-family: 'DM Mono', monospace; letter-spacing: .04em; }
 .bf-name { font-size: 14px; font-weight: 700; color: #0f172a; line-height: 1.15; margin: 4px 0 3px; }
 .bf-role { font-size: 10px; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: .08em; }
 .bf-lic { font-size: 9px; color: #6b7280; margin-top: 4px; font-family: 'DM Mono', monospace; }
 .bf-footer { background: var(--navy); padding: 6px 12px; display: flex; justify-content: space-between; align-items: center; }
 .bf-footer-l { font-size: 10px; font-weight: 700; color: #fff; letter-spacing: .08em; }
-.bf-footer-r { font-size: 9px; color: rgba(255,255,255,.55); }
+.bf-footer-r { font-size: 9px; color: rgba(255,255,255,.5); }
 .bf-footer-r span { color: var(--gold); font-weight: 600; }
-/* Back */
 .bb-header { background: var(--navy); padding: 7px 12px; display: flex; justify-content: space-between; align-items: center; }
-.bb-serial { font-size: 9px; color: rgba(255,255,255,.6); font-family: 'DM Mono', monospace; }
+.bb-serial { font-size: 9px; color: rgba(255,255,255,.55); font-family: 'DM Mono', monospace; }
 .bb-body { padding: 10px 12px; }
 .bb-name { font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 7px; }
 .bb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 10px; margin-bottom: 7px; }
@@ -243,35 +232,16 @@ input, select, textarea, button { font-family: inherit; }
 .badge-hint { text-align: center; font-size: 11px; color: var(--text3); margin-bottom: 12px; letter-spacing: .01em; }
 
 /* ══════════════════════════════════════════
-   CALENDAR
-   ══════════════════════════════════════════ */
-.cal { margin-bottom: 14px; }
-.cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-.cal-month { font-size: 14px; font-weight: 600; }
-.cal-nav { background: none; border: 1px solid var(--border); border-radius: 6px; padding: 4px 8px; cursor: pointer; font-size: 12px; color: var(--text2); }
-.cal-days { display: grid; grid-template-columns: repeat(7,1fr); gap: 3px; }
-.cal-day-label { text-align: center; font-size: 10px; font-weight: 600; color: var(--text3); padding: 4px 0; letter-spacing: .04em; }
-.cal-cell { text-align: center; font-size: 12px; padding: 6px 2px; border-radius: 6px; cursor: pointer; position: relative; color: var(--text); transition: background .1s; }
-.cal-cell:hover { background: var(--surface); }
-.cal-cell.today { background: var(--navy); color: #fff; font-weight: 600; }
-.cal-cell.has-flight::after { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--navy); position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%); }
-.cal-cell.today.has-flight::after { background: rgba(255,255,255,.7); }
-.cal-cell.has-sim::after { background: var(--g); }
-.cal-cell.other-month { color: var(--text3); }
-
-/* ══════════════════════════════════════════
    CLIENT PORTAL
    ══════════════════════════════════════════ */
-.client-hero { background: linear-gradient(135deg, var(--navy) 0%, #1a4fa8 100%); border-radius: var(--radius); padding: 20px; color: #fff; margin-bottom: 16px; text-align: center; position: relative; overflow: hidden; }
-.client-hero::before { content: ''; position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: rgba(255,255,255,.06); border-radius: 50%; }
-.client-hero::after { content: ''; position: absolute; bottom: -20px; left: -20px; width: 80px; height: 80px; background: rgba(255,255,255,.04); border-radius: 50%; }
-.ch-greeting { font-size: 12px; opacity: .6; margin-bottom: 4px; letter-spacing: .06em; font-family: 'DM Mono', monospace; text-transform: uppercase; }
+.client-hero { background: var(--navy); border-radius: var(--radius); padding: 20px; color: #fff; margin-bottom: 16px; text-align: center; }
+.ch-greeting { font-size: 11px; opacity: .5; margin-bottom: 4px; letter-spacing: .06em; font-family: 'DM Mono', monospace; text-transform: uppercase; }
 .ch-name { font-size: 22px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 14px; }
 .ch-stats { display: flex; justify-content: center; gap: 24px; }
 .ch-stat-val { font-size: 24px; font-weight: 700; }
-.ch-stat-label { font-size: 10px; opacity: .6; margin-top: 2px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .05em; }
-.booking-card { background: linear-gradient(135deg, var(--navy-light) 0%, #e0e9ff 100%); border: 1px solid #b8cbf7; border-radius: var(--radius); padding: 16px; margin-bottom: 14px; cursor: pointer; transition: all .15s; }
-.booking-card:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.ch-stat-label { font-size: 10px; opacity: .5; margin-top: 2px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .05em; }
+.booking-card { background: var(--navy-light); border: 1px solid #c5d5f7; border-radius: var(--radius); padding: 16px; margin-bottom: 14px; cursor: pointer; transition: all .15s; }
+.booking-card:hover { box-shadow: var(--shadow-md); border-color: #7fa0e8; }
 .bk-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
 .bk-sub { font-size: 12px; color: var(--mid); }
 .bk-icon { width: 40px; height: 40px; background: var(--navy); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
@@ -281,8 +251,7 @@ input, select, textarea, button { font-family: inherit; }
    ADMIN PANEL
    ══════════════════════════════════════════ */
 .admin-section { margin-bottom: 20px; }
-.admin-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-.admin-card-action { display: flex; gap: 6px; margin-top: 10px; }
+.admin-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
 .list-item { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
 .list-item:last-child { border-bottom: none; }
 .li-av { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
@@ -299,30 +268,50 @@ input, select, textarea, button { font-family: inherit; }
 /* ══════════════════════════════════════════
    WEATHER WIDGET
    ══════════════════════════════════════════ */
-.wx-card { background: linear-gradient(135deg, var(--navy) 0%, var(--mid) 100%); border-radius: var(--radius); padding: 14px; color: #fff; margin-bottom: 10px; }
-.wx-station { font-size: 10px; font-family: 'DM Mono', monospace; opacity: .6; text-transform: uppercase; letter-spacing: .1em; }
-.wx-metar { font-size: 11px; font-family: 'DM Mono', monospace; margin: 6px 0; line-height: 1.5; opacity: .85; word-break: break-all; }
+.wx-card { background: var(--navy); border-radius: var(--radius); padding: 14px; color: #fff; margin-bottom: 10px; }
+.wx-station { font-size: 16px; font-weight: 700; letter-spacing: .04em; margin-bottom: 2px; }
+.wx-metar { font-size: 10px; font-family: 'DM Mono', monospace; margin: 6px 0; line-height: 1.5; opacity: .6; word-break: break-all; }
 .wx-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-top: 10px; }
-.wx-item label { font-size: 9px; opacity: .55; text-transform: uppercase; letter-spacing: .07em; }
+.wx-item label { font-size: 9px; opacity: .5; text-transform: uppercase; letter-spacing: .07em; }
 .wx-item p { font-size: 14px; font-weight: 600; margin-top: 2px; }
-.wx-loading { opacity: .5; font-size: 12px; font-family: 'DM Mono', monospace; text-align: center; padding: 10px 0; }
+
+/* ══════════════════════════════════════════
+   MEL DIGITAL
+   ══════════════════════════════════════════ */
+.mel-item { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; margin-bottom: 8px; cursor: pointer; transition: all .15s; }
+.mel-item:hover { border-color: var(--a); box-shadow: var(--shadow); }
+.mel-item.mel-cat-a { border-left: 3px solid var(--r); }
+.mel-item.mel-cat-b { border-left: 3px solid var(--a); }
+.mel-item.mel-cat-c { border-left: 3px solid #f59e0b; }
+.mel-item.mel-cat-d { border-left: 3px solid var(--navy); }
+.mel-item.mel-closed { opacity: .5; }
+.mel-ref { font-size: 10px; font-family: 'DM Mono', monospace; color: var(--text3); margin-bottom: 3px; }
+.mel-title { font-size: 13px; font-weight: 600; color: var(--text); }
+.mel-meta { display: flex; align-items: center; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
+.mel-countdown { font-size: 11px; font-weight: 600; }
+.mel-countdown.urgent { color: var(--r); }
+.mel-countdown.warning { color: var(--a); }
+.mel-countdown.ok { color: var(--g); }
+.mel-cat-badge { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; font-family: 'DM Mono', monospace; }
+.mel-cat-A { background: var(--r-light); color: var(--r); }
+.mel-cat-B { background: var(--a-light); color: var(--a); }
+.mel-cat-C { background: #fef3c7; color: #92400e; }
+.mel-cat-D { background: var(--navy-light); color: var(--navy); }
+.mel-detail { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); display: none; }
+.mel-detail.open { display: block; }
+.mel-detail-row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px; }
+.mel-detail-label { color: var(--text3); }
+.mel-detail-val { font-weight: 600; color: var(--text); text-align: right; max-width: 60%; }
 
 /* ══════════════════════════════════════════
    MODAL
    ══════════════════════════════════════════ */
-.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 100; display: none; align-items: flex-end; justify-content: center; }
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 100; display: none; align-items: flex-end; justify-content: center; }
 .modal-overlay.open { display: flex; }
 .modal { background: var(--white); border-radius: 20px 20px 0 0; padding: 20px 20px 32px; width: 100%; max-width: 430px; max-height: 85vh; overflow-y: auto; animation: slideUp .25s ease; }
 .modal-handle { width: 36px; height: 4px; background: var(--border); border-radius: 2px; margin: 0 auto 16px; }
 .modal-title { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; letter-spacing: -.02em; }
 @keyframes slideUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
-/* ══════════════════════════════════════════
-   SIGNATURE
-   ══════════════════════════════════════════ */
-.sig-area { border: 1.5px dashed var(--border); border-radius: var(--radius-sm); height: 110px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; cursor: crosshair; background: var(--surface); margin: 8px 0; }
-.sig-canvas { position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair; }
-.sig-hint { font-size: 12px; color: var(--text3); pointer-events: none; }
 
 /* ══════════════════════════════════════════
    TOAST
@@ -349,24 +338,16 @@ input, select, textarea, button { font-family: inherit; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .loading-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; gap: 12px; }
 .loading-screen p { font-size: 13px; color: var(--text3); font-family: 'DM Mono', monospace; }
-
-/* Mission type colors */
 .type-flight { background: var(--navy-light); color: var(--navy); }
 .type-sim { background: var(--g-light); color: var(--g); }
 .type-ferry { background: var(--a-light); color: var(--a); }
 .type-training { background: #f3e8ff; color: #7c3aed; }
-
-/* Booking form steps */
-.step-indicator { display: flex; gap: 6px; margin-bottom: 20px; align-items: center; justify-content: center; }
-.step { width: 28px; height: 4px; border-radius: 2px; background: var(--border); transition: background .2s; }
-.step.on { background: var(--navy); }
 </style>
 </head>
 <body>
-
 <div id="app">
 
-  <!-- ══════════ TOAST CONTAINER ══════════ -->
+  <!-- ══════════ TOAST ══════════ -->
   <div class="toast-container" id="toast-container"></div>
 
   <!-- ══════════════════════════════════════
@@ -375,28 +356,35 @@ input, select, textarea, button { font-family: inherit; }
   <div class="screen active" id="s-login">
     <div class="login-wrap">
       <div class="login-logo">
-        <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        <svg viewBox="0 0 24 24">
+          <polygon points="12 2 2 8 12 14 22 8 12 2"/>
+          <polyline points="2 14 12 20 22 14"/>
+        </svg>
       </div>
       <div class="login-title">HOVE OPS</div>
-      <div class="login-sub">AVIATION EXECUTIVE · v3.0</div>
-
-      <input class="pin-input" type="email" id="login-email" placeholder="Email" style="margin-bottom:10px;letter-spacing:0;text-align:left"/>
-      <input class="pin-input" type="password" id="pin-in" placeholder="Mot de passe"/>
+      <div class="login-sub">HOVE AVIATION · NCO · LFQT</div>
+      <input class="pin-input" type="email" id="login-email" placeholder="Email" autocomplete="email"/>
+      <input class="pin-input" type="password" id="pin-in" placeholder="Mot de passe" autocomplete="current-password"/>
       <div id="login-error"></div>
-      <button class="login-btn" onclick="doLogin()">Connexion →</button>
-      <div class="login-version">HOVE AVIATION EXECUTIVE · NCO · LFQT</div>
+      <button class="login-btn" onclick="doLogin()">Connexion</button>
+      <div class="login-version">v4.0 · POWERED BY SUPABASE</div>
     </div>
   </div>
 
   <!-- ══════════════════════════════════════
-       HOME (ADMIN / PILOT)
+       HOME
   ══════════════════════════════════════════ -->
   <div class="screen" id="s-home">
     <div class="topbar">
-      <div class="tb-eyebrow">HOVE Aviation Executive</div>
+      <div class="tb-eyebrow">
+        <svg class="hove-mark" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+          <polygon points="7 1 1 5 7 9 13 5 7 1"/><line x1="1" y1="9" x2="7" y2="13"/><line x1="13" y1="9" x2="7" y2="13"/>
+        </svg>
+        HOVE AVIATION EXECUTIVE
+      </div>
       <div class="tb-row">
         <div class="tb-title" id="h-greeting">Bonjour</div>
-        <div style="display:flex;gap:6px">
+        <div style="display:flex;gap:6px;align-items:center">
           <span id="h-role-tag" class="badge badge-gold" style="font-size:9px">—</span>
           <button class="tb-icon-btn" onclick="showNotifs()" title="Notifications">
             <svg width="18" height="18" viewBox="0 0 24 24" stroke="rgba(255,255,255,.7)" fill="none" stroke-width="1.8"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
@@ -407,30 +395,27 @@ input, select, textarea, button { font-family: inherit; }
     </div>
     <div class="scroll" style="padding:14px">
       <div id="h-alerts"></div>
-
-      <!-- Crew banner -->
-      <div class="crew-banner" onclick="goTo('s-crew')" style="cursor:pointer">
+      <div class="crew-banner" onclick="goTo('s-crew')">
         <div class="crew-banner-row">
-          <div class="cb-av" id="h-av">JB</div>
+          <div class="cb-av" id="h-av">—</div>
           <div>
             <div class="cb-name" id="h-name">—</div>
             <div class="cb-role" id="h-role-full">—</div>
           </div>
-          <svg width="16" height="16" viewBox="0 0 24 24" stroke="rgba(255,255,255,.5)" fill="none" stroke-width="2" style="margin-left:auto"><polyline points="9 18 15 12 9 6"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" stroke="rgba(255,255,255,.4)" fill="none" stroke-width="2" style="margin-left:auto"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
         <div class="cb-badges" id="h-badges"></div>
       </div>
-
-      <!-- Quick metrics -->
-      <div class="metric-grid" id="h-metrics"></div>
-
-      <!-- Quick actions grid -->
+      <div class="metric-grid" id="h-metrics">
+        <div class="mc"><div class="ml">Chargement</div><div class="mv">—</div></div>
+        <div class="mc"><div class="ml">Chargement</div><div class="mv">—</div></div>
+      </div>
       <div class="sec">Actions rapides</div>
       <div class="home-quick">
         <div class="hq-card" onclick="goTo('s-planning')">
           <div class="hq-icon" style="background:var(--navy-light)"><svg viewBox="0 0 24 24" stroke="var(--navy)"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
           <div class="hq-title">Planning</div>
-          <div class="hq-sub" id="hq-planning-sub">— missions</div>
+          <div class="hq-sub" id="hq-planning-sub">Missions</div>
         </div>
         <div class="hq-card" onclick="goTo('s-finance')">
           <div class="hq-icon" style="background:var(--a-light)"><svg viewBox="0 0 24 24" stroke="var(--a)"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
@@ -440,7 +425,7 @@ input, select, textarea, button { font-family: inherit; }
         <div class="hq-card" onclick="goTo('s-fleet')">
           <div class="hq-icon" style="background:var(--g-light)"><svg viewBox="0 0 24 24" stroke="var(--g)"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
           <div class="hq-title">Flotte</div>
-          <div class="hq-sub" id="hq-fleet-sub">F-HOVE</div>
+          <div class="hq-sub" id="hq-fleet-sub">Appareils</div>
         </div>
         <div class="hq-card" onclick="goTo('s-wx')">
           <div class="hq-icon" style="background:#ede9fe"><svg viewBox="0 0 24 24" stroke="#7c3aed"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg></div>
@@ -448,22 +433,12 @@ input, select, textarea, button { font-family: inherit; }
           <div class="hq-sub">METAR live</div>
         </div>
       </div>
-
-      <!-- Prochain vol -->
       <div class="sec">Prochain vol</div>
-      <div class="card">
-        <div class="card-r">
-          <div><div class="ct">LFQT → LFPB</div><div class="cs">01 avr · 14:30 · SR22 G7+ F-HOVE</div></div>
-          <span class="badge badge-b">IFR</span>
-        </div>
-        <div class="divider"></div>
-        <div class="card-r">
-          <span class="text-small text-muted">Client : Durand B. · GO ✓</span>
-          <button class="btn btn-p btn-sm" onclick="goTo('s-checklist')">Pré-vol</button>
-        </div>
+      <div id="h-next-mission">
+        <div class="empty-state" style="padding:20px 0"><div class="spinner"></div></div>
       </div>
     </div>
-    <div class="bnav" id="bnav-main">
+    <div class="bnav">
       <button class="ni on" onclick="goTo('s-home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Accueil</span></button>
       <button class="ni" onclick="goTo('s-crew')"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span>Crew</span></button>
       <button class="ni" onclick="goTo('s-planning')"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Planning</span></button>
@@ -477,7 +452,7 @@ input, select, textarea, button { font-family: inherit; }
   ══════════════════════════════════════════ -->
   <div class="screen" id="s-crew">
     <div class="topbar">
-      <div class="tb-eyebrow">Identité équipage</div>
+      <div class="tb-eyebrow"><svg class="hove-mark" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="7 1 1 5 7 9 13 5 7 1"/><line x1="1" y1="9" x2="7" y2="13"/><line x1="13" y1="9" x2="7" y2="13"/></svg>Identité équipage</div>
       <div class="tb-row">
         <div class="tb-title">Digital Crew ID</div>
         <button class="tb-icon-btn" onclick="goBack()"><svg width="20" height="20" viewBox="0 0 24 24" stroke="rgba(255,255,255,.7)" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
@@ -493,31 +468,31 @@ input, select, textarea, button { font-family: inherit; }
               <div class="bf-arrow"><span></span><svg viewBox="0 0 24 24"><polyline points="5 12 19 12"/><polyline points="14 7 19 12 14 17"/></svg></div>
             </div>
             <div class="bf-body">
-              <div class="bf-photo" id="bf-photo"><span id="bf-initials">VE</span></div>
+              <div class="bf-photo" id="bf-photo"><span id="bf-initials">—</span></div>
               <div class="bf-info">
-                <div class="bf-serial mono" id="bf-serial">FR-PPL-2024-0847</div>
-                <div class="bf-name" id="bf-name">Victor<br>Eickmayer</div>
-                <div class="bf-role" id="bf-role">Director of Operations</div>
-                <div class="bf-lic mono" id="bf-lic">PPL(A) · IR(A) · SEP</div>
+                <div class="bf-serial mono" id="bf-serial">—</div>
+                <div class="bf-name" id="bf-name">—</div>
+                <div class="bf-role" id="bf-role">—</div>
+                <div class="bf-lic mono" id="bf-lic">—</div>
               </div>
             </div>
             <div class="bf-footer">
               <div class="bf-footer-l">FLIGHT CREW</div>
-              <div class="bf-footer-r">EXPIRES <span id="bf-exp">12/2026</span></div>
+              <div class="bf-footer-r">EXP <span id="bf-exp">—</span></div>
             </div>
           </div>
           <div class="badge-face badge-back">
             <div class="bb-header">
-              <div class="bb-serial mono" id="bb-serial">FR-PPL-2024-0847</div>
-              <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,.7)">HOVE AVIATION</div>
+              <div class="bb-serial mono" id="bb-serial">—</div>
+              <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,.6)">HOVE AVIATION · LFQT</div>
             </div>
             <div class="bb-body">
-              <div class="bb-name" id="bb-name">EICKMAYER VICTOR</div>
+              <div class="bb-name" id="bb-name">—</div>
               <div class="bb-grid">
-                <div><div class="bb-field-label">Licence</div><div class="bb-field-val" id="bb-lic">PPL(A)/IR(A)</div></div>
+                <div><div class="bb-field-label">Licence</div><div class="bb-field-val" id="bb-lic">—</div></div>
                 <div><div class="bb-field-label">Nationalité</div><div class="bb-field-val">FRANCE</div></div>
                 <div><div class="bb-field-label">Base</div><div class="bb-field-val">LFQT</div></div>
-                <div><div class="bb-field-label">Rôle</div><div class="bb-field-val" id="bb-role">DO / PIC</div></div>
+                <div><div class="bb-field-label">Rôle</div><div class="bb-field-val" id="bb-role">—</div></div>
               </div>
               <div class="barcode"></div>
               <div class="bb-disc">Not for Official Government Identification</div>
@@ -526,12 +501,8 @@ input, select, textarea, button { font-family: inherit; }
           </div>
         </div>
       </div>
-
-      <!-- Compliance -->
       <div class="sec">Conformité réglementaire</div>
-      <div class="card" id="crew-compliance"></div>
-
-      <!-- Switch crew (admin only) -->
+      <div class="card" id="crew-compliance"><div class="spinner"></div></div>
       <div id="crew-switch-section" style="display:none">
         <div class="sec">Équipage HOVE</div>
         <div class="card" id="crew-switch-list"></div>
@@ -544,30 +515,15 @@ input, select, textarea, button { font-family: inherit; }
   ══════════════════════════════════════════ -->
   <div class="screen" id="s-planning">
     <div class="topbar">
-      <div class="tb-eyebrow">Planning opérationnel</div>
+      <div class="tb-eyebrow"><svg class="hove-mark" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="7 1 1 5 7 9 13 5 7 1"/><line x1="1" y1="9" x2="7" y2="13"/><line x1="13" y1="9" x2="7" y2="13"/></svg>Planning opérationnel</div>
       <div class="tb-row">
-        <div class="tb-title">Avril 2026</div>
-        <button class="tb-action" onclick="openModal('modal-new-mission')">+ Mission</button>
+        <div class="tb-title">Planning</div>
+        <button class="tb-action" id="planning-add-btn" style="display:none" onclick="openModal('modal-new-mission')">+ Mission</button>
       </div>
     </div>
     <div class="scroll" style="padding:14px">
-      <!-- Calendar -->
-      <div class="cal">
-        <div class="cal-days">
-          <div class="cal-day-label">L</div><div class="cal-day-label">M</div><div class="cal-day-label">M</div><div class="cal-day-label">J</div><div class="cal-day-label">V</div><div class="cal-day-label">S</div><div class="cal-day-label">D</div>
-          <div class="cal-cell other-month"></div>
-          <div class="cal-cell today has-flight">1</div>
-          <div class="cal-cell has-sim">2</div>
-          <div class="cal-cell has-flight">3</div>
-          <div class="cal-cell">4</div><div class="cal-cell">5</div><div class="cal-cell">6</div>
-          <div class="cal-cell">7</div><div class="cal-cell has-sim">8</div><div class="cal-cell">9</div>
-          <div class="cal-cell">10</div><div class="cal-cell has-flight">11</div><div class="cal-cell">12</div><div class="cal-cell">13</div>
-          <div class="cal-cell has-flight">14</div><div class="cal-cell">15</div><div class="cal-cell">16</div>
-        </div>
-      </div>
-
       <div class="sec">Missions à venir</div>
-      <div id="missions-list"></div>
+      <div id="missions-list"><div class="loading-screen"><div class="spinner"></div><p>Chargement...</p></div></div>
     </div>
     <div class="bnav">
       <button class="ni" onclick="goTo('s-home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Accueil</span></button>
@@ -583,7 +539,7 @@ input, select, textarea, button { font-family: inherit; }
   ══════════════════════════════════════════ -->
   <div class="screen" id="s-finance">
     <div class="topbar">
-      <div class="tb-eyebrow">Comptabilité opérationnelle</div>
+      <div class="tb-eyebrow"><svg class="hove-mark" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="7 1 1 5 7 9 13 5 7 1"/><line x1="1" y1="9" x2="7" y2="13"/><line x1="13" y1="9" x2="7" y2="13"/></svg>Comptabilité opérationnelle</div>
       <div class="tb-row"><div class="tb-title">Finance</div><button class="tb-action" onclick="exportFinancePDF()">Export PDF</button></div>
     </div>
     <div class="scroll" style="padding:14px">
@@ -592,38 +548,20 @@ input, select, textarea, button { font-family: inherit; }
         <button class="tab" onclick="finTab('invoices',this)">Factures</button>
         <button class="tab" onclick="finTab('sim',this)">Simu</button>
       </div>
-
       <div id="fin-dash">
-        <div class="metric-grid">
-          <div class="mc"><div class="ml">CA Avril</div><div class="mv">5 060 €</div></div>
-          <div class="mc"><div class="ml">Encaissé</div><div class="mv mv-g">4 570 €</div></div>
-          <div class="mc"><div class="ml">Impayé</div><div class="mv mv-r">490 €</div></div>
-          <div class="mc"><div class="ml">Taux recouvrement</div><div class="mv mv-a">90%</div></div>
+        <div class="metric-grid" id="fin-metrics">
+          <div class="mc"><div class="ml">Chargement</div><div class="mv">—</div></div>
+          <div class="mc"><div class="ml">Chargement</div><div class="mv">—</div></div>
+          <div class="mc"><div class="ml">Chargement</div><div class="mv">—</div></div>
+          <div class="mc"><div class="ml">Chargement</div><div class="mv">—</div></div>
         </div>
-        <div class="sec">Répartition</div>
-        <div class="card">
-          <div style="margin-bottom:10px">
-            <div class="card-r"><span class="text-small">Vols NCO</span><span style="font-size:13px;font-weight:600">3 800 €</span></div>
-            <div class="pbar"><div class="pfill" style="width:75%;background:var(--navy)"></div></div>
-          </div>
-          <div>
-            <div class="card-r"><span class="text-small">Simulateur</span><span style="font-size:13px;font-weight:600">1 260 €</span></div>
-            <div class="pbar"><div class="pfill" style="width:25%;background:var(--a)"></div></div>
-          </div>
-        </div>
-        <div class="sec">Impayés urgents</div>
-        <div class="card">
-          <div class="card-r" style="margin-bottom:10px"><div><div class="ct">Martin Laurent</div><div class="cs">Simu 02 avr · 2h</div></div><span style="font-weight:700;color:var(--r)">280 €</span></div>
-          <div class="card-r"><div><div class="ct">Dupont François</div><div class="cs">Simu 28 mars · 1h30</div></div><span style="font-weight:700;color:var(--r)">210 €</span></div>
-        </div>
+        <div id="fin-dash-detail"><div class="spinner"></div></div>
       </div>
-
       <div id="fin-invoices" style="display:none">
-        <div id="invoice-list"></div>
+        <div id="invoice-list"><div class="spinner"></div></div>
       </div>
-
       <div id="fin-sim" style="display:none">
-        <div id="sim-list"></div>
+        <div id="sim-list"><div class="spinner"></div></div>
       </div>
     </div>
     <div class="bnav">
@@ -640,7 +578,7 @@ input, select, textarea, button { font-family: inherit; }
   ══════════════════════════════════════════ -->
   <div class="screen" id="s-more">
     <div class="topbar">
-      <div class="tb-eyebrow">HOVE OPS</div>
+      <div class="tb-eyebrow"><svg class="hove-mark" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="7 1 1 5 7 9 13 5 7 1"/><line x1="1" y1="9" x2="7" y2="13"/><line x1="13" y1="9" x2="7" y2="13"/></svg>HOVE OPS</div>
       <div class="tb-row"><div class="tb-title">Navigation</div></div>
     </div>
     <div class="scroll" style="padding:14px">
@@ -648,7 +586,7 @@ input, select, textarea, button { font-family: inherit; }
       <div class="card" style="padding:0;overflow:hidden">
         <div class="list-item" style="padding:13px 14px;cursor:pointer" onclick="goTo('s-fleet')">
           <div class="hq-icon" style="background:var(--g-light);width:36px;height:36px;border-radius:9px"><svg viewBox="0 0 24 24" stroke="var(--g)" width="16" height="16"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
-          <div class="li-content"><div class="li-name">Flotte & Maintenance</div><div class="li-sub">F-HOVE · Simulateur · MEL</div></div>
+          <div class="li-content"><div class="li-name">Flotte & Maintenance</div><div class="li-sub">Appareils · MEL Digital · Tech Log</div></div>
           <svg width="14" height="14" viewBox="0 0 24 24" stroke="var(--text3)" fill="none" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
         <div class="list-item" style="padding:13px 14px;cursor:pointer" onclick="goTo('s-manex')">
@@ -667,12 +605,11 @@ input, select, textarea, button { font-family: inherit; }
           <svg width="14" height="14" viewBox="0 0 24 24" stroke="var(--text3)" fill="none" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
       </div>
-
       <div class="sec" id="admin-section-label" style="display:none">Administration</div>
       <div class="card" id="admin-section-card" style="padding:0;overflow:hidden;display:none">
-        <div class="list-item" style="padding:13px 14px;cursor:pointer" onclick="goTo('s-admin')">
+        <div class="list-item" style="padding:13px 14px;cursor:pointer;border-bottom:none" onclick="goTo('s-admin')">
           <div class="hq-icon" style="background:var(--gold-light);width:36px;height:36px;border-radius:9px"><svg viewBox="0 0 24 24" stroke="var(--gold)" width="16" height="16"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M20 12h-2M19.07 19.07l-1.41-1.41M12 20v-2M4.93 19.07l1.41-1.41M4 12H2M4.93 4.93l1.41 1.41"/></svg></div>
-          <div class="li-content"><div class="li-name">Panneau Admin</div><div class="li-sub">Équipage · Clients · Tarifs · Rôles</div></div>
+          <div class="li-content"><div class="li-name">Panneau Admin</div><div class="li-sub">Équipage · Clients · Tarifs</div></div>
           <svg width="14" height="14" viewBox="0 0 24 24" stroke="var(--text3)" fill="none" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
       </div>
@@ -691,7 +628,7 @@ input, select, textarea, button { font-family: inherit; }
   ══════════════════════════════════════════ -->
   <div class="screen" id="s-fleet">
     <div class="topbar">
-      <div class="tb-eyebrow">Gestion flotte</div>
+      <div class="tb-eyebrow"><svg class="hove-mark" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="7 1 1 5 7 9 13 5 7 1"/><line x1="1" y1="9" x2="7" y2="13"/><line x1="13" y1="9" x2="7" y2="13"/></svg>Gestion flotte</div>
       <div class="tb-row"><div class="tb-title">Flotte & Ressources</div><button class="tb-action" id="fleet-add-btn" style="display:none" onclick="openModal('modal-add-aircraft')">+ Avion</button></div>
     </div>
     <div class="scroll" style="padding:14px">
@@ -699,30 +636,10 @@ input, select, textarea, button { font-family: inherit; }
         <button class="tab on" onclick="fleetTab('aircraft',this)">Avions</button>
         <button class="tab" onclick="fleetTab('sim',this)">Simulateur</button>
         <button class="tab" onclick="fleetTab('maint',this)">Maintenance</button>
+        <button class="tab" onclick="fleetTab('mel',this)">MEL</button>
       </div>
       <div id="fl-aircraft">
-        <div class="card">
-          <div class="card-r">
-            <div><div class="ct" style="font-size:17px">F-HOVE</div><div class="cs">Cirrus SR22 G7+ · SEP/IFR/FIKI/CAPS</div></div>
-            <span class="badge badge-g" id="fleet-status-badge">En ligne</span>
-          </div>
-          <div class="divider"></div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12px;margin-bottom:12px">
-            <div><div style="color:var(--text3);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Heures totales</div><div style="font-weight:700;margin-top:3px;font-size:15px">1 247.3 h</div></div>
-            <div><div style="color:var(--text3);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Prochaine révision</div><div style="font-weight:700;margin-top:3px;font-size:15px;color:var(--a)">1 300 h</div></div>
-            <div><div style="color:var(--text3);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em">ARC validité</div><div style="font-weight:600;margin-top:3px">Nov 2025</div></div>
-            <div><div style="color:var(--text3);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Assurance</div><div style="font-weight:600;margin-top:3px;color:var(--g)">Valide</div></div>
-            <div><div style="color:var(--text3);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em">CAPS dernier test</div><div style="font-weight:600;margin-top:3px">Fév 2025</div></div>
-            <div><div style="color:var(--text3);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em">TKS Fluid</div><div style="font-weight:600;margin-top:3px;color:var(--g)">Full</div></div>
-          </div>
-          <div class="pbar" style="height:6px;margin-bottom:6px"><div class="pfill" style="width:88%;background:var(--a)"></div></div>
-          <div class="text-small text-muted" style="text-align:right;margin-bottom:12px">88% vers prochaine révision (−53h)</div>
-          <div class="flex-row">
-            <button class="btn btn-o" onclick="toggleAOG()" id="aog-btn">Passer AOG</button>
-            <button class="btn btn-p" onclick="goTo('s-techlog')">Tech Log</button>
-          </div>
-        </div>
-        <div id="aog-banner" style="display:none" class="alert alert-danger">⚠ AOG ACTIF — F-HOVE immobilisé. Contacter le CAM immédiatement.</div>
+        <div id="aircraft-list"><div class="spinner"></div></div>
       </div>
       <div id="fl-sim" style="display:none">
         <div class="card">
@@ -730,26 +647,28 @@ input, select, textarea, button { font-family: inherit; }
           <div class="divider"></div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12px">
             <div><div style="color:var(--text3);font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:600">Type</div><div style="font-weight:600;margin-top:3px">SR22 SOL</div></div>
-            <div><div style="color:var(--text3);font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:600">Entretien</div><div style="font-weight:600;margin-top:3px">Janv 2025</div></div>
-            <div><div style="color:var(--text3);font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:600">Séances ce mois</div><div style="font-weight:700;font-size:15px;margin-top:3px">3</div></div>
-            <div><div style="color:var(--text3);font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:600">Revenu</div><div style="font-weight:700;font-size:15px;margin-top:3px;color:var(--g)">770 €</div></div>
+            <div><div style="color:var(--text3);font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:600">Base</div><div style="font-weight:600;margin-top:3px">LFQT</div></div>
           </div>
         </div>
       </div>
       <div id="fl-maint" style="display:none">
-        <div class="sec">Historique</div>
-        <div class="card">
-          <div style="padding:8px 0;border-bottom:1px solid var(--border)"><div class="card-r"><div class="ct">Visite 100h</div><span class="badge badge-g">Fait</span></div><div class="cs">Fév 2025 · 1 200h · CAMO Part-145</div></div>
-          <div style="padding:8px 0;border-bottom:1px solid var(--border)"><div class="card-r"><div class="ct">AD 2024-08 · Pitot</div><span class="badge badge-g">Compliant</span></div><div class="cs">Janv 2025 · Incorporée</div></div>
-          <div style="padding:8px 0"><div class="card-r"><div class="ct">Visite annuelle</div><span class="badge badge-a">À planifier</span></div><div class="cs">Échéance Nov 2025 · Contacter Part-145</div></div>
+        <div class="sec">Historique maintenance</div>
+        <div id="maint-history-list"><div class="spinner"></div></div>
+        <div class="flex-row" style="margin-top:8px">
+          <button class="btn btn-o btn-full" onclick="openModal('modal-add-maint')">+ Entrée maintenance</button>
         </div>
-        <div class="sec">MEL — Items ouverts</div>
-        <div class="card">
-          <div class="empty-state"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><p>Aucun item MEL ouvert</p></div>
+      </div>
+      <div id="fl-mel" style="display:none">
+        <div class="alert alert-info" style="margin-bottom:12px">
+          <div><strong>Minimum Equipment List — Digital</strong><br>Cat A : avant le vol · Cat B : 3j · Cat C : 10j · Cat D : 120j</div>
         </div>
-        <div class="flex-row" style="margin-top:4px">
-          <button class="btn btn-o" onclick="openModal('modal-add-maint')">+ Entrée maintenance</button>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <span class="sec" style="margin:0">Items ouverts</span>
+          <button class="btn btn-p btn-sm" onclick="openModal('modal-mel-item')">+ Ouvrir item</button>
         </div>
+        <div id="mel-open-list"><div class="spinner"></div></div>
+        <div class="sec" style="margin-top:16px">Items clôturés</div>
+        <div id="mel-closed-list"></div>
       </div>
     </div>
   </div>
@@ -759,7 +678,7 @@ input, select, textarea, button { font-family: inherit; }
   ══════════════════════════════════════════ -->
   <div class="screen" id="s-manex">
     <div class="topbar">
-      <div class="tb-eyebrow">Operations Manual</div>
+      <div class="tb-eyebrow"><svg class="hove-mark" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="7 1 1 5 7 9 13 5 7 1"/><line x1="1" y1="9" x2="7" y2="13"/><line x1="13" y1="9" x2="7" y2="13"/></svg>Operations Manual</div>
       <div class="tb-row"><div class="tb-title">MANEX · HOVE-OM</div></div>
     </div>
     <div class="scroll" style="padding:14px">
@@ -769,13 +688,11 @@ input, select, textarea, button { font-family: inherit; }
         <button class="tab" onclick="manexTab('docs',this)">Documents</button>
         <button class="tab" onclick="manexTab('sms',this)">SMS/REX</button>
       </div>
-
       <div id="mx-compliance">
         <div class="card" id="compliance-list"></div>
         <div class="sec">Alertes actives</div>
         <div id="compliance-alerts"></div>
       </div>
-
       <div id="mx-docs" style="display:none">
         <div class="sec">OM-A — Organisation</div>
         <div class="card"><div class="card-r"><span class="ct">Structure & responsabilités</span><span class="badge badge-g">v1.0</span></div></div>
@@ -792,19 +709,9 @@ input, select, textarea, button { font-family: inherit; }
         <div class="sec">OM-E — Navigabilité</div>
         <div class="card"><div class="card-r"><span style="font-size:13px">Maintenance & ARC</span><span class="badge badge-g">v1.0</span></div></div>
       </div>
-
       <div id="mx-sms" style="display:none">
         <div class="sec">Rapports REX</div>
-        <div class="card">
-          <div style="padding:8px 0;border-bottom:1px solid var(--border)">
-            <div class="card-r"><div class="ct">Approche non stabilisée</div><span class="badge badge-a">Ouvert</span></div>
-            <div class="cs">15 mars · LFAT · V. Eickmayer</div>
-          </div>
-          <div style="padding:8px 0">
-            <div class="card-r"><div class="ct">Radio saturation LFPB</div><span class="badge badge-g">Clôturé</span></div>
-            <div class="cs">02 mars · Action : SOP LFPB mise à jour</div>
-          </div>
-        </div>
+        <div id="rex-list"><div class="spinner"></div></div>
         <button class="btn btn-p btn-full" style="margin-top:8px" onclick="openModal('modal-rex')">+ Nouveau rapport REX</button>
       </div>
     </div>
@@ -815,11 +722,11 @@ input, select, textarea, button { font-family: inherit; }
   ══════════════════════════════════════════ -->
   <div class="screen" id="s-wx">
     <div class="topbar">
-      <div class="tb-eyebrow">Météo opérationnelle</div>
+      <div class="tb-eyebrow"><svg class="hove-mark" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="7 1 1 5 7 9 13 5 7 1"/><line x1="1" y1="9" x2="7" y2="13"/><line x1="13" y1="9" x2="7" y2="13"/></svg>Météo opérationnelle</div>
       <div class="tb-row"><div class="tb-title">METAR Live</div><button class="tb-action" onclick="loadWeather()">Actualiser</button></div>
     </div>
     <div class="scroll" style="padding:14px">
-      <div class="alert alert-info" style="margin-bottom:12px">Données METAR — Source : CheckWX API · Stations HOVE</div>
+      <div class="alert alert-info" style="margin-bottom:12px">Données METAR · Source : CheckWX API · Stations HOVE</div>
       <div id="wx-cards">
         <div class="loading-screen"><div class="spinner"></div><p>Chargement METAR...</p></div>
       </div>
@@ -831,18 +738,18 @@ input, select, textarea, button { font-family: inherit; }
   ══════════════════════════════════════════ -->
   <div class="screen" id="s-logbook">
     <div class="topbar">
-      <div class="tb-eyebrow">Journal de bord</div>
+      <div class="tb-eyebrow"><svg class="hove-mark" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="7 1 1 5 7 9 13 5 7 1"/><line x1="1" y1="9" x2="7" y2="13"/><line x1="13" y1="9" x2="7" y2="13"/></svg>Journal de bord</div>
       <div class="tb-row"><div class="tb-title">Logbook</div><button class="tb-action" onclick="exportLogbookPDF()">Export PDF</button></div>
     </div>
     <div class="scroll" style="padding:14px">
       <div class="metric-grid">
-        <div class="mc"><div class="ml">Total heures</div><div class="mv">247.4 h</div></div>
-        <div class="mc"><div class="ml">Ce mois</div><div class="mv">6.4 h</div></div>
-        <div class="mc"><div class="ml">IFR total</div><div class="mv">89.2 h</div></div>
-        <div class="mc"><div class="ml">Atterrissages</div><div class="mv">312</div></div>
+        <div class="mc"><div class="ml">Total heures</div><div class="mv" id="lb-total">—</div></div>
+        <div class="mc"><div class="ml">Ce mois</div><div class="mv" id="lb-month">—</div></div>
+        <div class="mc"><div class="ml">IFR total</div><div class="mv" id="lb-ifr">—</div></div>
+        <div class="mc"><div class="ml">Atterrissages</div><div class="mv" id="lb-ldg">—</div></div>
       </div>
       <div class="sec">Vols récents</div>
-      <div id="logbook-list"></div>
+      <div id="logbook-list"><div class="spinner"></div></div>
     </div>
   </div>
 
@@ -851,21 +758,22 @@ input, select, textarea, button { font-family: inherit; }
   ══════════════════════════════════════════ -->
   <div class="screen" id="s-techlog">
     <div class="topbar">
-      <div class="tb-eyebrow">Post-flight</div>
+      <div class="tb-eyebrow"><svg class="hove-mark" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="7 1 1 5 7 9 13 5 7 1"/><line x1="1" y1="9" x2="7" y2="13"/><line x1="13" y1="9" x2="7" y2="13"/></svg>Post-flight</div>
       <div class="tb-row"><div class="tb-title">Tech Log</div><button class="tb-icon-btn" onclick="goBack()"><svg width="20" height="20" viewBox="0 0 24 24" stroke="rgba(255,255,255,.7)" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button></div>
     </div>
     <div class="scroll" style="padding:14px">
-      <div class="alert alert-info">F-HOVE · Saisie post-vol obligatoire avant clôture de la mission</div>
+      <div class="alert alert-info">Saisie post-vol obligatoire avant clôture de mission</div>
+      <div class="ig"><label>Appareil</label><select id="tl-aircraft"><option value="">Sélectionner...</option></select></div>
       <div class="ig"><label>Horamètre départ</label><input type="number" step="0.1" placeholder="1247.3" id="tl-dep"/></div>
       <div class="ig"><label>Horamètre arrivée</label><input type="number" step="0.1" placeholder="1249.1" id="tl-arr"/></div>
       <div class="ig"><label>Fuel départ (US gal)</label><input type="number" placeholder="85" id="tl-fuel-dep"/></div>
       <div class="ig"><label>Fuel arrivée (US gal)</label><input type="number" placeholder="62" id="tl-fuel-arr"/></div>
       <div class="ig"><label>Défaut / anomalie</label><input type="text" id="tl-defect" placeholder="Laisser vide si aucun" oninput="checkDefect(this)"/></div>
-      <div id="tl-aog-warn" style="display:none" class="alert alert-danger">⚠ Défaut saisi → F-HOVE basculera en AOG après enregistrement</div>
-      <div class="ig" style="margin-top:4px"><label>Commentaires additionnels</label><textarea id="tl-notes" placeholder="Observations, conditions météo notables..."></textarea></div>
+      <div id="tl-aog-warn" style="display:none" class="alert alert-danger">⚠ Défaut saisi → appareil basculera en AOG après enregistrement</div>
+      <div class="ig"><label>Commentaires additionnels</label><textarea id="tl-notes" placeholder="Observations, conditions météo notables..."></textarea></div>
       <div class="flex-row" style="margin-top:8px">
         <button class="btn btn-o" onclick="goBack()">Annuler</button>
-        <button class="btn btn-p" onclick="saveTechLog()">Enregistrer dans LARK</button>
+        <button class="btn btn-p" onclick="saveTechLog()">Enregistrer</button>
       </div>
     </div>
   </div>
@@ -875,11 +783,11 @@ input, select, textarea, button { font-family: inherit; }
   ══════════════════════════════════════════ -->
   <div class="screen" id="s-checklist">
     <div class="topbar">
-      <div class="tb-eyebrow">Workflow réglementaire</div>
+      <div class="tb-eyebrow"><svg class="hove-mark" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="7 1 1 5 7 9 13 5 7 1"/><line x1="1" y1="9" x2="7" y2="13"/><line x1="13" y1="9" x2="7" y2="13"/></svg>Workflow réglementaire</div>
       <div class="tb-row"><div class="tb-title">Pre-flight Checklist</div><button class="tb-icon-btn" onclick="goBack()"><svg width="20" height="20" viewBox="0 0 24 24" stroke="rgba(255,255,255,.7)" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button></div>
     </div>
     <div class="scroll" style="padding:14px">
-      <div class="alert alert-info">LFQT → LFPB · 01 avr 14:30 · F-HOVE</div>
+      <div class="alert alert-info">SR22 G7+ · Checklist pré-vol réglementaire</div>
       <div class="sec">Conformité pilote</div>
       <div class="card" id="cl-pilot"></div>
       <div class="sec">Préparation vol</div>
@@ -895,7 +803,7 @@ input, select, textarea, button { font-family: inherit; }
   ══════════════════════════════════════════ -->
   <div class="screen" id="s-admin">
     <div class="topbar">
-      <div class="tb-eyebrow">Accès restreint — Administration</div>
+      <div class="tb-eyebrow"><svg class="hove-mark" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="7 1 1 5 7 9 13 5 7 1"/><line x1="1" y1="9" x2="7" y2="13"/><line x1="13" y1="9" x2="7" y2="13"/></svg>Accès restreint — Administration</div>
       <div class="tb-row"><div class="tb-title">Panneau Admin</div><button class="tb-icon-btn" onclick="goBack()"><svg width="20" height="20" viewBox="0 0 24 24" stroke="rgba(255,255,255,.7)" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button></div>
     </div>
     <div class="scroll" style="padding:14px">
@@ -904,17 +812,20 @@ input, select, textarea, button { font-family: inherit; }
         <button class="tab" onclick="adminTab('clients',this)">Clients</button>
         <button class="tab" onclick="adminTab('settings',this)">Config</button>
       </div>
-
       <div id="adm-crew">
-        <div class="admin-header"><span class="sec" style="margin:0">Membres HOVE</span><button class="btn btn-p btn-sm" onclick="openModal('modal-add-crew')">+ Ajouter</button></div>
-        <div class="card" id="admin-crew-list"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <span class="sec" style="margin:0">Membres HOVE</span>
+          <button class="btn btn-p btn-sm" onclick="openModal('modal-add-crew')">+ Ajouter</button>
+        </div>
+        <div class="card" id="admin-crew-list"><div class="spinner"></div></div>
       </div>
-
       <div id="adm-clients" style="display:none">
-        <div class="admin-header"><span class="sec" style="margin:0">Clients</span><button class="btn btn-p btn-sm" onclick="openModal('modal-invite-client')">+ Inviter</button></div>
-        <div class="card" id="admin-client-list"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <span class="sec" style="margin:0">Clients</span>
+          <button class="btn btn-p btn-sm" onclick="openModal('modal-invite-client')">+ Inviter</button>
+        </div>
+        <div class="card" id="admin-client-list"><div class="spinner"></div></div>
       </div>
-
       <div id="adm-settings" style="display:none">
         <div class="sec">Tarification</div>
         <div class="card">
@@ -926,77 +837,52 @@ input, select, textarea, button { font-family: inherit; }
           <div class="tgl-row"><div><div class="tgl-label">Alerte expiration médical</div><div class="tgl-sub">Email 60j avant échéance</div></div><div class="tgl on" onclick="this.classList.toggle('on')"></div></div>
           <div class="tgl-row"><div><div class="tgl-label">Alerte révision avion</div><div class="tgl-sub">À 100h de l'échéance</div></div><div class="tgl on" onclick="this.classList.toggle('on')"></div></div>
           <div class="tgl-row"><div><div class="tgl-label">Rappel impayés clients</div><div class="tgl-sub">Email 7j après émission</div></div><div class="tgl on" onclick="this.classList.toggle('on')"></div></div>
-          <div class="tgl-row" style="border:none"><div><div class="tgl-label">Rapport mensuel auto</div><div class="tgl-sub">PDF envoyé le 1er du mois</div></div><div class="tgl" onclick="this.classList.toggle('on')"></div></div>
+          <div class="tgl-row"><div><div class="tgl-label">Rapport mensuel auto</div><div class="tgl-sub">PDF envoyé le 1er du mois</div></div><div class="tgl" onclick="this.classList.toggle('on')"></div></div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- ══════════════════════════════════════
-       CLIENT PORTAL
+       CLIENT PORTAL (no sim booking)
   ══════════════════════════════════════════ -->
   <div class="screen" id="s-client">
-    <div class="topbar" style="background:linear-gradient(135deg,var(--navy),var(--mid))">
-      <div class="tb-eyebrow">HOVE Aviation</div>
+    <div class="topbar" style="background:var(--navy)">
+      <div class="tb-eyebrow"><svg class="hove-mark" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="7 1 1 5 7 9 13 5 7 1"/><line x1="1" y1="9" x2="7" y2="13"/><line x1="13" y1="9" x2="7" y2="13"/></svg>HOVE AVIATION</div>
       <div class="tb-row">
-        <div class="tb-title" id="client-greeting">Mon Espace</div>
+        <div class="tb-title">Mon Espace</div>
         <button class="tb-action" onclick="doLogout()">⏻</button>
       </div>
     </div>
     <div class="scroll" style="padding:14px">
       <div class="client-hero">
         <div class="ch-greeting">Bienvenue dans votre espace</div>
-        <div class="ch-name" id="client-name">Bernard Durand</div>
+        <div class="ch-name" id="client-name">—</div>
         <div class="ch-stats">
-          <div><div class="ch-stat-val">3</div><div class="ch-stat-label">Vols</div></div>
-          <div><div class="ch-stat-val">1</div><div class="ch-stat-label">À venir</div></div>
-          <div><div class="ch-stat-val">0</div><div class="ch-stat-label">Impayé</div></div>
+          <div><div class="ch-stat-val" id="cl-stat-total">—</div><div class="ch-stat-label">Vols</div></div>
+          <div><div class="ch-stat-val" id="cl-stat-upcoming">—</div><div class="ch-stat-label">À venir</div></div>
+          <div><div class="ch-stat-val" id="cl-stat-unpaid">—</div><div class="ch-stat-label">Impayé</div></div>
         </div>
       </div>
-
-      <div class="sec">Réserver</div>
+      <div class="sec">Réserver un vol</div>
       <div class="booking-card" onclick="openModal('modal-book-flight')">
         <div class="card-r">
-          <div><div class="bk-title">Réserver un vol</div><div class="bk-sub">HOVE SR22 G7+ · IFR/VFR · Sur demande</div></div>
+          <div><div class="bk-title">Demande de vol</div><div class="bk-sub">HOVE SR22 G7+ · IFR/VFR · Sur demande</div></div>
           <div class="bk-icon"><svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg></div>
         </div>
       </div>
-      <div class="booking-card" onclick="openModal('modal-book-sim')">
-        <div class="card-r">
-          <div><div class="bk-title">Réserver une séance simu</div><div class="bk-sub">Simulateur SOL · Formation · Initiation</div></div>
-          <div class="bk-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
-        </div>
-      </div>
-
       <div class="sec">Prochain vol</div>
-      <div class="card">
-        <div class="card-r"><div><div class="ct">LFQT → LFPB</div><div class="cs">01 avril · 14:30 · SR22 G7+</div></div><span class="badge badge-g">Confirmé</span></div>
-        <div class="divider"></div>
-        <div style="font-size:12px;color:var(--text2)">PIC : V. Eickmayer · Durée estimée : 1h45 · IFR</div>
-      </div>
-
+      <div id="client-next-mission"><div class="spinner"></div></div>
       <div class="sec">Mes vols passés</div>
-      <div class="card">
-        <div style="padding:8px 0;border-bottom:1px solid var(--border)">
-          <div class="card-r"><div><div class="ct">LFQT → LFAT</div><div class="cs">15 mars · 0.9h · VFR</div></div><span class="badge badge-g">Payé</span></div>
-        </div>
-        <div style="padding:8px 0;border-bottom:1px solid var(--border)">
-          <div class="card-r"><div><div class="ct">LFPB → LFQT</div><div class="cs">02 mars · 1.8h · IFR</div></div><span class="badge badge-g">Payé</span></div>
-        </div>
-        <div style="padding:8px 0">
-          <div class="card-r"><div><div class="ct">LFQT → LFPB</div><div class="cs">14 fév · 1.6h · IFR</div></div><span class="badge badge-g">Payé</span></div>
-        </div>
-      </div>
-
+      <div id="client-past-missions"><div class="spinner"></div></div>
       <div class="sec">Mes factures</div>
-      <div class="card" id="client-invoices"></div>
+      <div class="card" id="client-invoices"><div class="spinner"></div></div>
     </div>
   </div>
 
   <!-- ══════════════════════════════════════
        MODALS
   ══════════════════════════════════════════ -->
-
   <!-- New Mission -->
   <div class="modal-overlay" id="modal-new-mission" onclick="closeModalOnBg(event,'modal-new-mission')">
     <div class="modal">
@@ -1004,20 +890,50 @@ input, select, textarea, button { font-family: inherit; }
       <div class="modal-title">Nouvelle mission</div>
       <div class="ig"><label>Type</label><select id="nm-type" onchange="toggleRouteFields()"><option value="flight">VOL RÉEL</option><option value="sim">SIMU SOL</option><option value="ferry">FERRY</option><option value="training">ENTRAÎNEMENT</option></select></div>
       <div id="nm-route-fields">
-        <div class="ig"><label>Départ (OACI)</label><input type="text" id="nm-dep" placeholder="LFQT"/></div>
-        <div class="ig"><label>Destination (OACI)</label><input type="text" id="nm-arr" placeholder="LFPB"/></div>
+        <div class="ig"><label>Départ (OACI)</label><input type="text" id="nm-dep" placeholder="LFQT" style="text-transform:uppercase"/></div>
+        <div class="ig"><label>Destination (OACI)</label><input type="text" id="nm-arr" placeholder="LFPB" style="text-transform:uppercase"/></div>
         <div class="ig"><label>Règle de vol</label><select id="nm-rule"><option>IFR</option><option>VFR</option></select></div>
       </div>
-      <div class="ig"><label>Client</label><select id="nm-client"><option>Bernard Durand</option><option>Martin Laurent</option><option>François Dupont</option></select></div>
-      <div class="ig"><label>PIC / Instructeur</label><select><option>V. Eickmayer</option><option>J-B. Honoret</option><option>A. Leblanc</option></select></div>
+      <div class="ig"><label>Client</label><select id="nm-client"><option value="">Sélectionner...</option></select></div>
+      <div class="ig"><label>PIC / Instructeur</label><select id="nm-pilot"><option value="">Sélectionner...</option></select></div>
+      <div class="ig"><label>Appareil</label><select id="nm-aircraft"><option value="">Sélectionner...</option></select></div>
       <div class="ig"><label>Date</label><input type="date" id="nm-date"/></div>
       <div class="ig"><label>Heure locale</label><input type="time" id="nm-time" value="10:00"/></div>
-      <div class="ig"><label>Durée estimée</label><input type="text" placeholder="1h30"/></div>
+      <div class="ig"><label>Durée estimée</label><input type="text" id="nm-duration" placeholder="1h30"/></div>
       <div class="ig"><label>Tarif (€)</label><input type="number" id="nm-tarif" placeholder="650"/></div>
-      <div class="ig"><label>Mode de règlement</label><select><option>Virement</option><option>Espèces</option><option>Chèque</option></select></div>
+      <div class="ig"><label>Notes</label><textarea id="nm-notes" placeholder="Informations complémentaires..."></textarea></div>
       <div class="flex-row" style="margin-top:8px">
         <button class="btn btn-o" onclick="closeModal('modal-new-mission')">Annuler</button>
         <button class="btn btn-p" onclick="saveMission()">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEL Item -->
+  <div class="modal-overlay" id="modal-mel-item" onclick="closeModalOnBg(event,'modal-mel-item')">
+    <div class="modal">
+      <div class="modal-handle"></div>
+      <div class="modal-title">Nouvel item MEL</div>
+      <input type="hidden" id="mel-edit-id"/>
+      <div class="ig"><label>Appareil</label><select id="mel-aircraft"><option value="">Sélectionner...</option></select></div>
+      <div class="ig"><label>Référence MEL (ex: 28-11)</label><input type="text" id="mel-ref" placeholder="28-11" style="text-transform:uppercase;font-family:'DM Mono',monospace"/></div>
+      <div class="ig"><label>Titre / Système concerné</label><input type="text" id="mel-title" placeholder="Pompe carburant gauche — inopérante"/></div>
+      <div class="ig"><label>Catégorie</label>
+        <select id="mel-cat" onchange="updateMELExpiry()">
+          <option value="A">A — Avant le vol (immédiat)</option>
+          <option value="B">B — 3 jours calendaires</option>
+          <option value="C">C — 10 jours calendaires</option>
+          <option value="D">D — 120 jours calendaires</option>
+        </select>
+      </div>
+      <div class="ig"><label>Date d'ouverture</label><input type="date" id="mel-date-open" onchange="updateMELExpiry()"/></div>
+      <div class="ig"><label>Date d'expiration (auto-calculée)</label><input type="text" id="mel-date-expiry" readonly style="background:var(--surface);color:var(--text2)"/></div>
+      <div class="ig"><label>Description technique</label><textarea id="mel-desc" placeholder="Description factuelle du défaut..."></textarea></div>
+      <div class="ig"><label>Limitations opérationnelles</label><textarea id="mel-limits" placeholder="Ex : VFR jour uniquement..." style="min-height:60px"></textarea></div>
+      <div class="ig"><label>Procédure de dérogation</label><textarea id="mel-proc" placeholder="Procédure applicable selon MEL approuvé..." style="min-height:60px"></textarea></div>
+      <div class="flex-row" style="margin-top:8px">
+        <button class="btn btn-o" onclick="closeModal('modal-mel-item')">Annuler</button>
+        <button class="btn btn-p" onclick="saveMELItem()">Ouvrir l'item</button>
       </div>
     </div>
   </div>
@@ -1027,13 +943,13 @@ input, select, textarea, button { font-family: inherit; }
     <div class="modal">
       <div class="modal-handle"></div>
       <div class="modal-title">Ajouter un membre</div>
-      <div class="ig"><label>Nom complet</label><input type="text" placeholder="Prénom Nom"/></div>
-      <div class="ig"><label>Email</label><input type="email" placeholder="email@hove-aviation.fr"/></div>
-      <div class="ig"><label>Rôle</label><select><option value="admin">Admin</option><option value="pilot">Pilote</option></select></div>
-      <div class="ig"><label>N° Licence</label><input type="text" placeholder="FR-PPL-XXXX-XXXX"/></div>
-      <div class="ig"><label>Type de licence</label><input type="text" placeholder="PPL(A) · IR(A) · SEP"/></div>
-      <div class="ig"><label>Expiration médical</label><input type="date"/></div>
-      <div class="ig"><label>Code d'accès (PIN)</label><input type="password" placeholder="4 chiffres"/></div>
+      <div class="ig"><label>Nom complet</label><input type="text" id="new-crew-name" placeholder="Prénom Nom"/></div>
+      <div class="ig"><label>Email</label><input type="email" id="new-crew-email" placeholder="email@hove-aviation.fr"/></div>
+      <div class="ig"><label>Rôle</label><select id="new-crew-role"><option value="admin">Admin</option><option value="pilot">Pilote</option></select></div>
+      <div class="ig"><label>N° Licence</label><input type="text" id="new-crew-lic" placeholder="FR-PPL-XXXX-XXXX"/></div>
+      <div class="ig"><label>Type de licence</label><input type="text" id="new-crew-lic-type" placeholder="PPL(A) · IR(A) · SEP"/></div>
+      <div class="ig"><label>Expiration médical</label><input type="date" id="new-crew-medical"/></div>
+      <div class="ig"><label>Mot de passe provisoire</label><input type="password" id="new-crew-pass" placeholder="Mot de passe initial"/></div>
       <div class="flex-row" style="margin-top:8px">
         <button class="btn btn-o" onclick="closeModal('modal-add-crew')">Annuler</button>
         <button class="btn btn-p" onclick="addCrewMember()">Créer le profil</button>
@@ -1046,10 +962,10 @@ input, select, textarea, button { font-family: inherit; }
     <div class="modal">
       <div class="modal-handle"></div>
       <div class="modal-title">Inviter un client</div>
-      <div class="ig"><label>Nom complet</label><input type="text" placeholder="Prénom Nom"/></div>
-      <div class="ig"><label>Email</label><input type="email" placeholder="client@email.com"/></div>
-      <div class="ig"><label>Téléphone</label><input type="tel" placeholder="+33 6 ..."/></div>
-      <div class="ig"><label>Note interne</label><textarea placeholder="Préférences, remarques..."></textarea></div>
+      <div class="ig"><label>Nom complet</label><input type="text" id="inv-name" placeholder="Prénom Nom"/></div>
+      <div class="ig"><label>Email</label><input type="email" id="inv-email" placeholder="client@email.com"/></div>
+      <div class="ig"><label>Téléphone</label><input type="tel" id="inv-phone" placeholder="+33 6 ..."/></div>
+      <div class="ig"><label>Note interne</label><textarea id="inv-note" placeholder="Préférences, remarques..."></textarea></div>
       <div class="flex-row" style="margin-top:8px">
         <button class="btn btn-o" onclick="closeModal('modal-invite-client')">Annuler</button>
         <button class="btn btn-p" onclick="inviteClient()">Envoyer l'invitation</button>
@@ -1057,38 +973,21 @@ input, select, textarea, button { font-family: inherit; }
     </div>
   </div>
 
-  <!-- Book Flight (client) -->
+  <!-- Book Flight (client) — no simulator -->
   <div class="modal-overlay" id="modal-book-flight" onclick="closeModalOnBg(event,'modal-book-flight')">
     <div class="modal">
       <div class="modal-handle"></div>
       <div class="modal-title">Demande de vol</div>
-      <div class="ig"><label>Départ (OACI ou ville)</label><input type="text" placeholder="LFQT ou Merville"/></div>
-      <div class="ig"><label>Destination</label><input type="text" placeholder="LFPB ou Le Bourget"/></div>
-      <div class="ig"><label>Date souhaitée</label><input type="date"/></div>
-      <div class="ig"><label>Heure souhaitée</label><input type="time" value="09:00"/></div>
-      <div class="ig"><label>Nombre de passagers (hors pilote)</label><select><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
-      <div class="ig"><label>Message au pilote (optionnel)</label><textarea placeholder="Bagages, besoins particuliers..."></textarea></div>
+      <div class="ig"><label>Départ (OACI ou ville)</label><input type="text" id="book-dep" placeholder="LFQT ou Merville"/></div>
+      <div class="ig"><label>Destination</label><input type="text" id="book-arr" placeholder="LFPB ou Le Bourget"/></div>
+      <div class="ig"><label>Date souhaitée</label><input type="date" id="book-date"/></div>
+      <div class="ig"><label>Heure souhaitée</label><input type="time" id="book-time" value="09:00"/></div>
+      <div class="ig"><label>Nombre de passagers (hors pilote)</label><select id="book-pax"><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+      <div class="ig"><label>Message au pilote (optionnel)</label><textarea id="book-msg" placeholder="Bagages, besoins particuliers..."></textarea></div>
       <div class="alert alert-info" style="margin:8px 0">Demande transmise à HOVE Aviation. Confirmation sous 24h par email.</div>
       <div class="flex-row">
         <button class="btn btn-o" onclick="closeModal('modal-book-flight')">Annuler</button>
         <button class="btn btn-p" onclick="bookFlight()">Envoyer la demande</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Book Sim (client) -->
-  <div class="modal-overlay" id="modal-book-sim" onclick="closeModalOnBg(event,'modal-book-sim')">
-    <div class="modal">
-      <div class="modal-handle"></div>
-      <div class="modal-title">Réserver une séance simu</div>
-      <div class="ig"><label>Type de séance</label><select><option>Initiation (1h)</option><option>Formation IFR (2h)</option><option>Urgences & procédures (1h30)</option><option>Navigation (2h)</option><option>Personnalisée</option></select></div>
-      <div class="ig"><label>Date souhaitée</label><input type="date"/></div>
-      <div class="ig"><label>Heure</label><input type="time" value="10:00"/></div>
-      <div class="ig"><label>Objectifs / message</label><textarea placeholder="Ce que vous souhaitez travailler..."></textarea></div>
-      <div class="alert alert-info" style="margin:8px 0">Tarif indicatif : 140 €/h · Confirmation sous 24h.</div>
-      <div class="flex-row">
-        <button class="btn btn-o" onclick="closeModal('modal-book-sim')">Annuler</button>
-        <button class="btn btn-p" onclick="bookSim()">Envoyer la demande</button>
       </div>
     </div>
   </div>
@@ -1098,11 +997,11 @@ input, select, textarea, button { font-family: inherit; }
     <div class="modal">
       <div class="modal-handle"></div>
       <div class="modal-title">Rapport REX / Occurrence</div>
-      <div class="ig"><label>Type d'événement</label><select><option>Approche non stabilisée</option><option>Déviation de trajectoire</option><option>Problème technique</option><option>Conflit de trafic</option><option>Givrage inattendu</option><option>Autre</option></select></div>
-      <div class="ig"><label>Sévérité</label><select><option>Mineur</option><option>Sérieux</option><option>Critique</option></select></div>
-      <div class="ig"><label>Description factuelle</label><textarea placeholder="Chronologie, faits, contexte..."></textarea></div>
-      <div class="ig"><label>Facteurs contributifs</label><textarea placeholder="Météo, fatigue, charge de travail..."></textarea></div>
-      <div class="ig"><label>Action corrective proposée</label><textarea placeholder="Ce qui pourrait être amélioré..."></textarea></div>
+      <div class="ig"><label>Type d'événement</label><select id="rex-type"><option>Approche non stabilisée</option><option>Déviation de trajectoire</option><option>Problème technique</option><option>Conflit de trafic</option><option>Givrage inattendu</option><option>Autre</option></select></div>
+      <div class="ig"><label>Sévérité</label><select id="rex-sev"><option>Mineur</option><option>Sérieux</option><option>Critique</option></select></div>
+      <div class="ig"><label>Description factuelle</label><textarea id="rex-desc" placeholder="Chronologie, faits, contexte..."></textarea></div>
+      <div class="ig"><label>Facteurs contributifs</label><textarea id="rex-factors" placeholder="Météo, fatigue, charge de travail..."></textarea></div>
+      <div class="ig"><label>Action corrective proposée</label><textarea id="rex-action" placeholder="Ce qui pourrait être amélioré..."></textarea></div>
       <div class="flex-row" style="margin-top:8px">
         <button class="btn btn-o" onclick="closeModal('modal-rex')">Annuler</button>
         <button class="btn btn-p" onclick="saveREX()">Soumettre le rapport</button>
@@ -1110,83 +1009,91 @@ input, select, textarea, button { font-family: inherit; }
     </div>
   </div>
 
-</div>
+  <!-- Add Maintenance -->
+  <div class="modal-overlay" id="modal-add-maint" onclick="closeModalOnBg(event,'modal-add-maint')">
+    <div class="modal">
+      <div class="modal-handle"></div>
+      <div class="modal-title">Entrée maintenance</div>
+      <div class="ig"><label>Appareil</label><select id="maint-aircraft"><option value="">Sélectionner...</option></select></div>
+      <div class="ig"><label>Type de travaux</label><select id="maint-type"><option>Visite 100h</option><option>Visite annuelle (ARC)</option><option>AD / Consigne de navigabilité</option><option>SB / Bulletin de service</option><option>Réparation</option><option>Remplacement composant</option></select></div>
+      <div class="ig"><label>Description</label><textarea id="maint-desc" placeholder="Détail des travaux effectués..."></textarea></div>
+      <div class="ig"><label>Effectué par (Part-145)</label><input type="text" id="maint-org" placeholder="Nom de l'organisme agréé"/></div>
+      <div class="ig"><label>Date d'intervention</label><input type="date" id="maint-date"/></div>
+      <div class="ig"><label>Heures avion au moment des travaux</label><input type="number" step="0.1" id="maint-hours" placeholder="1247.3"/></div>
+      <div class="ig"><label>Référence AD/CN (si applicable)</label><input type="text" id="maint-ref" placeholder="2024-08-R1"/></div>
+      <div class="flex-row" style="margin-top:8px">
+        <button class="btn btn-o" onclick="closeModal('modal-add-maint')">Annuler</button>
+        <button class="btn btn-p" onclick="saveMaintEntry()">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /#app -->
 
 <script>
 // ════════════════════════════════════════════════════════════════
-// HOVE OPS — Application Logic
+// HOVE OPS v4.0 — Application Logic (Complete)
 // ════════════════════════════════════════════════════════════════
 
-// ── SUPABASE CONFIG ──────────────────────────────────────────────
-// IMPORTANT : Remplacez ces valeurs par celles de votre projet Supabase
-// Supabase > Settings > API > Project URL et anon key
 const SUPABASE_URL = 'https://hloyymugwybehyjpnlpi.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhsb3l5bXVnd3liZWh5anBubHBpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxMjgyMjcsImV4cCI6MjA5MDcwNDIyN30.fd3qouQ_ZSgAXvcCjrXfQ9y01Zsx1D20EvLDqgdUs_M';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// !! DEMO MODE !! : Passer à false une fois Supabase configuré
-const DEMO_MODE = false;
+let currentUser = null;
+let allCrew = [];
+let allAircraft = [];
+let allClients = [];
+let currentMELAircraftId = null;
+let previousScreen = 's-home';
 
-let supabase_client = null;
-if (!DEMO_MODE) {
-  supabase_client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const RC = {
+  admin: { color: '#C9A84C', bgColor: 'rgba(201,168,76,.15)' },
+  pilot: { color: '#3B5BA9', bgColor: 'rgba(59,91,169,.15)' },
+  client: { color: '#059669', bgColor: 'rgba(5,150,105,.15)' }
+};
+const TYPE_LABELS = { flight:'VOL', sim:'SIMU', ferry:'FERRY', training:'ENTRAINEMENT', maintenance:'MAINT' };
+
+// ── COMPLIANCE ───────────────────────────────────────────────────
+function buildCompliance(p) {
+  const today = new Date(); today.setHours(0,0,0,0);
+  function chk(dateStr, label) {
+    if (!dateStr) return null;
+    const d = new Date(dateStr);
+    const diff = Math.floor((d - today) / 86400000);
+    return {
+      label,
+      status: diff < 0 ? 'exp' : diff < 60 ? 'warn' : 'ok',
+      detail: diff < 0
+        ? `⛔ Expiré le ${d.toLocaleDateString('fr-FR')}`
+        : diff < 60
+          ? `⚠ ${diff}j restants — ${d.toLocaleDateString('fr-FR')}`
+          : `Valide jusqu'au ${d.toLocaleDateString('fr-FR')}`
+    };
+  }
+  return [
+    p.licence_number ? { label: `Licence ${p.licence_type||''}`, status:'ok', detail: p.licence_number } : null,
+    chk(p.medical_expiry, 'Médical EASA'),
+    chk(p.sep_expiry, 'SEP Revalidation'),
+    chk(p.ir_expiry, 'IR Proficiency Check'),
+    chk(p.opc_expiry, 'OPC Annuel'),
+    p.caps_training_date ? { label:'CAPS Ground Training', status:'ok', detail:`Fait le ${new Date(p.caps_training_date).toLocaleDateString('fr-FR')}` } : null,
+  ].filter(Boolean);
 }
 
-// ── DEMO DATA ────────────────────────────────────────────────────
-const USERS = {
-  jb: { id:'jb', name:'Jean-Baptiste Honoret', role:'admin', initials:'JB', pin:'0000', short:'AM / PDG', licence:'PPL(A)', licFull:'PPL(A) · SEP', serial:'AM-HOVE-001', exp:'06/2027', color:'#C9A84C', bgColor:'rgba(201,168,76,.15)',
-    compliance: [
-      { label:'Licence PPL(A)', status:'ok', detail:'Valide — Jan 2028' },
-      { label:'Médical EASA Cl. 2', status:'ok', detail:'Juin 2026' },
-      { label:'SEP Revalidation', status:'ok', detail:'Déc 2025' },
-      { label:'OPC annuel', status:'ok', detail:'À jour' },
-    ]
-  },
-  ve: { id:'ve', name:'Victor Eickmayer', role:'admin', initials:'VE', pin:'1234', short:'DO / PIC', licence:'PPL(A)/IR(A)', licFull:'PPL(A) · IR(A) · SEP', serial:'FR-PPL-2024-0847', exp:'12/2026', color:'#3B5BA9', bgColor:'rgba(59,91,169,.15)',
-    compliance: [
-      { label:'Licence PPL(A) + IR(A)', status:'ok', detail:'Valide' },
-      { label:'Médical EASA Cl. 2', status:'ok', detail:'Jan 2026' },
-      { label:'SEP Revalidation', status:'warn', detail:'⚠ Échéance Juin 2025' },
-      { label:'IR Proficiency Check', status:'ok', detail:'Mars 2026' },
-      { label:'Recency (3 atterro./90j)', status:'ok', detail:'OK — dernière: 28 mars' },
-      { label:'CAPS Ground Training', status:'ok', detail:'Fév 2025' },
-      { label:'OPC annuel', status:'exp', detail:'⛔ EXPIRÉ — action requise' },
-    ]
-  },
-  demo: { id:'demo', name:'Alexandre Leblanc', role:'pilot', initials:'AL', pin:'9999', short:'PIC', licence:'PPL(A)', licFull:'PPL(A) · SEP', serial:'FR-PPL-2023-1102', exp:'08/2026', color:'#7c3aed', bgColor:'rgba(124,58,237,.15)',
-    compliance: [
-      { label:'Licence PPL(A)', status:'ok', detail:'Valide' },
-      { label:'Médical EASA Cl. 2', status:'ok', detail:'Août 2025' },
-      { label:'SEP Revalidation', status:'ok', detail:'Déc 2025' },
-      { label:'Recency (3 atterro./90j)', status:'warn', detail:'⚠ 2 atterro. / 3 requis' },
-    ]
-  },
-  client: { id:'client', name:'Bernard Durand', role:'client', initials:'BD', pin:'5678', short:'Client', color:'#059669', bgColor:'rgba(5,150,105,.15)' }
-};
+// ── TOAST ────────────────────────────────────────────────────────
+function toast(msg, type = 'info') {
+  const c = document.getElementById('toast-container');
+  const t = document.createElement('div');
+  t.className = 'toast ' + (type === 'success' ? 'success' : type === 'error' ? 'error' : type === 'warning' ? 'warning' : '');
+  t.textContent = msg;
+  c.appendChild(t);
+  setTimeout(() => t.remove(), 3200);
+}
 
-const MISSIONS = [
-  { id:1, type:'flight', rule:'IFR', dep:'LFQT', arr:'LFPB', client:'Durand B.', pilot:'V. Eickmayer', aircraft:'F-HOVE', date:'01 avr', time:'14:30', status:'confirmed', gonogo:'GO', tarif:1200, paid:true },
-  { id:2, type:'sim', dep:null, arr:null, client:'Martin L.', pilot:'V. Eickmayer', aircraft:'SIMU-SOL', date:'02 avr', time:'10:00', duration:'2h', status:'scheduled', gonogo:'PENDING', tarif:280, paid:false },
-  { id:3, type:'flight', rule:'VFR', dep:'LFQT', arr:'LFAT', client:'Bernard F.', pilot:'V. Eickmayer', aircraft:'F-HOVE', date:'03 avr', time:'09:15', status:'scheduled', gonogo:'PENDING', tarif:850, paid:false },
-  { id:4, type:'sim', dep:null, arr:null, client:'Dupont F.', pilot:'V. Eickmayer', aircraft:'SIMU-SOL', date:'08 avr', time:'14:00', duration:'1h30', status:'scheduled', gonogo:'PENDING', tarif:210, paid:false },
-  { id:5, type:'flight', rule:'IFR', dep:'LFQT', arr:'LFPB', client:'Leclerc P.', pilot:'J-B. Honoret', aircraft:'F-HOVE', date:'11 avr', time:'11:00', status:'scheduled', gonogo:'PENDING', tarif:1200, paid:false },
-];
-
-const LOGBOOK = [
-  { dep:'LFQT', arr:'LFPB', date:'28 mars', hours:1.8, rule:'IFR', ldg:1 },
-  { dep:'LFPB', arr:'LFAT', date:'25 mars', hours:0.9, rule:'VFR', ldg:1 },
-  { dep:'LFAT', arr:'LFQT', date:'25 mars', hours:0.8, rule:'VFR', ldg:1 },
-  { dep:'LFQT', arr:'LFPB', date:'14 mars', hours:1.8, rule:'IFR', ldg:1 },
-  { dep:'LFPB', arr:'LFQQ', date:'14 mars', hours:0.4, rule:'IFR', ldg:1 },
-];
-
-// ── STATE ────────────────────────────────────────────────────────
-let currentUser = null;
-let selectedProfile = 'jb';
-let previousScreen = 's-home';
-let aogActive = false;
-
-const typeLabels = { flight:'VOL', sim:'SIMU', ferry:'FERRY', training:'ENTRAINEMENT', maintenance:'MAINT' };
-const typeColors = { flight:'badge-b', sim:'badge-g type-sim', ferry:'badge-a', training:'badge badge-b type-training' };
+// ── MODAL ────────────────────────────────────────────────────────
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+function closeModalOnBg(e, id) { if (e.target === e.currentTarget) closeModal(id); }
 
 // ── NAVIGATION ───────────────────────────────────────────────────
 function goTo(id) {
@@ -1196,6 +1103,14 @@ function goTo(id) {
   const s = document.getElementById(id);
   if (s) { s.classList.add('active'); s.scrollTop = 0; }
   updateNav(id);
+  if (id === 's-planning') renderMissions();
+  if (id === 's-logbook') renderLogbook();
+  if (id === 's-fleet') { loadFleetData(); }
+  if (id === 's-admin') renderAdmin();
+  if (id === 's-finance') loadFinanceData();
+  if (id === 's-manex') initManexCompliance();
+  if (id === 's-checklist') initChecklist();
+  if (id === 's-wx') { if (!document.getElementById('wx-cards').querySelector('.wx-card')) loadWeather(); }
 }
 
 function goBack() { goTo(previousScreen || 's-home'); }
@@ -1203,353 +1118,758 @@ function goBack() { goTo(previousScreen || 's-home'); }
 function updateNav(id) {
   const navMap = { 's-home':'s-home','s-crew':'s-crew','s-planning':'s-planning','s-finance':'s-finance','s-more':'s-more' };
   document.querySelectorAll('.ni').forEach(n => n.classList.remove('on'));
-  const target = navMap[id] || null;
+  const target = navMap[id];
   if (target) {
     document.querySelectorAll('.ni').forEach(n => {
-      const fn = n.getAttribute('onclick') || '';
-      if (fn.includes(target)) n.classList.add('on');
+      if ((n.getAttribute('onclick')||'').includes(target)) n.classList.add('on');
     });
   }
 }
 
-// ── LOGIN ────────────────────────────────────────────────────────
-// On simplifie : plus besoin de sélectionner un profil, on se connecte direct
-function selectProfile(id, el) {
-    selectedProfile = id;
-    document.querySelectorAll('.profile-opt').forEach(o => o.classList.remove('sel'));
-    el.classList.add('sel');
-    document.getElementById('pin-in').value = '';
-}
-
-// LA NOUVELLE FONCTION QUI SE CONNECTE À TA BASE
+// ── LOGIN / LOGOUT ───────────────────────────────────────────────
 async function doLogin() {
-    const email = document.getElementById('login-email').value.trim();
-    const password = document.getElementById('pin-in').value;
-    
-    if (!email || !password) {
-        document.getElementById('login-error').textContent = 'Email et mot de passe requis.';
-        return;
-    }
-    document.getElementById('login-error').textContent = '';
-
-    try {
-        // 1. Connexion Authentification
-        const { data: { user }, error: authError } = await supabase_client.auth.signInWithPassword({
-            email: email,
-            password: password
-        });
-
-        if (authError) throw authError;
-
-        // 2. On va chercher ton rôle 'admin' dans la table profiles
-        const { data: profile, error: profError } = await supabase_client
-            .from('profiles')
-            .select('*')
-            .eq('id', user.id)
-            .single();
-
-        if (profError || !profile) {
-            alert("Erreur : Profil non trouvé dans la table 'profiles'.");
-            return;
-        }
-
-        // 3. On enregistre l'utilisateur actuel
-        currentUser = profile;
-
-        // 4. On redirige vers le bon écran (Home pour Admin, Client pour les autres)
-        if (profile.role === 'admin') {
-            document.body.classList.add('is-admin');
-            initHome(); 
-            goTo('s-home');
-        } else {
-            initClientPortal(); 
-            goTo('s-client');
-        }
-        
-    } catch (err) {
-        alert("Accès refusé : " + err.message);
-    }
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('pin-in').value;
+  const errEl = document.getElementById('login-error');
+  if (!email || !password) { errEl.textContent = 'Email et mot de passe requis.'; return; }
+  errEl.textContent = '';
+  const loginBtn = document.querySelector('.login-btn');
+  loginBtn.textContent = 'Connexion...'; loginBtn.disabled = true;
+  try {
+    const { data:{ user }, error } = await sb.auth.signInWithPassword({ email, password });
+    if (error) throw error;
+    await loadUserAndRedirect(user.id);
+  } catch(e) {
+    errEl.textContent = e.message || 'Accès refusé';
+  } finally {
+    loginBtn.textContent = 'Connexion'; loginBtn.disabled = false;
+  }
 }
 
-// ── HOME INIT ────────────────────────────────────────────────────
+async function loadUserAndRedirect(userId) {
+  const { data: profile, error } = await sb.from('profiles').select('*').eq('id', userId).single();
+  if (error || !profile) { document.getElementById('login-error').textContent = 'Profil introuvable dans la base.'; return; }
+  currentUser = { ...profile, ...RC[profile.role] };
+  currentUser.compliance = buildCompliance(profile);
+  if (profile.role === 'admin' || profile.role === 'pilot') {
+    await loadInitData();
+    initHome();
+    goTo('s-home');
+  } else {
+    await initClientPortal();
+    goTo('s-client');
+  }
+}
+
+async function loadInitData() {
+  try {
+    const [crewRes, acRes, clientRes] = await Promise.all([
+      sb.from('profiles').select('*').in('role',['admin','pilot']).eq('is_active', true),
+      sb.from('aircraft').select('*').order('registration'),
+      sb.from('profiles').select('id, full_name').eq('role','client').eq('is_active', true)
+    ]);
+    allCrew = (crewRes.data || []).map(p => ({ ...p, ...RC[p.role], compliance: buildCompliance(p) }));
+    allAircraft = acRes.data || [];
+    allClients = clientRes.data || [];
+    populateSelect('nm-pilot', allCrew, 'id', p => p.full_name);
+    populateSelect('nm-client', allClients, 'id', p => p.full_name);
+    populateSelect('nm-aircraft', allAircraft, 'id', a => `${a.registration} — ${a.type}`);
+    populateSelect('mel-aircraft', allAircraft, 'id', a => a.registration);
+    populateSelect('maint-aircraft', allAircraft, 'id', a => a.registration);
+    populateSelect('tl-aircraft', allAircraft, 'id', a => a.registration);
+  } catch(e) { console.error('loadInitData:', e); }
+}
+
+function populateSelect(id, arr, valKey, labelFn) {
+  const sel = document.getElementById(id);
+  if (!sel) return;
+  const cur = sel.value;
+  sel.innerHTML = `<option value="">Sélectionner...</option>` + arr.map(x => `<option value="${x[valKey]}">${labelFn(x)}</option>`).join('');
+  if (cur) sel.value = cur;
+}
+
+async function doLogout() {
+  await sb.auth.signOut();
+  currentUser = null; allCrew = []; allAircraft = []; allClients = [];
+  document.getElementById('login-email').value = '';
+  document.getElementById('pin-in').value = '';
+  document.getElementById('login-error').textContent = '';
+  goTo('s-login');
+}
+
+// ── HOME ─────────────────────────────────────────────────────────
 function initHome() {
   const u = currentUser;
-  const fname = (u.full_name || u.name || 'Utilisateur').split(' ')[0];
+  const fname = (u.full_name||'').split(' ')[0] || 'Utilisateur';
   document.getElementById('h-greeting').textContent = 'Bonjour, ' + fname;
-  document.getElementById('h-role-tag').textContent = u.role || '';
+  document.getElementById('h-role-tag').textContent = (u.role||'').toUpperCase();
   document.getElementById('h-av').textContent = u.initials || fname[0];
   document.getElementById('h-av').style.background = u.bgColor || '#1E3A8A';
   document.getElementById('h-av').style.color = u.color || '#fff';
-  document.getElementById('h-name').textContent = u.full_name || u.name || '';
-  document.getElementById('h-role-full').textContent = (u.role || '').toUpperCase() + ' · HOVE AVIATION';
+  document.getElementById('h-name').textContent = u.full_name || '';
+  document.getElementById('h-role-full').textContent = (u.role||'').toUpperCase() + ' · HOVE AVIATION';
 
-  // Badges
-  const badges = document.getElementById('h-badges');
-  if (u.compliance) {
-    const expired = u.compliance.filter(c => c.status === 'exp' || c.status === 'warn').length;
-    badges.innerHTML = `<span class="cb-badge">${u.licence_type || u.licFull || ''}</span>` +
-      (expired > 0 ? `<span class="cb-badge warn">${expired} alerte${expired>1?'s':''}</span>` : '<span class="cb-badge">Conformité OK</span>');
-  }
+  const expired = (u.compliance||[]).filter(c => c.status==='exp'||c.status==='warn').length;
+  document.getElementById('h-badges').innerHTML =
+    `<span class="cb-badge">${u.licence_type||u.role||''}</span>` +
+    (expired > 0 ? `<span class="cb-badge warn">${expired} alerte${expired>1?'s':''}</span>` : '<span class="cb-badge">Conformité OK</span>');
 
-  // Metrics
-  const mg = document.getElementById('h-metrics');
-  if (u.role === 'admin') {
-    mg.innerHTML = `<div class="mc"><div class="ml">CA Avril</div><div class="mv">5 060 €</div></div>
-      <div class="mc"><div class="ml">Impayé</div><div class="mv mv-r">490 €</div></div>`;
-  } else {
-    mg.innerHTML = `<div class="mc"><div class="ml">Heures ce mois</div><div class="mv">6.4 h</div></div>
-      <div class="mc"><div class="ml">Conformité</div><div class="mv mv-a">1 alerte</div></div>`;
-  }
-
-  // Alerts
   const al = document.getElementById('h-alerts');
-  al.innerHTML = '';
-  if (u.compliance) {
-    const warns = u.compliance.filter(c => c.status === 'warn' || c.status === 'exp');
-    warns.forEach(w => {
-      al.innerHTML += `<div class="alert ${w.status==='exp'?'alert-danger':'alert-warn'}">${w.label} — ${w.detail}</div>`;
-    });
-  }
+  al.innerHTML = (u.compliance||[]).filter(c=>c.status!=='ok').map(w =>
+    `<div class="alert ${w.status==='exp'?'alert-danger':'alert-warn'}">${w.label} — ${w.detail}</div>`
+  ).join('');
 
-  document.getElementById('hq-planning-sub').textContent = MISSIONS.length + ' missions';
-  const unpaid = MISSIONS.filter(m => !m.paid).length;
-  document.getElementById('hq-finance-sub').textContent = unpaid + ' impayée' + (unpaid>1?'s':'');
-  document.getElementById('hq-fleet-sub').textContent = aogActive ? '⚠ AOG' : 'F-HOVE EN LIGNE';
-
-  // Admin sections in "More"
   const isAdmin = u.role === 'admin';
   document.getElementById('admin-section-label').style.display = isAdmin ? 'block' : 'none';
   document.getElementById('admin-section-card').style.display = isAdmin ? 'block' : 'none';
   document.getElementById('fleet-add-btn').style.display = isAdmin ? 'inline-block' : 'none';
+  const planBtn = document.getElementById('planning-add-btn');
+  if (planBtn) planBtn.style.display = (isAdmin||u.role==='pilot') ? 'inline-block' : 'none';
 
-  // Crew badge
   updateCrewBadge(u);
   initCrewScreen(u);
-  renderMissions();
-  renderLogbook();
-  renderAdmin();
-  initChecklist();
+  loadHomeMetrics();
+  loadNextMission();
+}
+
+function showNotifs() {
+  const alerts = (currentUser?.compliance||[]).filter(c=>c.status!=='ok');
+  if (!alerts.length) { toast('Aucune alerte active ✓', 'success'); return; }
+  alerts.forEach(a => toast(a.label + ' — ' + a.detail, a.status==='exp'?'error':'warning'));
+}
+
+async function loadHomeMetrics() {
+  const u = currentUser;
+  const now = new Date();
+  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString().split('T')[0];
+  try {
+    if (u.role === 'admin') {
+      const [invRes, missionRes] = await Promise.all([
+        sb.from('invoices').select('amount, payment_status').gte('created_at', monthStart),
+        sb.from('missions').select('id').gte('scheduled_date', now.toISOString().split('T')[0]).in('status',['scheduled','confirmed'])
+      ]);
+      const invs = invRes.data || [];
+      const total = invs.reduce((s,i)=>s+Number(i.amount),0);
+      const unpaid = invs.filter(i=>i.payment_status==='pending').reduce((s,i)=>s+Number(i.amount),0);
+      const upcoming = (missionRes.data||[]).length;
+      document.getElementById('h-metrics').innerHTML = `
+        <div class="mc"><div class="ml">CA ce mois</div><div class="mv">${total.toLocaleString('fr-FR')} €</div></div>
+        <div class="mc"><div class="ml">Impayé</div><div class="mv mv-r">${unpaid.toLocaleString('fr-FR')} €</div></div>`;
+      document.getElementById('hq-planning-sub').textContent = upcoming + ' mission' + (upcoming>1?'s':'');
+      document.getElementById('hq-finance-sub').textContent = unpaid > 0 ? unpaid.toLocaleString('fr-FR') + ' € impayé' : 'Tout à jour';
+    } else {
+      const { data: logs } = await sb.from('tech_logs').select('flight_hours').eq('pilot_id', u.id).gte('created_at', monthStart);
+      const monthH = (logs||[]).reduce((s,l)=>s+Number(l.flight_hours||0),0);
+      const alerts = (u.compliance||[]).filter(c=>c.status!=='ok').length;
+      document.getElementById('h-metrics').innerHTML = `
+        <div class="mc"><div class="ml">Heures ce mois</div><div class="mv">${monthH.toFixed(1)} h</div></div>
+        <div class="mc"><div class="ml">Conformité</div><div class="mv ${alerts>0?'mv-r':'mv-g'}">${alerts>0?alerts+' alerte'+(alerts>1?'s':''):'OK'}</div></div>`;
+    }
+  } catch(e) { console.error('loadHomeMetrics:', e); }
+}
+
+async function loadNextMission() {
+  const today = new Date().toISOString().split('T')[0];
+  try {
+    let q = sb.from('missions')
+      .select('*, pilot:profiles!missions_pilot_id_fkey(full_name), aircraft(registration,type)')
+      .gte('scheduled_date', today).in('status',['scheduled','confirmed'])
+      .order('scheduled_date').order('scheduled_time').limit(1);
+    if (currentUser.role === 'pilot') q = q.eq('pilot_id', currentUser.id);
+    const { data } = await q;
+    const el = document.getElementById('h-next-mission');
+    if (!data || !data.length) {
+      el.innerHTML = '<div class="empty-state"><svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg><p>Aucun vol planifié</p></div>';
+      return;
+    }
+    const m = data[0];
+    const dateStr = new Date(m.scheduled_date).toLocaleDateString('fr-FR', {day:'numeric',month:'short'});
+    el.innerHTML = `<div class="card">
+      <div class="card-r">
+        <div><div class="ct">${m.type==='sim'?'Séance Simu':(m.departure_icao||'—')+' → '+(m.arrival_icao||'—')}</div>
+        <div class="cs">${dateStr} · ${m.scheduled_time?.slice(0,5)||'—'} · ${m.aircraft?.registration||'—'}</div></div>
+        <span class="badge badge-b">${m.flight_rule||m.type?.toUpperCase()||'—'}</span>
+      </div>
+      <div class="divider"></div>
+      <div class="card-r">
+        <span class="text-small text-muted">PIC: ${m.pilot?.full_name||'—'} · <span style="color:${m.go_nogo==='GO'?'var(--g)':m.go_nogo==='NO-GO'?'var(--r)':'var(--a)'}">● ${m.go_nogo||'PENDING'}</span></span>
+        <button class="btn btn-p btn-sm" onclick="goTo('s-checklist')">Pré-vol</button>
+      </div>
+    </div>`;
+  } catch(e) { console.error('loadNextMission:', e); }
 }
 
 // ── CREW ─────────────────────────────────────────────────────────
 function updateCrewBadge(u) {
-  const nameParts = ( u.full_name || u.name || '' ).split(' ');
-  document.getElementById('bf-initials').textContent = u.initials;
-  document.getElementById('bf-serial').textContent = u.serial || '';
-  document.getElementById('bf-name').innerHTML = nameParts[0] + '<br>' + nameParts.slice(1).join(' ');
-  document.getElementById('bf-role').textContent = u.role === 'admin' ? 'Admin' : 'Pilote';
-  document.getElementById('bf-lic').textContent = u.licence_type || '';
-  document.getElementById('bf-exp').textContent = u.medical_expiry || '—';
-  document.getElementById('bb-serial').textContent = u.badge_serial || u.serial || '';
-  document.getElementById('bb-name').textContent = (u.full_name || u.name || '').toUpperCase();
+  const parts = (u.full_name||'').split(' ');
+  document.getElementById('bf-initials').textContent = u.initials || (parts[0]?.[0]||'') + (parts[1]?.[0]||'');
+  document.getElementById('bf-serial').textContent = u.badge_serial || '—';
+  document.getElementById('bf-name').innerHTML = (parts[0]||'') + (parts.length>1?'<br>'+parts.slice(1).join(' '):'');
+  document.getElementById('bf-role').textContent = u.role === 'admin' ? 'Administrateur' : 'Pilote';
+  document.getElementById('bf-lic').textContent = u.licence_type || '—';
+  document.getElementById('bf-exp').textContent = u.medical_expiry ? new Date(u.medical_expiry).toLocaleDateString('fr-FR',{month:'2-digit',year:'numeric'}) : '—';
+  document.getElementById('bb-serial').textContent = u.badge_serial || '—';
+  document.getElementById('bb-name').textContent = (u.full_name||'').toUpperCase();
   document.getElementById('bb-lic').textContent = u.licence_number || '—';
-  document.getElementById('bb-role').textContent = u.role || '';
+  document.getElementById('bb-role').textContent = (u.role||'').toUpperCase();
   document.getElementById('crew-badge').classList.remove('flipped');
 }
 
 function initCrewScreen(u) {
   const comp = document.getElementById('crew-compliance');
-  if (!u.compliance) { comp.innerHTML = '<div class="empty-state"><p>Aucune donnée de conformité</p></div>'; return; }
-  comp.innerHTML = u.compliance.map(c => `
-    <div class="card-r" style="padding:7px 0;border-bottom:1px solid var(--border)">
-      <span style="font-size:13px">${c.label}</span>
-      <span class="${c.status==='ok'?'status-ok':c.status==='warn'?'status-warn':'status-exp'}">
-        <span class="dot ${c.status==='ok'?'dot-g':c.status==='warn'?'dot-a':'dot-r'}"></span>
-        ${c.status==='ok'?'OK':c.status==='warn'?'Alerte':'Expiré'}
-      </span>
-    </div>`).join('') + `<div style="padding-top:7px;font-size:11px;color:var(--text3)">${u.compliance.map(c=>c.detail).join(' · ')}</div>`;
-
-  // Switch crew section (admin only)
+  const items = u.compliance || [];
+  if (!items.length) {
+    comp.innerHTML = '<div class="empty-state"><p>Aucune donnée de conformité</p></div>';
+  } else {
+    comp.innerHTML = items.map(c => `
+      <div class="card-r" style="padding:7px 0;border-bottom:1px solid var(--border)">
+        <span style="font-size:13px">${c.label}</span>
+        <span class="${c.status==='ok'?'status-ok':c.status==='warn'?'status-warn':'status-exp'}">
+          <span class="dot ${c.status==='ok'?'dot-g':c.status==='warn'?'dot-a':'dot-r'}"></span>
+          ${c.status==='ok'?'OK':c.status==='warn'?'Alerte':'Expiré'}
+        </span>
+      </div>`).join('') +
+      `<div style="padding-top:7px;font-size:11px;color:var(--text3)">${items.map(c=>c.detail).join(' · ')}</div>`;
+  }
   const sw = document.getElementById('crew-switch-section');
   const swList = document.getElementById('crew-switch-list');
-  if (currentUser && currentUser.role === 'admin') {
+  if (currentUser?.role === 'admin' && allCrew.length > 0) {
     sw.style.display = 'block';
-    swList.innerHTML = Object.values(USERS).filter(x=>x.role!=='client').map(x => `
+    swList.innerHTML = allCrew.map(x => `
       <div class="list-item" style="cursor:pointer" onclick="switchBadge('${x.id}')">
-        <div class="li-av" style="background:${x.bgColor};color:${x.color}">${x.initials}</div>
-        <div class="li-content"><div class="li-name">${x.name}</div><div class="li-sub">${x.short}</div></div>
-        <span class="badge ${x.role==='admin'?'badge-gold':'badge-b'}" style="font-size:9px">${x.role.toUpperCase()}</span>
+        <div class="li-av" style="background:${x.bgColor};color:${x.color}">${x.initials||x.full_name?.[0]||'?'}</div>
+        <div class="li-content"><div class="li-name">${x.full_name||'—'}</div><div class="li-sub">${x.role||''}</div></div>
+        <span class="badge ${x.role==='admin'?'badge-gold':'badge-b'}" style="font-size:9px">${(x.role||'').toUpperCase()}</span>
       </div>`).join('');
   } else sw.style.display = 'none';
 }
 
-function switchBadge(id) { updateCrewBadge(USERS[id]); toast('Badge · ' + USERS[id].name, 'success'); }
-
-// ── COMPLIANCE (MANEX) ───────────────────────────────────────────
-function initManexCompliance() {
-  const items = [
-    { label:'NCO.OP.105 — Préparation vols', st:'ok' },
-    { label:'NCO.OP.115 — Minima météo', st:'ok' },
-    { label:'NCO.GEN.140 — Briefing PAX', st:'ok' },
-    { label:'Part-FCL — Licences pilotes', st:'warn' },
-    { label:'Part-ML — Navigabilité ARC', st:'ok' },
-    { label:'SMS — Rapports REX', st:'ok' },
-    { label:'Audit interne annuel', st:'exp' },
-  ];
-  const cl = document.getElementById('compliance-list');
-  cl.innerHTML = items.map(i => `
-    <div class="card-r" style="padding:8px 0;border-bottom:1px solid var(--border)">
-      <span style="font-size:13px;font-weight:500">${i.label}</span>
-      <span class="${i.st==='ok'?'status-ok':i.st==='warn'?'status-warn':'status-exp'}">
-        <span class="dot ${i.st==='ok'?'dot-g':i.st==='warn'?'dot-a':'dot-r'}"></span>
-        ${i.st==='ok'?'OK':i.st==='warn'?'Alerte':'Action'}
-      </span>
-    </div>`).join('');
-  const al = document.getElementById('compliance-alerts');
-  al.innerHTML = `<div class="alert alert-warn">SEP Revalidation · V. Eickmayer · Échéance Juin 2025</div>
-    <div class="alert alert-danger">OPC annuel · V. Eickmayer · Expiré — Planifier immédiatement</div>
-    <div class="alert alert-danger">Audit interne · À planifier avant fin d'année</div>`;
+function switchBadge(id) {
+  const u = allCrew.find(x => x.id === id);
+  if (u) { updateCrewBadge(u); initCrewScreen(u); toast('Badge · ' + u.full_name, 'success'); }
 }
 
 // ── MISSIONS ─────────────────────────────────────────────────────
-function renderMissions() {
+async function renderMissions() {
   const list = document.getElementById('missions-list');
   if (!list) return;
-  list.innerHTML = MISSIONS.map(m => `
-    <div class="card">
-      <div class="card-r">
-        <div>
-          <div class="ct">${m.type==='sim'?'Séance Simu · '+m.client:(m.dep+' → '+m.arr)}</div>
-          <div class="cs">${m.date} · ${m.time}${m.duration?' · '+m.duration:''} · ${m.client}</div>
+  list.innerHTML = '<div class="loading-screen"><div class="spinner"></div><p>Chargement...</p></div>';
+  try {
+    const today = new Date().toISOString().split('T')[0];
+    let q = sb.from('missions')
+      .select('*, pilot:profiles!missions_pilot_id_fkey(full_name,initials), client:profiles!missions_client_id_fkey(full_name), aircraft(registration,type)')
+      .gte('scheduled_date', today).neq('status','cancelled')
+      .order('scheduled_date').order('scheduled_time');
+    if (currentUser.role === 'pilot') q = q.eq('pilot_id', currentUser.id);
+    const { data, error } = await q;
+    if (error) throw error;
+    if (!data || !data.length) {
+      list.innerHTML = '<div class="empty-state"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><p>Aucune mission planifiée</p></div>';
+      return;
+    }
+    const isAdmin = currentUser.role === 'admin';
+    list.innerHTML = data.map(m => {
+      const dateStr = new Date(m.scheduled_date).toLocaleDateString('fr-FR',{day:'numeric',month:'short'});
+      return `<div class="card">
+        <div class="card-r">
+          <div>
+            <div class="ct">${m.type==='sim'?'Séance Simu':(m.departure_icao||'—')+' → '+(m.arrival_icao||'—')}</div>
+            <div class="cs">${dateStr} · ${m.scheduled_time?.slice(0,5)||'—'} · ${m.client?.full_name||'—'}</div>
+          </div>
+          <span class="badge type-${m.type}">${TYPE_LABELS[m.type]||'VOL'} ${m.flight_rule||''}</span>
         </div>
-        <span class="badge ${m.type==='sim'?'badge-g':'badge-b'} tag">${typeLabels[m.type]||'VOL'} ${m.rule||''}</span>
-      </div>
-      <div class="divider"></div>
-      <div class="card-r">
-        <div style="display:flex;gap:10px;font-size:11px;color:var(--text2)">
-          <span>${m.pilot}</span>
-          <span style="color:${m.gonogo==='GO'?'var(--g)':m.gonogo==='NO-GO'?'var(--r)':'var(--a)'}">● ${m.gonogo}</span>
-          <span style="color:${m.paid?'var(--g)':'var(--r)'}">€ ${m.paid?'Payé':'Impayé'}</span>
+        <div class="divider"></div>
+        <div class="card-r">
+          <div style="display:flex;gap:10px;font-size:11px;color:var(--text2)">
+            <span>${m.pilot?.full_name||'—'}</span>
+            <span style="color:${m.go_nogo==='GO'?'var(--g)':m.go_nogo==='NO-GO'?'var(--r)':'var(--a)'}">● ${m.go_nogo||'PENDING'}</span>
+          </div>
+          ${isAdmin?`<div style="display:flex;gap:5px"><button class="btn btn-p btn-sm" onclick="setGoNoGo('${m.id}','GO')">GO</button><button class="btn btn-r btn-sm" onclick="setGoNoGo('${m.id}','NO-GO')">NO-GO</button></div>`:''}
         </div>
-        ${currentUser&&currentUser.role==='admin'?`<button class="btn btn-o btn-sm" onclick="editMission(${m.id})">Modifier</button>`:''}
-      </div>
-    </div>`).join('');
+      </div>`;
+    }).join('');
+    document.getElementById('hq-planning-sub').textContent = data.length + ' mission' + (data.length>1?'s':'');
+  } catch(e) {
+    list.innerHTML = `<div class="alert alert-danger">Erreur : ${e.message}</div>`;
+  }
 }
 
-function editMission(id) { toast('Modification mission #'+id+' — disponible avec Supabase', 'info'); }
+async function setGoNoGo(id, value) {
+  try {
+    const { error } = await sb.from('missions').update({ go_nogo: value }).eq('id', id);
+    if (error) throw error;
+    toast(value === 'GO' ? '✓ Mission GO' : '⛔ Mission NO-GO', value==='GO'?'success':'error');
+    renderMissions();
+  } catch(e) { toast('Erreur : ' + e.message, 'error'); }
+}
+
+async function saveMission() {
+  const type = document.getElementById('nm-type').value;
+  const date = document.getElementById('nm-date').value;
+  const time = document.getElementById('nm-time').value;
+  const pilotId = document.getElementById('nm-pilot').value;
+  const aircraftId = document.getElementById('nm-aircraft').value;
+  if (!date || !time) { toast('Date et heure obligatoires', 'error'); return; }
+  if (!pilotId) { toast('Sélectionner un PIC', 'error'); return; }
+  try {
+    const tarif = document.getElementById('nm-tarif').value;
+    const clientId = document.getElementById('nm-client').value;
+    const { data: mission, error } = await sb.from('missions').insert({
+      type,
+      flight_rule: document.getElementById('nm-rule')?.value || null,
+      departure_icao: document.getElementById('nm-dep')?.value?.toUpperCase() || null,
+      arrival_icao: document.getElementById('nm-arr')?.value?.toUpperCase() || null,
+      client_id: clientId || null,
+      pilot_id: pilotId,
+      aircraft_id: aircraftId || null,
+      scheduled_date: date,
+      scheduled_time: time,
+      duration_est: document.getElementById('nm-duration').value || null,
+      notes: document.getElementById('nm-notes').value || null,
+      created_by: currentUser.id,
+      status: 'scheduled',
+      go_nogo: 'PENDING'
+    }).select().single();
+    if (error) throw error;
+    // Create invoice if tarif + client
+    if (tarif && clientId && mission) {
+      await sb.from('invoices').insert({
+        mission_id: mission.id,
+        client_id: clientId,
+        amount: parseFloat(tarif),
+        payment_status: 'pending'
+      });
+    }
+    closeModal('modal-new-mission');
+    toast('Mission enregistrée ✓', 'success');
+    renderMissions();
+    loadNextMission();
+  } catch(e) { toast('Erreur : ' + e.message, 'error'); }
+}
+
+function toggleRouteFields() {
+  const t = document.getElementById('nm-type').value;
+  document.getElementById('nm-route-fields').style.display = t === 'sim' ? 'none' : 'block';
+}
 
 // ── FINANCE ──────────────────────────────────────────────────────
 function finTab(t, btn) {
-  ['dash','invoices','sim'].forEach(x => {
-    document.getElementById('fin-'+x).style.display = x===t ? 'block' : 'none';
-  });
+  ['dash','invoices','sim'].forEach(x => document.getElementById('fin-'+x).style.display = x===t?'block':'none');
   btn.closest('.tab-row').querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
   if (t === 'invoices') renderInvoices();
   if (t === 'sim') renderSimFinance();
 }
 
-function renderInvoices() {
+async function loadFinanceData() {
+  const now = new Date();
+  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString().split('T')[0];
+  const monthLabel = now.toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
+  try {
+    const { data: invs } = await sb.from('invoices').select('amount, payment_status').gte('created_at', monthStart);
+    const all = invs || [];
+    const total = all.reduce((s,i)=>s+Number(i.amount),0);
+    const paid = all.filter(i=>i.payment_status==='paid').reduce((s,i)=>s+Number(i.amount),0);
+    const unpaid = all.filter(i=>i.payment_status==='pending').reduce((s,i)=>s+Number(i.amount),0);
+    const rate = total > 0 ? Math.round(paid/total*100) : 0;
+    document.getElementById('fin-metrics').innerHTML = `
+      <div class="mc"><div class="ml">CA ${monthLabel}</div><div class="mv">${total.toLocaleString('fr-FR')} €</div></div>
+      <div class="mc"><div class="ml">Encaissé</div><div class="mv mv-g">${paid.toLocaleString('fr-FR')} €</div></div>
+      <div class="mc"><div class="ml">Impayé</div><div class="mv mv-r">${unpaid.toLocaleString('fr-FR')} €</div></div>
+      <div class="mc"><div class="ml">Recouvrement</div><div class="mv ${rate>=80?'mv-g':rate>=60?'mv-a':'mv-r'}">${rate}%</div></div>`;
+    const { data: unpaidInvs } = await sb.from('invoices')
+      .select('amount, client:profiles!invoices_client_id_fkey(full_name), mission:missions(type,scheduled_date)')
+      .eq('payment_status','pending').order('created_at',{ascending:false}).limit(5);
+    const det = document.getElementById('fin-dash-detail');
+    if (!unpaidInvs || !unpaidInvs.length) {
+      det.innerHTML = '<div class="alert alert-success">Aucun impayé · Tout à jour ✓</div>';
+    } else {
+      det.innerHTML = '<div class="sec">Impayés urgents</div><div class="card">' +
+        unpaidInvs.map(i => `<div class="card-r" style="padding:8px 0;border-bottom:1px solid var(--border)">
+          <div><div class="ct">${i.client?.full_name||'—'}</div><div class="cs">${i.mission?.type||'—'} · ${i.mission?.scheduled_date?new Date(i.mission.scheduled_date).toLocaleDateString('fr-FR'):''}</div></div>
+          <span style="font-weight:700;color:var(--r)">${Number(i.amount).toLocaleString('fr-FR')} €</span>
+        </div>`).join('') + '</div>';
+    }
+    document.getElementById('hq-finance-sub').textContent = unpaid > 0 ? unpaid.toLocaleString('fr-FR') + ' € impayé' : 'Tout à jour';
+  } catch(e) { console.error('loadFinanceData:', e); }
+}
+
+async function renderInvoices() {
   const list = document.getElementById('invoice-list');
-  const invoices = [
-    { client:'Durand Bernard', date:'01 avr', type:'Vol IFR LFQT→LFPB', amt:1200, paid:true, mode:'Virement' },
-    { client:'Martin Laurent', date:'02 avr', type:'Simu 2h · Proc. IFR', amt:280, paid:false, mode:'—' },
-    { client:'Dupont François', date:'28 mars', type:'Simu 1h30 · Urgences', amt:210, paid:false, mode:'—' },
-    { client:'Bernard Claire', date:'25 mars', type:'Simu 2h · Navigation', amt:280, paid:true, mode:'Virement' },
-    { client:'Leclerc Paul', date:'20 mars', type:'Vol VFR LFQT→LFAT', amt:850, paid:true, mode:'Chèque' },
-  ];
-  list.innerHTML = invoices.map((inv,i) => `
-    <div class="card">
-      <div class="card-r">
-        <div><div class="ct">${inv.client}</div><div class="cs">${inv.date} · ${inv.type}</div></div>
-        <span class="badge ${inv.paid?'badge-g':'badge-r'}">${inv.paid?'PAYÉ':'IMPAYÉ'}</span>
-      </div>
-      <div class="divider"></div>
-      <div class="card-r">
-        <span style="font-size:15px;font-weight:700">${inv.amt.toLocaleString()} €</span>
-        <div style="display:flex;gap:6px">
-          ${!inv.paid?`<button class="btn btn-g btn-sm" onclick="markPaid(${i})">Encaisser</button>`:''}
-          <button class="btn btn-o btn-sm" onclick="generatePDF('${inv.client}',${inv.amt})">PDF</button>
+  list.innerHTML = '<div class="spinner"></div>';
+  try {
+    const { data, error } = await sb.from('invoices')
+      .select('*, client:profiles!invoices_client_id_fkey(full_name), mission:missions(type,scheduled_date,departure_icao,arrival_icao)')
+      .order('created_at',{ascending:false}).limit(30);
+    if (error) throw error;
+    if (!data || !data.length) { list.innerHTML = '<div class="empty-state"><p>Aucune facture</p></div>'; return; }
+    list.innerHTML = data.map(inv => {
+      const mDesc = inv.mission?.type === 'sim' ? 'Séance simu' : `${inv.mission?.departure_icao||''} → ${inv.mission?.arrival_icao||''}`;
+      const dStr = inv.mission?.scheduled_date ? new Date(inv.mission.scheduled_date).toLocaleDateString('fr-FR',{day:'numeric',month:'short'}) : '—';
+      return `<div class="card">
+        <div class="card-r">
+          <div><div class="ct">${inv.client?.full_name||'—'}</div><div class="cs">${dStr} · ${mDesc}</div></div>
+          <span class="badge ${inv.payment_status==='paid'?'badge-g':'badge-r'}">${inv.payment_status==='paid'?'PAYÉ':'IMPAYÉ'}</span>
         </div>
-      </div>
-    </div>`).join('');
+        <div class="divider"></div>
+        <div class="card-r">
+          <span style="font-size:15px;font-weight:700">${Number(inv.amount).toLocaleString('fr-FR')} €</span>
+          <div style="display:flex;gap:6px">
+            ${inv.payment_status!=='paid'?`<button class="btn btn-g btn-sm" onclick="markPaid('${inv.id}')">Encaisser</button>`:''}
+            <button class="btn btn-o btn-sm" onclick="generatePDF('${(inv.client?.full_name||'Client').replace(/'/g,"\\'")}',${inv.amount})">PDF</button>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  } catch(e) { list.innerHTML = `<div class="alert alert-danger">${e.message}</div>`; }
 }
 
-function renderSimFinance() {
+async function renderSimFinance() {
   const list = document.getElementById('sim-list');
-  const sims = MISSIONS.filter(m => m.type === 'sim');
-  list.innerHTML = `<div class="sec">Séances simulateur</div>` + sims.map((s,i) => `
-    <div class="card">
-      <div class="card-r">
-        <div><div class="ct">${s.client}</div><div class="cs">${s.date} · ${s.time}${s.duration?' · '+s.duration:''}</div></div>
-        <span class="badge ${s.paid?'badge-g':'badge-r'}" id="sim-badge-${i}">${s.paid?'PAYÉ':'EN ATTENTE'}</span>
-      </div>
-      <div class="divider"></div>
-      <div class="card-r">
-        <span style="font-size:15px;font-weight:700">${s.tarif} €</span>
-        <div style="display:flex;gap:6px">
-          ${!s.paid?`<button class="btn btn-g btn-sm" onclick="paySimu(${i})">Encaisser</button>`:''}
-          <button class="btn btn-o btn-sm" onclick="generatePDF('${s.client}',${s.tarif})">Facture PDF</button>
+  list.innerHTML = '<div class="spinner"></div>';
+  try {
+    const { data, error } = await sb.from('invoices')
+      .select('*, client:profiles!invoices_client_id_fkey(full_name), mission:missions(type,scheduled_date,duration_est)')
+      .order('created_at',{ascending:false}).limit(50);
+    if (error) throw error;
+    const sims = (data||[]).filter(i=>i.mission?.type==='sim');
+    if (!sims.length) { list.innerHTML = '<div class="empty-state"><p>Aucune séance simulateur facturée</p></div>'; return; }
+    list.innerHTML = sims.map(s => `
+      <div class="card">
+        <div class="card-r">
+          <div><div class="ct">${s.client?.full_name||'—'}</div><div class="cs">${s.mission?.scheduled_date?new Date(s.mission.scheduled_date).toLocaleDateString('fr-FR',{day:'numeric',month:'short'}):''} · ${s.mission?.duration_est||'—'}</div></div>
+          <span class="badge ${s.payment_status==='paid'?'badge-g':'badge-r'}">${s.payment_status==='paid'?'PAYÉ':'EN ATTENTE'}</span>
         </div>
-      </div>
-    </div>`).join('');
+        <div class="divider"></div>
+        <div class="card-r">
+          <span style="font-size:15px;font-weight:700">${Number(s.amount).toLocaleString('fr-FR')} €</span>
+          <div style="display:flex;gap:6px">
+            ${s.payment_status!=='paid'?`<button class="btn btn-g btn-sm" onclick="markPaid('${s.id}')">Encaisser</button>`:''}
+            <button class="btn btn-o btn-sm" onclick="generatePDF('${(s.client?.full_name||'Client').replace(/'/g,"\\'")}',${s.amount})">PDF</button>
+          </div>
+        </div>
+      </div>`).join('');
+  } catch(e) { list.innerHTML = `<div class="alert alert-danger">${e.message}</div>`; }
 }
 
-function markPaid(i) { toast('Paiement enregistré', 'success'); renderInvoices(); }
-function paySimu(i) { MISSIONS.filter(m=>m.type==='sim')[i].paid=true; toast('Séance encaissée ✓', 'success'); renderSimFinance(); }
-
-// ── PDF GENERATION ───────────────────────────────────────────────
-function generatePDF(client, amount) {
-  if (typeof jspdf === 'undefined') { toast('jsPDF — disponible en déploiement', 'info'); return; }
-  const { jsPDF } = jspdf;
-  const doc = new jsPDF();
-  doc.setFontSize(20); doc.setTextColor(30,58,138);
-  doc.text('HOVE AVIATION EXECUTIVE', 20, 25);
-  doc.setFontSize(11); doc.setTextColor(100,100,100);
-  doc.text('NCO — Non-Commercial Operations · LFQT Merville-Calonne', 20, 33);
-  doc.setDrawColor(30,58,138); doc.setLineWidth(0.5); doc.line(20, 37, 190, 37);
-  doc.setFontSize(16); doc.setTextColor(0,0,0);
-  doc.text('FACTURE', 20, 50);
-  doc.setFontSize(11);
-  doc.text('Client : ' + client, 20, 65);
-  doc.text('Date : ' + new Date().toLocaleDateString('fr-FR'), 20, 73);
-  doc.text('Montant TTC : ' + amount.toLocaleString() + ' €', 20, 81);
-  doc.setFontSize(9); doc.setTextColor(150);
-  doc.text('HOVE AVIATION EXECUTIVE — NCO Operations — SIRET : XXXX — TVA : FRXX', 20, 285);
-  doc.save('Facture_HOVE_' + client.replace(' ','_') + '.pdf');
-  toast('PDF généré ✓', 'success');
+async function markPaid(id) {
+  try {
+    const { error } = await sb.from('invoices').update({ payment_status:'paid', payment_date: new Date().toISOString().split('T')[0] }).eq('id', id);
+    if (error) throw error;
+    toast('Paiement enregistré ✓', 'success');
+    renderInvoices();
+    loadFinanceData();
+  } catch(e) { toast('Erreur : ' + e.message, 'error'); }
 }
 
-function exportFinancePDF() { generatePDF('Rapport Financier Avril 2026', 5060); }
-function exportLogbookPDF() { toast('Export logbook PDF — disponible avec Supabase', 'info'); }
+function generatePDF(clientName, amount) {
+  try {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    doc.setFontSize(20);
+    doc.setTextColor(30, 58, 138);
+    doc.text('HOVE AVIATION EXECUTIVE', 20, 25);
+    doc.setFontSize(11);
+    doc.setTextColor(100);
+    doc.text('NCO · LFQT Merville-Calonne · France', 20, 33);
+    doc.setFontSize(16);
+    doc.setTextColor(0);
+    doc.text('FACTURE', 20, 50);
+    doc.setFontSize(11);
+    doc.text(`Client : ${clientName}`, 20, 65);
+    doc.text(`Date : ${new Date().toLocaleDateString('fr-FR')}`, 20, 73);
+    doc.text(`Montant : ${Number(amount).toLocaleString('fr-FR')} EUR`, 20, 81);
+    doc.text('Prestation : Vol NCO · SR22 G7+', 20, 89);
+    doc.setFontSize(9);
+    doc.setTextColor(150);
+    doc.text('HOVE Aviation Executive — LFQT — hove-aviation.fr', 20, 270);
+    doc.save(`facture-hove-${clientName.replace(/\s/g,'-').toLowerCase()}.pdf`);
+    toast('PDF généré ✓', 'success');
+  } catch(e) { toast('Erreur PDF : ' + e.message, 'error'); }
+}
+
+function exportFinancePDF() {
+  toast('Export finance PDF en cours...', 'info');
+  setTimeout(() => generatePDF('Récapitulatif mensuel', 0), 300);
+}
+
+function exportLogbookPDF() {
+  toast('Export logbook PDF — à venir', 'info');
+}
 
 // ── LOGBOOK ──────────────────────────────────────────────────────
-function renderLogbook() {
+async function renderLogbook() {
   const list = document.getElementById('logbook-list');
   if (!list) return;
-  list.innerHTML = LOGBOOK.map(l => `
-    <div class="card">
-      <div class="card-r">
-        <div><div class="ct">${l.dep} → ${l.arr}</div><div class="cs">${l.date} · ${l.rule}</div></div>
-        <span style="font-size:13px;font-weight:700;color:var(--navy)">${l.hours}h</span>
-      </div>
-    </div>`).join('');
+  list.innerHTML = '<div class="spinner"></div>';
+  try {
+    const { data, error } = await sb.from('tech_logs')
+      .select('*, aircraft(registration), mission:missions(departure_icao,arrival_icao,flight_rule)')
+      .eq('pilot_id', currentUser.id)
+      .order('created_at',{ascending:false}).limit(50);
+    if (error) throw error;
+    const logs = data || [];
+    const totalH = logs.reduce((s,l)=>s+Number(l.flight_hours||0),0);
+    const now = new Date();
+    const monthStart = new Date(now.getFullYear(),now.getMonth(),1);
+    const monthH = logs.filter(l=>new Date(l.created_at)>=monthStart).reduce((s,l)=>s+Number(l.flight_hours||0),0);
+    const ifrH = logs.filter(l=>l.mission?.flight_rule==='IFR').reduce((s,l)=>s+Number(l.flight_hours||0),0);
+    document.getElementById('lb-total').textContent = totalH.toFixed(1) + ' h';
+    document.getElementById('lb-month').textContent = monthH.toFixed(1) + ' h';
+    document.getElementById('lb-ifr').textContent = ifrH.toFixed(1) + ' h';
+    document.getElementById('lb-ldg').textContent = logs.length;
+    if (!logs.length) { list.innerHTML = '<div class="empty-state"><p>Aucun vol enregistré</p></div>'; return; }
+    list.innerHTML = logs.map(l => `
+      <div class="card">
+        <div class="card-r">
+          <div>
+            <div class="ct">${l.mission?.departure_icao||'—'} → ${l.mission?.arrival_icao||'—'}</div>
+            <div class="cs">${new Date(l.created_at).toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric'})} · ${l.mission?.flight_rule||'—'} · ${l.aircraft?.registration||'—'}</div>
+          </div>
+          <span style="font-size:13px;font-weight:700;color:var(--navy)">${Number(l.flight_hours||0).toFixed(1)} h</span>
+        </div>
+      </div>`).join('');
+  } catch(e) { list.innerHTML = `<div class="alert alert-danger">${e.message}</div>`; }
 }
 
 // ── FLEET ────────────────────────────────────────────────────────
-function fleetTab(t, btn) {
-  ['aircraft','sim','maint'].forEach(x => { document.getElementById('fl-'+x).style.display = x===t?'block':'none'; });
-  btn.closest('.tab-row').querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
+async function loadFleetData() {
+  const acList = document.getElementById('aircraft-list');
+  if (!acList) return;
+  acList.innerHTML = '<div class="spinner"></div>';
+  try {
+    const { data, error } = await sb.from('aircraft').select('*').order('registration');
+    if (error) throw error;
+    allAircraft = data || [];
+    populateSelect('nm-aircraft', allAircraft, 'id', a => `${a.registration} — ${a.type}`);
+    populateSelect('mel-aircraft', allAircraft, 'id', a => a.registration);
+    populateSelect('maint-aircraft', allAircraft, 'id', a => a.registration);
+    populateSelect('tl-aircraft', allAircraft, 'id', a => a.registration);
+    if (!allAircraft.length) { acList.innerHTML = '<div class="empty-state"><p>Aucun appareil enregistré</p></div>'; return; }
+    acList.innerHTML = allAircraft.map(ac => {
+      const pct = ac.next_revision_hours && ac.total_hours ? Math.min(100, Math.round(ac.total_hours/ac.next_revision_hours*100)) : 0;
+      const remaining = ac.next_revision_hours ? (ac.next_revision_hours - ac.total_hours) : null;
+      const statusColor = ac.status==='online'?'badge-g':ac.status==='aog'?'badge-r':'badge-a';
+      const statusLabel = ac.status==='online'?'En ligne':ac.status==='aog'?'AOG':'Maintenance';
+      const canEdit = currentUser.role==='admin'||currentUser.role==='pilot';
+      return `<div class="card">
+        <div class="card-r">
+          <div><div class="ct" style="font-size:17px">${ac.registration}</div><div class="cs">${ac.type}</div></div>
+          <span class="badge ${statusColor}">${statusLabel}</span>
+        </div>
+        <div class="divider"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12px;margin-bottom:12px">
+          <div><div style="color:var(--text3);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Heures totales</div><div style="font-weight:700;margin-top:3px;font-size:15px">${ac.total_hours||0} h</div></div>
+          <div><div style="color:var(--text3);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Prochaine révision</div><div style="font-weight:700;margin-top:3px;font-size:15px;color:${pct>=90?'var(--r)':pct>=75?'var(--a)':'var(--g)'}">${ac.next_revision_hours||'—'} h</div></div>
+          <div><div style="color:var(--text3);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em">ARC</div><div style="font-weight:600;margin-top:3px">${ac.arc_expiry?new Date(ac.arc_expiry).toLocaleDateString('fr-FR',{month:'short',year:'numeric'}):'—'}</div></div>
+          <div><div style="color:var(--text3);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Assurance</div><div style="font-weight:600;margin-top:3px">${ac.insurance_expiry?new Date(ac.insurance_expiry).toLocaleDateString('fr-FR',{month:'short',year:'numeric'}):'—'}</div></div>
+        </div>
+        ${remaining!==null?`<div class="pbar" style="height:6px;margin-bottom:4px"><div class="pfill" style="width:${pct}%;background:${pct>=90?'var(--r)':pct>=75?'var(--a)':'var(--g)'}"></div></div>
+        <div class="text-small text-muted" style="text-align:right;margin-bottom:12px">${pct}% — ${remaining>0?remaining.toFixed(0)+'h restantes':'DÉPASSÉ'}</div>`:''}
+        ${ac.aog_reason?`<div class="alert alert-danger" style="margin-bottom:10px">⚠ AOG : ${ac.aog_reason}</div>`:''}
+        <div class="flex-row">
+          ${canEdit?`<button class="btn btn-o" onclick="toggleAOG('${ac.id}','${ac.status}')">` + (ac.status==='aog'?'Annuler AOG':'Passer AOG') + `</button>`:''}
+          <button class="btn btn-p" onclick="goTo('s-techlog')">Tech Log</button>
+        </div>
+      </div>`;
+    }).join('');
+    if (allAircraft.length > 0) currentMELAircraftId = allAircraft[0].id;
+    document.getElementById('hq-fleet-sub').textContent = allAircraft.map(a=>a.registration).join(' · ');
+  } catch(e) { acList.innerHTML = `<div class="alert alert-danger">${e.message}</div>`; }
 }
 
-function toggleAOG() {
-  aogActive = !aogActive;
-  const badge = document.getElementById('fleet-status-badge');
-  const banner = document.getElementById('aog-banner');
-  const btn = document.getElementById('aog-btn');
-  if (aogActive) {
-    badge.textContent = 'AOG'; badge.className = 'badge badge-r';
-    banner.style.display = 'block';
-    btn.textContent = 'Annuler AOG'; btn.className = 'btn btn-g';
-    toast('⚠ F-HOVE passé en AOG — CAM notifié', 'error');
-  } else {
-    badge.textContent = 'En ligne'; badge.className = 'badge badge-g';
-    banner.style.display = 'none';
-    btn.textContent = 'Passer AOG'; btn.className = 'btn btn-o';
-    toast('F-HOVE remis en ligne', 'success');
+async function toggleAOG(aircraftId, currentStatus) {
+  const newStatus = currentStatus === 'aog' ? 'online' : 'aog';
+  let reason = null;
+  if (newStatus === 'aog') {
+    reason = prompt('Raison de l\'AOG (obligatoire) :');
+    if (!reason) return;
   }
-  if (currentUser) initHome();
+  try {
+    const { error } = await sb.from('aircraft').update({ status: newStatus, aog_reason: reason }).eq('id', aircraftId);
+    if (error) throw error;
+    toast(newStatus==='aog'?'⚠ AOG déclaré':'Appareil remis en ligne ✓', newStatus==='aog'?'error':'success');
+    loadFleetData();
+  } catch(e) { toast('Erreur : ' + e.message, 'error'); }
+}
+
+function fleetTab(t, btn) {
+  ['aircraft','sim','maint','mel'].forEach(x => {
+    const el = document.getElementById('fl-'+x);
+    if (el) el.style.display = x===t?'block':'none';
+  });
+  if (!btn) return;
+  btn.closest('.tab-row').querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  if (t === 'mel') renderMEL();
+  if (t === 'maint') loadMaintHistory();
+}
+
+async function loadMaintHistory() {
+  const el = document.getElementById('maint-history-list');
+  if (!el) return;
+  try {
+    const { data } = await sb.from('maintenance_history').select('*, aircraft(registration)').order('performed_at',{ascending:false}).limit(20);
+    if (!data || !data.length) { el.innerHTML = '<div class="empty-state"><p>Aucun historique de maintenance</p></div>'; return; }
+    el.innerHTML = '<div class="card">' + data.map(m => `
+      <div style="padding:8px 0;border-bottom:1px solid var(--border)">
+        <div class="card-r"><div class="ct">${m.work_type}</div><span class="badge ${m.status==='completed'?'badge-g':m.status==='in_progress'?'badge-a':'badge-b'}">${m.status==='completed'?'Fait':m.status==='in_progress'?'En cours':'Planifié'}</span></div>
+        <div class="cs">${m.performed_at?new Date(m.performed_at).toLocaleDateString('fr-FR'):''} · ${m.aircraft?.registration||''} · ${m.performed_by||''}</div>
+      </div>`).join('') + '</div>';
+  } catch(e) { el.innerHTML = '<div class="empty-state"><p>Erreur de chargement</p></div>'; }
+}
+
+async function saveMaintEntry() {
+  const acId = document.getElementById('maint-aircraft').value;
+  const type = document.getElementById('maint-type').value;
+  const desc = document.getElementById('maint-desc').value;
+  const org = document.getElementById('maint-org').value;
+  const date = document.getElementById('maint-date').value;
+  const hours = document.getElementById('maint-hours').value;
+  if (!acId || !date) { toast('Appareil et date obligatoires', 'error'); return; }
+  try {
+    const { error } = await sb.from('maintenance_history').insert({
+      aircraft_id: acId,
+      work_type: type,
+      description: desc,
+      performed_by: org,
+      performed_at: date,
+      hobbs_at_work: hours ? parseFloat(hours) : null,
+      status: 'completed'
+    });
+    if (error) throw error;
+    closeModal('modal-add-maint');
+    toast('Entrée maintenance enregistrée ✓', 'success');
+    loadMaintHistory();
+  } catch(e) { toast('Erreur : ' + e.message, 'error'); }
+}
+
+// ── MEL DIGITAL ──────────────────────────────────────────────────
+const MEL_CAT_INTERVALS = { A: 0, B: 3, C: 10, D: 120 };
+
+function updateMELExpiry() {
+  const cat = document.getElementById('mel-cat').value;
+  const dateOpen = document.getElementById('mel-date-open').value;
+  if (!dateOpen) return;
+  const d = new Date(dateOpen);
+  const interval = MEL_CAT_INTERVALS[cat];
+  if (interval === 0) {
+    document.getElementById('mel-date-expiry').value = 'Avant le prochain vol (Cat A)';
+  } else {
+    d.setDate(d.getDate() + interval);
+    document.getElementById('mel-date-expiry').value = d.toLocaleDateString('fr-FR');
+  }
+}
+
+async function renderMEL() {
+  const openEl = document.getElementById('mel-open-list');
+  const closedEl = document.getElementById('mel-closed-list');
+  if (!openEl) return;
+  openEl.innerHTML = '<div class="spinner"></div>';
+  try {
+    const acId = currentMELAircraftId || allAircraft[0]?.id;
+    if (!acId) { openEl.innerHTML = '<div class="empty-state"><p>Aucun appareil</p></div>'; return; }
+    const { data: ac } = await sb.from('aircraft').select('mel_items, registration').eq('id', acId).single();
+    const items = ac?.mel_items || [];
+    const today = new Date(); today.setHours(0,0,0,0);
+    const open = items.filter(i => i.status === 'open');
+    const closed = items.filter(i => i.status !== 'open').slice(0,5);
+    if (!open.length) {
+      openEl.innerHTML = `<div class="empty-state"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><p>Aucun item MEL ouvert sur ${ac?.registration||'—'}</p></div>`;
+    } else {
+      openEl.innerHTML = open.map(item => {
+        const expDate = item.expiry_date ? new Date(item.expiry_date) : null;
+        const diff = expDate ? Math.floor((expDate - today) / 86400000) : null;
+        const countdownClass = diff === null ? '' : diff < 0 ? 'urgent' : diff <= 2 ? 'urgent' : diff <= 5 ? 'warning' : 'ok';
+        const countdownText = diff === null ? '' : diff < 0 ? `⛔ Expiré il y a ${Math.abs(diff)}j` : diff === 0 ? '⚠ Expire aujourd\'hui' : `${diff}j restants`;
+        return `<div class="mel-item mel-cat-${(item.category||'').toLowerCase()}" onclick="toggleMELDetail('${item.id}')">
+          <div class="mel-ref">MEL ${item.ref||'—'}</div>
+          <div class="card-r">
+            <div class="mel-title">${item.title||'—'}</div>
+            <span class="mel-cat-badge mel-cat-${item.category}">Cat ${item.category}</span>
+          </div>
+          <div class="mel-meta">
+            ${diff!==null?`<span class="mel-countdown ${countdownClass}">${countdownText}</span>`:''}
+            <span style="font-size:10px;color:var(--text3)">Ouvert le ${item.opened_date?new Date(item.opened_date).toLocaleDateString('fr-FR'):''}</span>
+          </div>
+          <div class="mel-detail" id="mel-detail-${item.id}">
+            ${item.description?`<div class="mel-detail-row"><span class="mel-detail-label">Description</span><span class="mel-detail-val">${item.description}</span></div>`:''}
+            ${item.limitation?`<div class="mel-detail-row"><span class="mel-detail-label">Limitations</span><span class="mel-detail-val">${item.limitation}</span></div>`:''}
+            ${item.procedure?`<div class="mel-detail-row"><span class="mel-detail-label">Procédure</span><span class="mel-detail-val">${item.procedure}</span></div>`:''}
+            <div style="margin-top:10px;display:flex;gap:6px">
+              <button class="btn btn-g btn-sm" onclick="closeMELItem('${acId}','${item.id}',event)">Clôturer</button>
+            </div>
+          </div>
+        </div>`;
+      }).join('');
+    }
+    closedEl.innerHTML = closed.length ? closed.map(item => `
+      <div class="mel-item mel-closed">
+        <div class="mel-ref">MEL ${item.ref||'—'}</div>
+        <div class="card-r">
+          <div class="mel-title">${item.title||'—'}</div>
+          <span class="badge badge-g" style="font-size:10px">Clôturé</span>
+        </div>
+        <div class="mel-meta"><span style="font-size:10px;color:var(--text3)">Fermé le ${item.closed_date?new Date(item.closed_date).toLocaleDateString('fr-FR'):''}</span></div>
+      </div>`).join('') : '';
+  } catch(e) { openEl.innerHTML = `<div class="alert alert-danger">${e.message}</div>`; }
+}
+
+function toggleMELDetail(id) {
+  const det = document.getElementById('mel-detail-'+id);
+  if (det) det.classList.toggle('open');
+}
+
+async function saveMELItem() {
+  const acId = document.getElementById('mel-aircraft').value;
+  const ref = document.getElementById('mel-ref').value.trim().toUpperCase();
+  const title = document.getElementById('mel-title').value.trim();
+  const cat = document.getElementById('mel-cat').value;
+  const dateOpen = document.getElementById('mel-date-open').value;
+  if (!acId || !title || !dateOpen) { toast('Appareil, titre et date obligatoires', 'error'); return; }
+  const interval = MEL_CAT_INTERVALS[cat];
+  let expiryDate = null;
+  if (interval > 0) {
+    const d = new Date(dateOpen);
+    d.setDate(d.getDate() + interval);
+    expiryDate = d.toISOString().split('T')[0];
+  }
+  const newItem = {
+    id: 'mel-' + Date.now(),
+    ref, title, category: cat,
+    description: document.getElementById('mel-desc').value,
+    limitation: document.getElementById('mel-limits').value,
+    procedure: document.getElementById('mel-proc').value,
+    opened_date: dateOpen,
+    expiry_date: expiryDate,
+    status: 'open',
+    reported_by: currentUser.initials || currentUser.full_name?.split(' ').map(x=>x[0]).join('') || '—'
+  };
+  try {
+    const { data: ac } = await sb.from('aircraft').select('mel_items').eq('id', acId).single();
+    const items = [...(ac?.mel_items || []), newItem];
+    const { error } = await sb.from('aircraft').update({ mel_items: items }).eq('id', acId);
+    if (error) throw error;
+    currentMELAircraftId = acId;
+    closeModal('modal-mel-item');
+    toast(`Item MEL Cat ${cat} ouvert ✓`, 'success');
+    renderMEL();
+  } catch(e) { toast('Erreur : ' + e.message, 'error'); }
+}
+
+async function closeMELItem(acId, itemId, e) {
+  e.stopPropagation();
+  if (!confirm('Confirmer la clôture de cet item MEL ?')) return;
+  try {
+    const { data: ac } = await sb.from('aircraft').select('mel_items').eq('id', acId).single();
+    const items = (ac?.mel_items||[]).map(i => i.id === itemId
+      ? { ...i, status:'closed', closed_date: new Date().toISOString().split('T')[0], closed_by: currentUser.initials||'—' }
+      : i);
+    const { error } = await sb.from('aircraft').update({ mel_items: items }).eq('id', acId);
+    if (error) throw error;
+    toast('Item MEL clôturé ✓', 'success');
+    renderMEL();
+  } catch(e) { toast('Erreur : ' + e.message, 'error'); }
 }
 
 // ── TECH LOG ─────────────────────────────────────────────────────
@@ -1557,26 +1877,63 @@ function checkDefect(input) {
   document.getElementById('tl-aog-warn').style.display = input.value.trim() ? 'flex' : 'none';
 }
 
-function saveTechLog() {
+async function saveTechLog() {
   const dep = document.getElementById('tl-dep').value;
   const arr = document.getElementById('tl-arr').value;
+  const acId = document.getElementById('tl-aircraft').value;
   const defect = document.getElementById('tl-defect').value.trim();
-  if (!dep || !arr) { toast('Saisir les horamètres départ et arrivée', 'error'); return; }
-  if (defect) { toggleAOG(); }
-  toast('Tech Log enregistré dans LARK ✓', 'success');
-  document.getElementById('tl-dep').value = '';
-  document.getElementById('tl-arr').value = '';
-  document.getElementById('tl-defect').value = '';
-  document.getElementById('tl-notes').value = '';
-  document.getElementById('tl-aog-warn').style.display = 'none';
-  goTo('s-fleet');
+  if (!dep || !arr) { toast('Horamètres départ et arrivée obligatoires', 'error'); return; }
+  const flightHours = (parseFloat(arr) - parseFloat(dep)).toFixed(2);
+  try {
+    const { error } = await sb.from('tech_logs').insert({
+      aircraft_id: acId || null,
+      pilot_id: currentUser.id,
+      hobbs_departure: parseFloat(dep),
+      hobbs_arrival: parseFloat(arr),
+      flight_hours: parseFloat(flightHours),
+      fuel_departure: parseFloat(document.getElementById('tl-fuel-dep').value)||null,
+      fuel_arrival: parseFloat(document.getElementById('tl-fuel-arr').value)||null,
+      defect: defect || null,
+      aog_triggered: defect ? true : false,
+      notes: document.getElementById('tl-notes').value || null
+    });
+    if (error) throw error;
+    if (acId) {
+      await sb.from('aircraft').update({ total_hours: parseFloat(arr) }).eq('id', acId);
+      if (defect) {
+        await sb.from('aircraft').update({ status: 'aog', aog_reason: defect }).eq('id', acId);
+        toast('⚠ Appareil passé en AOG — défaut enregistré', 'error');
+      }
+    }
+    toast(`Tech Log enregistré · ${flightHours}h ✓`, 'success');
+    ['tl-dep','tl-arr','tl-fuel-dep','tl-fuel-arr','tl-defect','tl-notes'].forEach(id => {
+      const el = document.getElementById(id); if(el) el.value='';
+    });
+    document.getElementById('tl-aog-warn').style.display = 'none';
+    goTo('s-fleet');
+  } catch(e) { toast('Erreur : ' + e.message, 'error'); }
 }
 
 // ── CHECKLIST ────────────────────────────────────────────────────
 const CHECKLIST_ITEMS = {
-  pilot: ['Fit to Fly confirmé — aucun facteur incapacitant', 'Licence & médical valides et à bord', 'Recency OK (3 atterrissages / 90 jours)'],
-  prep: ['Météo et NOTAMs consultés (SDNI/EUNOTAM)', 'Masse & Centrage calculés et validés', 'Plan de vol IFR déposé', 'Carburant calculé et vérifié physiquement', 'Documents de bord complets (ARC, assurance, OM)'],
-  aircraft: ['Walk-around SR22 G7+ effectué (POH Section 4)', 'CAPS armé — indicateur vert visible', 'Carnet de route clean — aucun défaut ouvert', 'ADS-B OUT fonctionnel — G1000 NXi vérifié']
+  pilot: [
+    'Fit to Fly confirmé — aucun facteur incapacitant',
+    'Licence & médical valides et à bord',
+    'Recency OK (3 atterrissages / 90 jours)'
+  ],
+  prep: [
+    'Météo et NOTAMs consultés (SDNI/EUNOTAM)',
+    'Masse & Centrage calculés et validés',
+    'Plan de vol IFR déposé si requis',
+    'Carburant calculé et vérifié physiquement',
+    'Documents de bord complets (ARC, assurance, OM)'
+  ],
+  aircraft: [
+    'Walk-around effectué (POH Section 4)',
+    'CAPS armé — indicateur vert visible',
+    'Carnet de route clean — aucun défaut ouvert',
+    'ADS-B OUT fonctionnel — G1000 NXi vérifié'
+  ]
 };
 
 function initChecklist() {
@@ -1599,196 +1956,291 @@ function toggleCI(el) {
 function validateChecklist() {
   const all = document.querySelectorAll('#s-checklist .cbox');
   const checked = [...all].filter(c => c.classList.contains('on')).length;
-  if (checked < all.length) { toast(`${checked}/${all.length} items validés — tout cocher pour continuer`, 'error'); return; }
-  toast('Pre-flight validé et enregistré ✓', 'success');
+  if (checked < all.length) { toast(`${checked}/${all.length} items validés — cocher tout pour continuer`, 'error'); return; }
+  toast('Pre-flight validé ✓', 'success');
   goTo('s-home');
 }
 
-// ── MANEX TABS ───────────────────────────────────────────────────
+// ── WEATHER ──────────────────────────────────────────────────────
+async function loadWeather() {
+  const el = document.getElementById('wx-cards');
+  el.innerHTML = '<div class="loading-screen"><div class="spinner"></div><p>Chargement METAR...</p></div>';
+  const stations = ['LFQT','LFPB','LFAT','LFQQ'];
+  // Use avwx.rest as a free METAR source
+  const results = await Promise.allSettled(
+    stations.map(s => fetch(`https://avwx.rest/api/metar/${s}?token=demo`).then(r=>r.json()).catch(()=>null))
+  );
+  const cards = results.map((res, i) => {
+    const station = stations[i];
+    const d = res.status === 'fulfilled' && res.value && !res.value.error ? res.value : null;
+    if (!d) {
+      return `<div class="wx-card">
+        <div class="wx-station">${station}</div>
+        <div class="wx-metar" style="opacity:.4">METAR non disponible · Vérifier avwx.rest API key</div>
+        <div style="font-size:11px;opacity:.5;margin-top:6px">Configurer une clé API CheckWX ou AVWX dans les paramètres</div>
+      </div>`;
+    }
+    const wind = d.wind_speed?.value != null ? `${d.wind_direction?.value||'VRB'}° / ${d.wind_speed.value}kt` : '—';
+    const vis = d.visibility?.value != null ? `${d.visibility.value} ${d.units?.visibility||''}` : '—';
+    const ceil = d.ceiling ? `${d.ceiling.altitude}ft ${d.ceiling.type||''}` : 'SKC';
+    const temp = d.temperature?.value != null ? `${d.temperature.value}°C` : '—';
+    const cat = d.flight_rules || '—';
+    const catColor = cat==='VFR'?'#10b981':cat==='MVFR'?'#f59e0b':cat==='IFR'?'#ef4444':'#8b5cf6';
+    return `<div class="wx-card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div class="wx-station">${station}</div>
+        <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:${catColor}22;color:${catColor}">${cat}</span>
+      </div>
+      <div class="wx-metar">${d.raw || '—'}</div>
+      <div class="wx-grid">
+        <div class="wx-item"><label>Vent</label><p>${wind}</p></div>
+        <div class="wx-item"><label>Visibilité</label><p>${vis}</p></div>
+        <div class="wx-item"><label>Plafond</label><p>${ceil}</p></div>
+        <div class="wx-item"><label>Temp</label><p>${temp}</p></div>
+        <div class="wx-item"><label>QNH</label><p>${d.altimeter?.value||'—'} ${d.units?.altimeter||''}</p></div>
+        <div class="wx-item"><label>Heure</label><p>${d.time?.dt?new Date(d.time.dt).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})+'Z':'—'}</p></div>
+      </div>
+    </div>`;
+  });
+  el.innerHTML = cards.join('');
+}
+
+// ── MANEX / COMPLIANCE ───────────────────────────────────────────
 function manexTab(t, btn) {
-  ['compliance','docs','sms'].forEach(x => { document.getElementById('mx-'+x).style.display = x===t?'block':'none'; });
+  ['compliance','docs','sms'].forEach(x => { const el=document.getElementById('mx-'+x); if(el) el.style.display = x===t?'block':'none'; });
   btn.closest('.tab-row').querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
-  if (t === 'compliance') initManexCompliance();
+  if (t === 'sms') renderREX();
+}
+
+function initManexCompliance() {
+  const cl = document.getElementById('compliance-list');
+  const al = document.getElementById('compliance-alerts');
+  if (!cl || !al) return;
+  const regs = [
+    { label:'NCO.OP.105 — Préparation vols', st:'ok' },
+    { label:'NCO.OP.115 — Minima météo', st:'ok' },
+    { label:'NCO.GEN.140 — Briefing PAX', st:'ok' },
+    { label:'Part-ML — Navigabilité ARC', st:'ok' },
+    { label:'SMS — Rapports REX', st:'ok' },
+  ];
+  const allCompliance = allCrew.flatMap(c => (c.compliance||[]).filter(x=>x.status!=='ok').map(x=>({ ...x, pilot: c.full_name })));
+  if (allCompliance.length > 0) regs.push({ label:'Part-FCL — Licences & qualifications pilotes', st:'warn' });
+  cl.innerHTML = regs.map(i => `
+    <div class="card-r" style="padding:8px 0;border-bottom:1px solid var(--border)">
+      <span style="font-size:13px;font-weight:500">${i.label}</span>
+      <span class="${i.st==='ok'?'status-ok':i.st==='warn'?'status-warn':'status-exp'}">
+        <span class="dot ${i.st==='ok'?'dot-g':i.st==='warn'?'dot-a':'dot-r'}"></span>
+        ${i.st==='ok'?'OK':i.st==='warn'?'Alerte':'Action'}
+      </span>
+    </div>`).join('');
+  al.innerHTML = allCompliance.length === 0
+    ? '<div class="alert alert-success">Tous les pilotes sont en conformité ✓</div>'
+    : allCompliance.map(c => `<div class="alert ${c.status==='exp'?'alert-danger':'alert-warn'}">${c.label} · ${c.pilot} — ${c.detail}</div>`).join('');
+}
+
+async function renderREX() {
+  const list = document.getElementById('rex-list');
+  if (!list) return;
+  try {
+    const { data } = await sb.from('rex_reports')
+      .select('*, reported_by:profiles!rex_reports_reported_by_fkey(full_name)')
+      .order('created_at',{ascending:false}).limit(20);
+    if (!data || !data.length) { list.innerHTML = '<div class="empty-state"><p>Aucun rapport REX</p></div>'; return; }
+    list.innerHTML = '<div class="card">' + data.map(r => `
+      <div style="padding:8px 0;border-bottom:1px solid var(--border)">
+        <div class="card-r"><div class="ct">${r.event_type||'Occurrence'}</div><span class="badge ${r.status==='open'?'badge-a':r.status==='in_progress'?'badge-b':'badge-g'}">${r.status==='open'?'Ouvert':r.status==='in_progress'?'En cours':'Clôturé'}</span></div>
+        <div class="cs">${new Date(r.created_at).toLocaleDateString('fr-FR')} · ${r.reported_by?.full_name||'—'} · Sévérité: ${r.severity||'—'}</div>
+      </div>`).join('') + '</div>';
+  } catch(e) { list.innerHTML = '<div class="empty-state"><p>Aucun rapport REX</p></div>'; }
+}
+
+async function saveREX() {
+  const type = document.getElementById('rex-type').value;
+  const sev = document.getElementById('rex-sev').value;
+  const desc = document.getElementById('rex-desc').value;
+  if (!desc) { toast('Description obligatoire', 'error'); return; }
+  try {
+    const { error } = await sb.from('rex_reports').insert({
+      event_type: type,
+      severity: sev,
+      description: desc,
+      contributing_factors: document.getElementById('rex-factors').value,
+      corrective_action: document.getElementById('rex-action').value,
+      reported_by: currentUser.id,
+      status: 'open'
+    });
+    if (error) throw error;
+    closeModal('modal-rex');
+    toast('Rapport REX soumis ✓', 'success');
+    renderREX();
+  } catch(e) { toast('Erreur : ' + e.message, 'error'); }
 }
 
 // ── ADMIN ────────────────────────────────────────────────────────
 function adminTab(t, btn) {
-  ['crew','clients','settings'].forEach(x => { document.getElementById('adm-'+x).style.display = x===t?'block':'none'; });
+  ['crew','clients','settings'].forEach(x => { const el=document.getElementById('adm-'+x); if(el) el.style.display = x===t?'block':'none'; });
   btn.closest('.tab-row').querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
+  if (t === 'crew') renderAdminCrew();
+  if (t === 'clients') renderAdminClients();
 }
 
-function renderAdmin() {
+async function renderAdmin() { renderAdminCrew(); }
+
+async function renderAdminCrew() {
   const crew = document.getElementById('admin-crew-list');
-  const clients = document.getElementById('admin-client-list');
-  if (crew) {
-    crew.innerHTML = Object.values(USERS).filter(u=>u.role!=='client').map(u => `
+  if (!crew) return;
+  try {
+    const { data } = await sb.from('profiles').select('*').in('role',['admin','pilot']).eq('is_active',true).order('full_name');
+    allCrew = (data||[]).map(p => ({ ...p, ...RC[p.role], compliance: buildCompliance(p) }));
+    if (!data || !data.length) { crew.innerHTML = '<div class="empty-state"><p>Aucun membre</p></div>'; return; }
+    crew.innerHTML = data.map(u => `
       <div class="list-item">
-        <div class="li-av" style="background:${u.bgColor};color:${u.color}">${u.initials}</div>
-        <div class="li-content"><div class="li-name">${u.full_name||u.name||''}</div><div class="li-sub">${u.role||''} · ${u.badge_serial||u.serial||'—'}</div></div>
+        <div class="li-av" style="background:${RC[u.role]?.bgColor};color:${RC[u.role]?.color}">${u.initials||u.full_name?.[0]||'?'}</div>
+        <div class="li-content"><div class="li-name">${u.full_name||'—'}</div><div class="li-sub">${u.role||''} · ${u.badge_serial||u.licence_number||'—'}</div></div>
         <div class="li-actions">
-          <div class="icon-btn" onclick="editCrew('${u.id}')"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
-          <div class="icon-btn del" onclick="deleteCrew('${u.id}')"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg></div>
+          <div class="icon-btn" onclick="toast('Édition profil — disponible prochainement','info')">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </div>
         </div>
       </div>`).join('');
-  }
-  if (clients) {
-    clients.innerHTML = `
-      <div class="list-item">
-        <div class="li-av" style="background:rgba(5,150,105,.15);color:var(--g)">BD</div>
-        <div class="li-content"><div class="li-name">Bernard Durand</div><div class="li-sub">Client actif · 3 vols</div></div>
-        <div class="li-actions">
-          <div class="icon-btn" onclick="toast('Fiche client — disponible avec Supabase','info')"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
-        </div>
-      </div>`;
-  }
+  } catch(e) { crew.innerHTML = `<div class="alert alert-danger">${e.message}</div>`; }
 }
 
-function editCrew(id) { toast('Modification profil ' + USERS[id].name + ' — disponible avec Supabase', 'info'); }
-function deleteCrew(id) { if (confirm('Supprimer ' + USERS[id].name + ' ?')) toast('Supprimé de la démo', 'success'); }
-function addCrewMember() { closeModal('modal-add-crew'); toast('Profil créé — sera sauvegardé dans Supabase', 'success'); }
-function inviteClient() { closeModal('modal-invite-client'); toast('Invitation envoyée par email ✓', 'success'); }
+async function renderAdminClients() {
+  const el = document.getElementById('admin-client-list');
+  if (!el) return;
+  try {
+    const { data } = await sb.from('profiles').select('*, missions(id)').eq('role','client').eq('is_active',true).order('full_name');
+    if (!data || !data.length) { el.innerHTML = '<div class="empty-state"><p>Aucun client</p></div>'; return; }
+    el.innerHTML = data.map(u => `
+      <div class="list-item">
+        <div class="li-av" style="background:${RC.client.bgColor};color:${RC.client.color}">${u.initials||u.full_name?.[0]||'?'}</div>
+        <div class="li-content"><div class="li-name">${u.full_name||'—'}</div><div class="li-sub">Client · ${(u.missions||[]).length} vol(s)</div></div>
+        <div class="li-actions">
+          <div class="icon-btn" onclick="toast('Fiche client — disponible prochainement','info')">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </div>
+        </div>
+      </div>`).join('');
+  } catch(e) { el.innerHTML = `<div class="alert alert-danger">${e.message}</div>`; }
+}
+
+async function addCrewMember() {
+  const email = document.getElementById('new-crew-email').value.trim();
+  const name = document.getElementById('new-crew-name').value.trim();
+  if (!email || !name) { toast('Email et nom requis', 'error'); return; }
+  toast('Pour créer un compte : utiliser le tableau de bord Supabase → Authentication → Invite user, puis renseigner le profil.', 'info');
+  closeModal('modal-add-crew');
+}
+
+async function inviteClient() {
+  const name = document.getElementById('inv-name').value.trim();
+  const email = document.getElementById('inv-email').value.trim();
+  if (!email || !name) { toast('Email et nom requis', 'error'); return; }
+  toast('Invitation envoyée à ' + name + ' — à configurer via Supabase Auth', 'success');
+  closeModal('modal-invite-client');
+}
 
 // ── CLIENT PORTAL ────────────────────────────────────────────────
-function initClientPortal() {
+async function initClientPortal() {
   const u = currentUser;
-  document.getElementById('client-name').textContent = u.full_name || u.name || '';
-  document.getElementById('client-invoices').innerHTML = `
-    <div style="padding:8px 0;border-bottom:1px solid var(--border)">
-      <div class="card-r"><div><div class="ct">Vol LFQT→LFPB</div><div class="cs">01 avr · 1h45</div></div><span class="badge badge-b">À venir</span></div>
-      <div class="divider"></div>
-      <div class="card-r"><span style="font-weight:700">1 200 €</span><span class="badge badge-g">Payé</span></div>
-    </div>
-    <div style="padding:8px 0">
-      <div class="card-r"><div><div class="ct">Vol LFQT→LFAT</div><div class="cs">15 mars · 0.9h</div></div><span class="badge badge-g">Terminé</span></div>
-      <div class="divider"></div>
-      <div class="card-r"><span style="font-weight:700">850 €</span><span class="badge badge-g">Payé</span></div>
-    </div>`;
-}
-
-function bookFlight() { closeModal('modal-book-flight'); toast('Demande de vol envoyée à HOVE Aviation ✓', 'success'); }
-function bookSim() { closeModal('modal-book-sim'); toast('Demande de séance simu envoyée ✓', 'success'); }
-
-// ── WEATHER ──────────────────────────────────────────────────────
-// NOTE : Remplacer par votre clé API CheckWX (checkwx.com — gratuit)
-const WX_API_KEY = 'VOTRE_CLE_CHECKWX';
-const WX_STATIONS = ['LFQT','LFPB','LFAT','LFQQ'];
-
-async function loadWeather() {
-  const container = document.getElementById('wx-cards');
-  container.innerHTML = '<div class="loading-screen"><div class="spinner"></div><p>Chargement METAR...</p></div>';
-
-  if (WX_API_KEY === 'VOTRE_CLE_CHECKWX') {
-    // Demo data when no API key
-    setTimeout(() => {
-      container.innerHTML = WX_STATIONS.map(st => buildWxCard(st, getDemoMetar(st))).join('');
-    }, 800);
-    return;
-  }
-
+  document.getElementById('client-name').textContent = u.full_name || 'Client';
+  const today = new Date().toISOString().split('T')[0];
   try {
-    const res = await fetch(`https://api.checkwx.com/metar/${WX_STATIONS.join(',')}/decoded`, {
-      headers: { 'X-API-Key': WX_API_KEY }
-    });
-    const data = await res.json();
-    container.innerHTML = data.data.map(d => buildWxCard(d.icao, d)).join('');
-  } catch (e) {
-    container.innerHTML = WX_STATIONS.map(st => buildWxCard(st, getDemoMetar(st))).join('');
-  }
-}
-
-function getDemoMetar(icao) {
-  const demos = {
-    LFQT: { raw:'LFQT 011200Z 27008KT 9999 FEW025 12/06 Q1015 NOSIG', wind:'270° / 8kt', vis:'9999m', cloud:'FEW025', temp:'12°C', qnh:'1015hPa', category:'VFR' },
-    LFPB: { raw:'LFPB 011200Z 26012KT 8000 SCT018 BKN030 11/07 Q1014', wind:'260° / 12kt', vis:'8000m', cloud:'SCT018 BKN030', temp:'11°C', qnh:'1014hPa', category:'MVFR' },
-    LFAT: { raw:'LFAT 011200Z 28006KT 9999 FEW030 13/05 Q1016 NOSIG', wind:'280° / 6kt', vis:'9999m', cloud:'FEW030', temp:'13°C', qnh:'1016hPa', category:'VFR' },
-    LFQQ: { raw:'LFQQ 011200Z 27010KT 9999 SCT025 12/06 Q1015', wind:'270° / 10kt', vis:'9999m', cloud:'SCT025', temp:'12°C', qnh:'1015hPa', category:'VFR' },
-  };
-  return demos[icao] || demos.LFQT;
-}
-
-function buildWxCard(icao, d) {
-  const catColor = { VFR:'#10b981', MVFR:'#f59e0b', IFR:'#ef4444', LIFR:'#7c3aed' };
-  const cat = d.category || 'VFR';
-  return `<div class="wx-card">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-      <div class="wx-station">${icao}</div>
-      <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;background:rgba(255,255,255,.15);color:${catColor[cat]||'#fff'}">${cat}</span>
-    </div>
-    <div class="wx-metar">${d.raw || '—'}</div>
-    <div class="wx-grid">
-      <div class="wx-item"><label>Vent</label><p>${d.wind||'—'}</p></div>
-      <div class="wx-item"><label>Visibilité</label><p>${d.vis||'—'}</p></div>
-      <div class="wx-item"><label>QNH</label><p>${d.qnh||'—'}</p></div>
-    </div>
-  </div>`;
-}
-
-// ── MISSIONS MODAL ───────────────────────────────────────────────
-function toggleRouteFields() {
-  const t = document.getElementById('nm-type').value;
-  document.getElementById('nm-route-fields').style.display = t === 'sim' ? 'none' : 'block';
-}
-
-function saveMission() {
-  const type = document.getElementById('nm-type').value;
-  const date = document.getElementById('nm-date').value;
-  const time = document.getElementById('nm-time').value;
-  if (!date || !time) { toast('Date et heure obligatoires', 'error'); return; }
-  closeModal('modal-new-mission');
-  toast('Mission enregistrée dans le planning ✓', 'success');
-  setTimeout(renderMissions, 200);
-}
-
-// ── REX ──────────────────────────────────────────────────────────
-function saveREX() { closeModal('modal-rex'); toast('Rapport REX soumis au Safety Officer ✓', 'success'); }
-
-// ── MODALS ───────────────────────────────────────────────────────
-function openModal(id) { document.getElementById(id).classList.add('open'); }
-function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-function closeModalOnBg(e, id) { if (e.target.id === id) closeModal(id); }
-
-// ── NOTIFICATIONS ────────────────────────────────────────────────
-function showNotifs() {
-  toast('2 alertes: OPC expiré · Impayés 490€', 'warning');
-}
-
-// ── TOAST ────────────────────────────────────────────────────────
-function toast(msg, type = 'info') {
-  const container = document.getElementById('toast-container');
-  const t = document.createElement('div');
-  t.className = `toast ${type}`;
-  t.textContent = msg;
-  container.appendChild(t);
-  setTimeout(() => { t.style.opacity = '0'; t.style.transition = 'opacity .3s'; setTimeout(() => t.remove(), 300); }, 3000);
-}
-
-// ── INIT ─────────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
-  // Pre-select JB on load
-  document.querySelectorAll('.profile-opt').forEach(o => o.classList.remove('sel'));
-  document.querySelector('.profile-opt').classList.add('sel');
-
-  // Enter key on PIN
-  document.getElementById('pin-in').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
-
-  // Init MANEX compliance
-  initManexCompliance();
-
-  // Load weather on demand
-  document.getElementById('s-wx').addEventListener('transitionend', () => {});
-});
-
-// Load weather when wx screen becomes active
-const wxObserver = new MutationObserver(muts => {
-  muts.forEach(m => {
-    if (m.target.id === 's-wx' && m.target.classList.contains('active')) {
-      if (document.getElementById('wx-cards').querySelector('.loading-screen')) loadWeather();
+    const [missRes, invRes] = await Promise.all([
+      sb.from('missions').select('*, aircraft(registration,type), pilot:profiles!missions_pilot_id_fkey(full_name)').eq('client_id', u.id).order('scheduled_date',{ascending:false}),
+      sb.from('invoices').select('amount, payment_status').eq('client_id', u.id)
+    ]);
+    const missions = missRes.data || [];
+    const invoices = invRes.data || [];
+    const upcoming = missions.filter(m => m.scheduled_date >= today && m.status !== 'cancelled');
+    const past = missions.filter(m => m.scheduled_date < today);
+    const unpaid = invoices.filter(i=>i.payment_status==='pending').reduce((s,i)=>s+Number(i.amount),0);
+    document.getElementById('cl-stat-total').textContent = missions.length;
+    document.getElementById('cl-stat-upcoming').textContent = upcoming.length;
+    document.getElementById('cl-stat-unpaid').textContent = unpaid > 0 ? unpaid.toLocaleString('fr-FR') + ' €' : '0 €';
+    // Next mission
+    const nextEl = document.getElementById('client-next-mission');
+    const next = upcoming[0];
+    if (next) {
+      const dateStr = new Date(next.scheduled_date).toLocaleDateString('fr-FR',{day:'numeric',month:'long'});
+      nextEl.innerHTML = `<div class="card">
+        <div class="card-r">
+          <div><div class="ct">${next.departure_icao||'—'} → ${next.arrival_icao||'—'}</div><div class="cs">${dateStr} · ${next.scheduled_time?.slice(0,5)||'—'} · ${next.aircraft?.registration||'—'}</div></div>
+          <span class="badge badge-b">${next.flight_rule||'VFR'}</span>
+        </div>
+        <div class="divider"></div>
+        <span class="text-small text-muted">Pilote : ${next.pilot?.full_name||'À confirmer'}</span>
+      </div>`;
+    } else {
+      nextEl.innerHTML = '<div class="empty-state"><p>Aucun vol à venir</p></div>';
     }
-  });
-});
-document.querySelectorAll('.screen').forEach(s => wxObserver.observe(s, { attributes: true, attributeFilter: ['class'] }));
+    // Past missions
+    const pastEl = document.getElementById('client-past-missions');
+    if (!past.length) {
+      pastEl.innerHTML = '<div class="empty-state"><p>Aucun vol passé</p></div>';
+    } else {
+      pastEl.innerHTML = past.slice(0,5).map(m => {
+        const dStr = new Date(m.scheduled_date).toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric'});
+        return `<div class="card">
+          <div class="card-r">
+            <div><div class="ct">${m.departure_icao||'—'} → ${m.arrival_icao||'—'}</div><div class="cs">${dStr} · ${m.aircraft?.registration||'—'}</div></div>
+            <span class="badge badge-g">Effectué</span>
+          </div>
+        </div>`;
+      }).join('');
+    }
+    // Invoices
+    const invEl = document.getElementById('client-invoices');
+    if (!invoices.length) {
+      invEl.innerHTML = '<div class="empty-state"><p>Aucune facture</p></div>';
+    } else {
+      invEl.innerHTML = invoices.slice(0,5).map(inv => `
+        <div class="card-r" style="padding:8px 0;border-bottom:1px solid var(--border)">
+          <span style="font-size:13px;font-weight:600">${Number(inv.amount).toLocaleString('fr-FR')} €</span>
+          <span class="badge ${inv.payment_status==='paid'?'badge-g':'badge-r'}">${inv.payment_status==='paid'?'PAYÉ':'À RÉGLER'}</span>
+        </div>`).join('');
+    }
+  } catch(e) { console.error('initClientPortal:', e); }
+}
+
+async function bookFlight() {
+  const dep = document.getElementById('book-dep').value.trim();
+  const arr = document.getElementById('book-arr').value.trim();
+  const date = document.getElementById('book-date').value;
+  if (!dep || !arr || !date) { toast('Départ, destination et date obligatoires', 'error'); return; }
+  try {
+    const { error } = await sb.from('missions').insert({
+      client_id: currentUser.id,
+      departure_icao: dep.toUpperCase(),
+      arrival_icao: arr.toUpperCase(),
+      scheduled_date: date,
+      scheduled_time: document.getElementById('book-time').value,
+      type: 'flight',
+      status: 'pending',
+      go_nogo: 'PENDING',
+      notes: document.getElementById('book-msg').value || null
+    });
+    if (error) throw error;
+    closeModal('modal-book-flight');
+    toast('Demande de vol envoyée ✓ — confirmation sous 24h', 'success');
+    initClientPortal();
+  } catch(e) { toast('Erreur : ' + e.message, 'error'); }
+}
+
+// ── SESSION RESTORE ──────────────────────────────────────────────
+(async () => {
+  const { data: { session } } = await sb.auth.getSession();
+  if (session?.user) {
+    try {
+      await loadUserAndRedirect(session.user.id);
+    } catch(e) {
+      console.error('Session restore failed:', e);
+    }
+  }
+})();
 </script>
 </body>
 </html>
