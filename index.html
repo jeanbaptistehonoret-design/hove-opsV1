@@ -342,6 +342,35 @@ input, select, textarea, button { font-family: inherit; }
 .type-sim { background: var(--g-light); color: var(--g); }
 .type-ferry { background: var(--a-light); color: var(--a); }
 .type-training { background: #f3e8ff; color: #7c3aed; }
+
+/* ── HOVE LOGO ── */
+.hove-logo-img { height: 28px; object-fit: contain; }
+.hove-logo-topbar { height: 22px; object-fit: contain; opacity: .9; }
+.login-logo-img { width: 90px; height: 90px; object-fit: contain; border-radius: 18px; margin-bottom: 18px; }
+
+/* ── CALENDAR ── */
+.cal-wrap { margin-bottom: 14px; }
+.cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.cal-month { font-size: 15px; font-weight: 700; color: var(--text); letter-spacing: -.01em; }
+.cal-nav { background: none; border: 1px solid var(--border); border-radius: 8px; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text2); font-size: 14px; transition: background .15s; }
+.cal-nav:hover { background: var(--surface); }
+.cal-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; }
+.cal-dow { font-size: 9px; font-weight: 600; color: var(--text3); text-align: center; padding: 4px 0; text-transform: uppercase; letter-spacing: .05em; }
+.cal-day { aspect-ratio: 1; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: var(--text2); cursor: pointer; position: relative; transition: background .1s; gap: 2px; }
+.cal-day:hover { background: var(--surface); }
+.cal-day.today { background: var(--navy); color: #fff; font-weight: 700; }
+.cal-day.has-mission::after { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); position: absolute; bottom: 3px; }
+.cal-day.today.has-mission::after { background: rgba(255,255,255,.8); }
+.cal-day.has-sim::after { background: var(--g); }
+.cal-day.other-month { color: var(--border); }
+.cal-day.selected { background: var(--navy-light); color: var(--navy); font-weight: 700; border: 1.5px solid var(--navy); }
+.cal-day.today.selected { background: var(--navy); color: #fff; }
+.cal-legend { display: flex; gap: 12px; margin: 6px 0 12px; }
+.cal-leg-item { display: flex; align-items: center; gap: 4px; font-size: 10px; color: var(--text3); }
+.cal-leg-dot { width: 7px; height: 7px; border-radius: 50%; }
+
+/* ── SIM SESSION CARD ── */
+.sim-session-card { border-left: 3px solid var(--g); }
 </style>
 </head>
 <body>
@@ -355,7 +384,8 @@ input, select, textarea, button { font-family: inherit; }
   ══════════════════════════════════════════ -->
   <div class="screen active" id="s-login">
     <div class="login-wrap">
-      <div class="login-logo">
+      <img src="https://image2url.com/r2/default/images/1775162871276-e08c72be-4ddc-4046-89db-d70dc9226f8b.png" class="login-logo-img" alt="HOVE Aviation" onerror="this.style.display='none';document.getElementById('login-logo-fallback').style.display='flex'"/>
+      <div class="login-logo" id="login-logo-fallback" style="display:none">
         <svg viewBox="0 0 24 24">
           <polygon points="12 2 2 8 12 14 22 8 12 2"/>
           <polyline points="2 14 12 20 22 14"/>
@@ -385,6 +415,7 @@ input, select, textarea, button { font-family: inherit; }
       <div class="tb-row">
         <div class="tb-title" id="h-greeting">Bonjour</div>
         <div style="display:flex;gap:6px;align-items:center">
+          <img src="https://image2url.com/r2/default/images/1775162871276-e08c72be-4ddc-4046-89db-d70dc9226f8b.png" class="hove-logo-topbar" alt="HOVE" onerror="this.style.display='none'"/>
           <span id="h-role-tag" class="badge badge-gold" style="font-size:9px">—</span>
           <button class="tb-icon-btn" onclick="showNotifs()" title="Notifications">
             <svg width="18" height="18" viewBox="0 0 24 24" stroke="rgba(255,255,255,.7)" fill="none" stroke-width="1.8"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
@@ -464,7 +495,8 @@ input, select, textarea, button { font-family: inherit; }
         <div class="badge-inner">
           <div class="badge-face badge-front">
             <div class="bf-header">
-              <div class="bf-logo">HOVE AVIATION</div>
+              <img src="https://image2url.com/r2/default/images/1775162871276-e08c72be-4ddc-4046-89db-d70dc9226f8b.png" style="height:18px;object-fit:contain" alt="HOVE" onerror="this.parentNode.querySelector('.bf-logo').style.display='block';this.style.display='none'"/>
+              <div class="bf-logo" style="display:none">HOVE AVIATION</div>
               <div class="bf-arrow"><span></span><svg viewBox="0 0 24 24"><polyline points="5 12 19 12"/><polyline points="14 7 19 12 14 17"/></svg></div>
             </div>
             <div class="bf-body">
@@ -517,12 +549,29 @@ input, select, textarea, button { font-family: inherit; }
     <div class="topbar">
       <div class="tb-eyebrow"><svg class="hove-mark" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="7 1 1 5 7 9 13 5 7 1"/><line x1="1" y1="9" x2="7" y2="13"/><line x1="13" y1="9" x2="7" y2="13"/></svg>Planning opérationnel</div>
       <div class="tb-row">
+        <img src="https://image2url.com/r2/default/images/1775162871276-e08c72be-4ddc-4046-89db-d70dc9226f8b.png" class="hove-logo-topbar" alt="HOVE" onerror="this.style.display='none'"/>
         <div class="tb-title">Planning</div>
-        <button class="tb-action" id="planning-add-btn" style="display:none" onclick="openModal('modal-new-mission')">+ Mission</button>
+        <div style="display:flex;gap:5px">
+          <button class="tb-action" id="planning-sim-btn" style="display:none;background:rgba(5,150,105,.25);color:#fff" onclick="openModal('modal-sim-session')">+ Simu</button>
+          <button class="tb-action" id="planning-add-btn" style="display:none" onclick="openModal('modal-new-mission')">+ Mission</button>
+        </div>
       </div>
     </div>
     <div class="scroll" style="padding:14px">
-      <div class="sec">Missions à venir</div>
+      <!-- Calendrier -->
+      <div class="cal-wrap">
+        <div class="cal-header">
+          <button class="cal-nav" onclick="calNav(-1)">&#8249;</button>
+          <div class="cal-month" id="cal-month-label">—</div>
+          <button class="cal-nav" onclick="calNav(1)">&#8250;</button>
+        </div>
+        <div class="cal-grid" id="cal-grid"></div>
+        <div class="cal-legend">
+          <div class="cal-leg-item"><div class="cal-leg-dot" style="background:var(--gold)"></div>Vol / Mission</div>
+          <div class="cal-leg-item"><div class="cal-leg-dot" style="background:var(--g)"></div>Simulateur</div>
+        </div>
+      </div>
+      <div class="sec" id="planning-list-title">Missions à venir</div>
       <div id="missions-list"><div class="loading-screen"><div class="spinner"></div><p>Chargement...</p></div></div>
     </div>
     <div class="bnav">
@@ -850,6 +899,7 @@ input, select, textarea, button { font-family: inherit; }
     <div class="topbar" style="background:var(--navy)">
       <div class="tb-eyebrow"><svg class="hove-mark" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="7 1 1 5 7 9 13 5 7 1"/><line x1="1" y1="9" x2="7" y2="13"/><line x1="13" y1="9" x2="7" y2="13"/></svg>HOVE AVIATION</div>
       <div class="tb-row">
+        <img src="https://image2url.com/r2/default/images/1775162871276-e08c72be-4ddc-4046-89db-d70dc9226f8b.png" class="hove-logo-topbar" alt="HOVE" onerror="this.style.display='none'"/>
         <div class="tb-title">Mon Espace</div>
         <button class="tb-action" onclick="doLogout()">⏻</button>
       </div>
@@ -1030,6 +1080,70 @@ input, select, textarea, button { font-family: inherit; }
 
 </div><!-- /#app -->
 
+  <!-- Sim Session Modal -->
+  <div class="modal-overlay" id="modal-sim-session" onclick="closeModalOnBg(event,'modal-sim-session')">
+    <div class="modal">
+      <div class="modal-handle"></div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+        <img src="https://image2url.com/r2/default/images/1775162871276-e08c72be-4ddc-4046-89db-d70dc9226f8b.png" style="height:28px;object-fit:contain" alt="HOVE" onerror="this.style.display='none'"/>
+        <div class="modal-title" style="margin:0">Séance Simulateur</div>
+      </div>
+      <div class="ig"><label>Nom du client</label><input type="text" id="sim-client-name" placeholder="Prénom Nom du client"/></div>
+      <div class="ig"><label>Date</label><input type="date" id="sim-date"/></div>
+      <div class="ig"><label>Heure</label><input type="time" id="sim-time" value="10:00"/></div>
+      <div class="ig"><label>Durée de la séance</label>
+        <select id="sim-duration">
+          <option value="0h30">30 minutes</option>
+          <option value="1h00" selected>1 heure</option>
+          <option value="1h30">1h30</option>
+          <option value="2h00">2 heures</option>
+          <option value="2h30">2h30</option>
+          <option value="3h00">3 heures</option>
+          <option value="Autre">Autre durée</option>
+        </select>
+      </div>
+      <div class="ig" id="sim-duration-custom-wrap" style="display:none"><label>Durée personnalisée</label><input type="text" id="sim-duration-custom" placeholder="ex : 45 min"/></div>
+      <div class="ig"><label>Type de séance</label>
+        <select id="sim-type-session">
+          <option value="Découverte">Découverte simulateur</option>
+          <option value="Entraînement IFR">Entraînement IFR</option>
+          <option value="Entraînement VFR">Entraînement VFR</option>
+          <option value="Qualification IR">Qualification IR</option>
+          <option value="Maintien de compétences">Maintien de compétences</option>
+          <option value="Urgences & pannes">Urgences & pannes</option>
+          <option value="Briefing / Débriefing">Briefing / Débriefing</option>
+          <option value="Autre">Autre</option>
+        </select>
+      </div>
+      <div class="ig"><label>Montant (€)</label><input type="number" id="sim-amount" placeholder="140" min="0"/></div>
+      <div class="ig"><label>Statut paiement</label>
+        <select id="sim-paid">
+          <option value="pending">Non payé</option>
+          <option value="paid">Payé</option>
+          <option value="partial">Partiellement payé</option>
+        </select>
+      </div>
+      <div class="ig"><label>Provenance du client</label>
+        <select id="sim-origin">
+          <option value="">Sélectionner...</option>
+          <option value="Recommandation">Recommandation / Bouche à oreille</option>
+          <option value="Site web">Site web HOVE</option>
+          <option value="Réseaux sociaux">Réseaux sociaux</option>
+          <option value="Client existant">Client existant</option>
+          <option value="Aéroclub">Aéroclub / École partenaire</option>
+          <option value="Événement">Événement / Salon</option>
+          <option value="Google">Recherche Google</option>
+          <option value="Autre">Autre</option>
+        </select>
+      </div>
+      <div class="ig"><label>Notes (optionnel)</label><textarea id="sim-notes" placeholder="Remarques, objectifs de séance..." style="min-height:60px"></textarea></div>
+      <div class="flex-row" style="margin-top:8px">
+        <button class="btn btn-o" onclick="closeModal('modal-sim-session')">Annuler</button>
+        <button class="btn btn-g" onclick="saveSimSession()">Enregistrer la séance</button>
+      </div>
+    </div>
+  </div>
+
 <script>
 // ════════════════════════════════════════════════════════════════
 // HOVE OPS v4.0 — Application Logic (Complete)
@@ -1103,7 +1217,7 @@ function goTo(id) {
   const s = document.getElementById(id);
   if (s) { s.classList.add('active'); s.scrollTop = 0; }
   updateNav(id);
-  if (id === 's-planning') renderMissions();
+  if (id === 's-planning') { renderMissions(); initCalendar(); }
   if (id === 's-logbook') renderLogbook();
   if (id === 's-fleet') { loadFleetData(); }
   if (id === 's-admin') renderAdmin();
@@ -1224,7 +1338,9 @@ function initHome() {
   document.getElementById('admin-section-card').style.display = isAdmin ? 'block' : 'none';
   document.getElementById('fleet-add-btn').style.display = isAdmin ? 'inline-block' : 'none';
   const planBtn = document.getElementById('planning-add-btn');
+  const simBtn = document.getElementById('planning-sim-btn');
   if (planBtn) planBtn.style.display = (isAdmin||u.role==='pilot') ? 'inline-block' : 'none';
+  if (simBtn) simBtn.style.display = (isAdmin||u.role==='pilot') ? 'inline-block' : 'none';
 
   updateCrewBadge(u);
   initCrewScreen(u);
@@ -1352,7 +1468,11 @@ function switchBadge(id) {
 // ── MISSIONS ─────────────────────────────────────────────────────
 async function renderMissions() {
   const list = document.getElementById('missions-list');
+  const title = document.getElementById('planning-list-title');
   if (!list) return;
+  if (title) title.textContent = 'Missions à venir';
+  calSelectedDate = null;
+  if (title) renderCalendar();
   list.innerHTML = '<div class="loading-screen"><div class="spinner"></div><p>Chargement...</p></div>';
   try {
     const today = new Date().toISOString().split('T')[0];
@@ -1363,32 +1483,16 @@ async function renderMissions() {
     if (currentUser.role === 'pilot') q = q.eq('pilot_id', currentUser.id);
     const { data, error } = await q;
     if (error) throw error;
-    if (!data || !data.length) {
+    const isAdmin = currentUser.role === 'admin';
+    const localSims = getLocalSimSessions().filter(s => s.date >= today);
+    if ((!data || !data.length) && !localSims.length) {
       list.innerHTML = '<div class="empty-state"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><p>Aucune mission planifiée</p></div>';
       return;
     }
-    const isAdmin = currentUser.role === 'admin';
-    list.innerHTML = data.map(m => {
-      const dateStr = new Date(m.scheduled_date).toLocaleDateString('fr-FR',{day:'numeric',month:'short'});
-      return `<div class="card">
-        <div class="card-r">
-          <div>
-            <div class="ct">${m.type==='sim'?'Séance Simu':(m.departure_icao||'—')+' → '+(m.arrival_icao||'—')}</div>
-            <div class="cs">${dateStr} · ${m.scheduled_time?.slice(0,5)||'—'} · ${m.client?.full_name||'—'}</div>
-          </div>
-          <span class="badge type-${m.type}">${TYPE_LABELS[m.type]||'VOL'} ${m.flight_rule||''}</span>
-        </div>
-        <div class="divider"></div>
-        <div class="card-r">
-          <div style="display:flex;gap:10px;font-size:11px;color:var(--text2)">
-            <span>${m.pilot?.full_name||'—'}</span>
-            <span style="color:${m.go_nogo==='GO'?'var(--g)':m.go_nogo==='NO-GO'?'var(--r)':'var(--a)'}">● ${m.go_nogo||'PENDING'}</span>
-          </div>
-          ${isAdmin?`<div style="display:flex;gap:5px"><button class="btn btn-p btn-sm" onclick="setGoNoGo('${m.id}','GO')">GO</button><button class="btn btn-r btn-sm" onclick="setGoNoGo('${m.id}','NO-GO')">NO-GO</button></div>`:''}
-        </div>
-      </div>`;
-    }).join('');
-    document.getElementById('hq-planning-sub').textContent = data.length + ' mission' + (data.length>1?'s':'');
+    let cards = (data || []).map(m => buildMissionCard(m, isAdmin)).join('');
+    cards += localSims.sort((a,b)=>a.date.localeCompare(b.date)).map(s => buildSimCard(s)).join('');
+    list.innerHTML = cards;
+    document.getElementById('hq-planning-sub').textContent = ((data||[]).length + localSims.length) + ' mission' + (((data||[]).length + localSims.length)>1?'s':'');
   } catch(e) {
     list.innerHTML = `<div class="alert alert-danger">Erreur : ${e.message}</div>`;
   }
@@ -2229,106 +2333,209 @@ async function bookFlight() {
     initClientPortal();
   } catch(e) { toast('Erreur : ' + e.message, 'error'); }
 }
-// ── CALENDRIER DYNAMIQUE ──
-let currentCalDate = new Date();
 
-async function renderCalendar() {
-  const grid = document.getElementById('cal-grid');
-  const title = document.getElementById('cal-month-title');
-  if (!grid || !title) return;
+// ── CALENDAR ─────────────────────────────────────────────────────
+let calYear = new Date().getFullYear();
+let calMonth = new Date().getMonth();
+let calMissionDates = {};
+let calSelectedDate = null;
 
-  grid.innerHTML = '';
-  const year = currentCalDate.getFullYear();
-  const month = currentCalDate.getMonth();
-
-  const monthNames = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
-  title.innerText = `${monthNames[month]} ${year}`;
-
-  // Récupérer les missions du mois sur Supabase
-  const firstDayStr = `${year}-${String(month + 1).padStart(2, '0')}-01`;
-  const lastDayStr = `${year}-${String(month + 1).padStart(2, '0')}-31`;
-
-  const { data: missions } = await sb
-    .from('missions')
-    .select('scheduled_date, type')
-    .gte('scheduled_date', firstDayStr)
-    .lte('scheduled_date', lastDayStr);
-
-  const firstDayIndex = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const offset = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
-
-  // Cases vides (mois précédent)
-  for (let i = 0; i < offset; i++) {
-    grid.innerHTML += `<div class="cal-cell other-month"></div>`;
-  }
-
-  // Jours du mois
-  for (let d = 1; d <= daysInMonth; d++) {
-    const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-    const hasMission = missions?.find(m => m.scheduled_date === dateStr);
-    
-    let dotClass = "";
-    if (hasMission) {
-      dotClass = hasMission.type === 'sim' ? 'has-sim' : 'has-flight';
-    }
-
-    const isToday = new Date().toDateString() === new Date(year, month, d).toDateString();
-    
-    grid.innerHTML += `
-      <div class="cal-cell ${isToday ? 'today' : ''} ${dotClass}" onclick="toast('Date sélectionnée : ${dateStr}', 'info')">
-        ${d}
-      </div>`;
-  }
-}
-
-// ── FONCTIONS DE NAVIGATION DU CALENDRIER ──
-function changeMonth(diff) {
-  currentCalDate.setMonth(currentCalDate.getMonth() + diff);
+async function initCalendar() {
+  const today = new Date();
+  calYear = today.getFullYear();
+  calMonth = today.getMonth();
+  await fetchCalendarMissions();
   renderCalendar();
 }
 
-// ── LE CHEF D'ORCHESTRE (INDISPENSABLE) ──
-function showScreen(id) {
-  // On cache tous les écrans
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  // On affiche l'écran demandé
-  const target = document.getElementById(id);
-  if (target) target.classList.add('active');
+async function fetchCalendarMissions() {
+  try {
+    const firstDay = new Date(calYear, calMonth, 1).toISOString().split('T')[0];
+    const lastDay = new Date(calYear, calMonth + 1, 0).toISOString().split('T')[0];
+    const { data } = await sb.from('missions')
+      .select('scheduled_date, type')
+      .gte('scheduled_date', firstDay)
+      .lte('scheduled_date', lastDay)
+      .neq('status', 'cancelled');
+    calMissionDates = {};
+    (data || []).forEach(m => {
+      if (!calMissionDates[m.scheduled_date]) calMissionDates[m.scheduled_date] = [];
+      calMissionDates[m.scheduled_date].push(m.type);
+    });
+    // Also fetch local sim sessions from localStorage
+    const localSims = getLocalSimSessions();
+    localSims.forEach(s => {
+      if (s.date >= firstDay && s.date <= lastDay) {
+        if (!calMissionDates[s.date]) calMissionDates[s.date] = [];
+        calMissionDates[s.date].push('sim');
+      }
+    });
+  } catch(e) { console.error('fetchCalendarMissions:', e); }
+}
 
-  // Si on va sur l'accueil
-  if (id === 's-home') initHome();
-  // Si on va sur le portail client
-  if (id === 's-client') initClientPortal();
-  
-  // SI ON VA SUR LE PLANNING -> ON LANCE LE CALENDRIER
-  if (id === 's-planning') {
-    renderCalendar();
+function renderCalendar() {
+  const DAYS_FR = ['Lu','Ma','Me','Je','Ve','Sa','Di'];
+  const MONTHS_FR = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+  document.getElementById('cal-month-label').textContent = MONTHS_FR[calMonth] + ' ' + calYear;
+  const grid = document.getElementById('cal-grid');
+  // Day of week headers
+  let html = DAYS_FR.map(d => `<div class="cal-dow">${d}</div>`).join('');
+  const first = new Date(calYear, calMonth, 1);
+  const last = new Date(calYear, calMonth + 1, 0);
+  const todayStr = new Date().toISOString().split('T')[0];
+  // Monday-based offset (0=Mon ... 6=Sun)
+  let startOffset = (first.getDay() + 6) % 7;
+  // Previous month days
+  for (let i = startOffset - 1; i >= 0; i--) {
+    const d = new Date(calYear, calMonth, -i);
+    html += `<div class="cal-day other-month">${d.getDate()}</div>`;
+  }
+  for (let day = 1; day <= last.getDate(); day++) {
+    const dateStr = `${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+    const types = calMissionDates[dateStr] || [];
+    const isToday = dateStr === todayStr;
+    const isSelected = dateStr === calSelectedDate;
+    const hasSim = types.includes('sim');
+    const hasMission = types.some(t => t !== 'sim');
+    let cls = 'cal-day';
+    if (isToday) cls += ' today';
+    if (isSelected && !isToday) cls += ' selected';
+    if (hasSim) cls += ' has-sim';
+    else if (hasMission) cls += ' has-mission';
+    html += `<div class="${cls}" onclick="calSelectDay('${dateStr}')">${day}</div>`;
+  }
+  grid.innerHTML = html;
+}
+
+async function calNav(dir) {
+  calMonth += dir;
+  if (calMonth > 11) { calMonth = 0; calYear++; }
+  if (calMonth < 0) { calMonth = 11; calYear--; }
+  await fetchCalendarMissions();
+  renderCalendar();
+}
+
+function calSelectDay(dateStr) {
+  calSelectedDate = dateStr;
+  renderCalendar();
+  filterMissionsByDate(dateStr);
+}
+
+async function filterMissionsByDate(dateStr) {
+  const list = document.getElementById('missions-list');
+  const title = document.getElementById('planning-list-title');
+  const d = new Date(dateStr + 'T00:00:00');
+  const label = d.toLocaleDateString('fr-FR', {day:'numeric',month:'long',year:'numeric'});
+  title.textContent = `Missions — ${label}`;
+  list.innerHTML = '<div class="loading-screen"><div class="spinner"></div><p>Chargement...</p></div>';
+  try {
+    const { data, error } = await sb.from('missions')
+      .select('*, pilot:profiles!missions_pilot_id_fkey(full_name,initials), client:profiles!missions_client_id_fkey(full_name), aircraft(registration,type)')
+      .eq('scheduled_date', dateStr).neq('status','cancelled')
+      .order('scheduled_time');
+    if (error) throw error;
+    const isAdmin = currentUser.role === 'admin';
+    // local sim sessions for this date
+    const localSims = getLocalSimSessions().filter(s => s.date === dateStr);
+    let cards = '';
+    (data || []).forEach(m => {
+      cards += buildMissionCard(m, isAdmin);
+    });
+    localSims.forEach(s => {
+      cards += buildSimCard(s);
+    });
+    if (!cards) {
+      cards = `<div class="empty-state"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><p>Aucune mission ce jour</p></div>`;
+    }
+    list.innerHTML = cards;
+  } catch(e) {
+    list.innerHTML = `<div class="alert alert-danger">Erreur : ${e.message}</div>`;
   }
 }
 
-// ── SESSION RESTORE (DÉMARRAGE) ──
+function buildMissionCard(m, isAdmin) {
+  const dateStr = new Date(m.scheduled_date).toLocaleDateString('fr-FR',{day:'numeric',month:'short'});
+  return `<div class="card">
+    <div class="card-r">
+      <div>
+        <div class="ct">${m.type==='sim'?'Séance Simu':(m.departure_icao||'—')+' → '+(m.arrival_icao||'—')}</div>
+        <div class="cs">${dateStr} · ${m.scheduled_time?.slice(0,5)||'—'} · ${m.client?.full_name||'—'}</div>
+      </div>
+      <span class="badge type-${m.type}">${TYPE_LABELS[m.type]||'VOL'} ${m.flight_rule||''}</span>
+    </div>
+    <div class="divider"></div>
+    <div class="card-r">
+      <div style="display:flex;gap:10px;font-size:11px;color:var(--text2)">
+        <span>${m.pilot?.full_name||'—'}</span>
+        <span style="color:${m.go_nogo==='GO'?'var(--g)':m.go_nogo==='NO-GO'?'var(--r)':'var(--a)'}">● ${m.go_nogo||'PENDING'}</span>
+      </div>
+      ${isAdmin?`<div style="display:flex;gap:5px"><button class="btn btn-p btn-sm" onclick="setGoNoGo('${m.id}','GO')">GO</button><button class="btn btn-r btn-sm" onclick="setGoNoGo('${m.id}','NO-GO')">NO-GO</button></div>`:''}
+    </div>
+  </div>`;
+}
+
+function buildSimCard(s) {
+  const paidBadge = s.paid === 'paid' ? '<span class="badge badge-g">PAYÉ</span>' : s.paid === 'partial' ? '<span class="badge badge-a">PARTIEL</span>' : '<span class="badge badge-r">NON PAYÉ</span>';
+  return `<div class="card sim-session-card">
+    <div class="card-r">
+      <div>
+        <div class="ct">🎮 ${s.clientName}</div>
+        <div class="cs">${s.time||'—'} · ${s.duration} · ${s.sessionType}</div>
+      </div>
+      <span class="badge type-sim">SIMU</span>
+    </div>
+    <div class="divider"></div>
+    <div class="card-r">
+      <div style="font-size:11px;color:var(--text2)">${s.origin||'—'} · ${s.amount?s.amount+' €':'—'}</div>
+      ${paidBadge}
+    </div>
+    ${s.notes?`<div style="font-size:11px;color:var(--text3);margin-top:6px">${s.notes}</div>`:''}
+  </div>`;
+}
+
+// Local sim sessions (stored in memory for this session)
+let _localSimSessions = [];
+function getLocalSimSessions() { return _localSimSessions; }
+
+function saveSimSession() {
+  const clientName = document.getElementById('sim-client-name').value.trim();
+  const date = document.getElementById('sim-date').value;
+  const time = document.getElementById('sim-time').value;
+  const durationSel = document.getElementById('sim-duration').value;
+  const duration = durationSel === 'Autre' ? (document.getElementById('sim-duration-custom').value || 'Autre') : durationSel;
+  const sessionType = document.getElementById('sim-type-session').value;
+  const amount = document.getElementById('sim-amount').value;
+  const paid = document.getElementById('sim-paid').value;
+  const origin = document.getElementById('sim-origin').value;
+  const notes = document.getElementById('sim-notes').value;
+  if (!clientName) { toast('Nom du client requis', 'error'); return; }
+  if (!date) { toast('Date requise', 'error'); return; }
+  _localSimSessions.push({ id: Date.now(), clientName, date, time, duration, sessionType, amount, paid, origin, notes });
+  closeModal('modal-sim-session');
+  toast('Séance simulateur enregistrée ✓', 'success');
+  // Reset form
+  document.getElementById('sim-client-name').value = '';
+  document.getElementById('sim-amount').value = '';
+  document.getElementById('sim-notes').value = '';
+  // Refresh calendar & list
+  fetchCalendarMissions().then(() => { renderCalendar(); renderMissions(); });
+}
+
+document.getElementById('sim-duration')?.addEventListener('change', function() {
+  document.getElementById('sim-duration-custom-wrap').style.display = this.value === 'Autre' ? 'block' : 'none';
+});
+
+// ── SESSION RESTORE ──────────────────────────────────────────────
 (async () => {
   const { data: { session } } = await sb.auth.getSession();
   if (session?.user) {
     try {
-      // On récupère le profil et on affiche l'accueil
-      const { data: prof } = await sb.from('profiles').select('*').eq('id', session.user.id).single();
-      if (prof) {
-        currentUser = prof;
-        showScreen('s-home');
-      } else {
-        showScreen('s-login');
-      }
+      await loadUserAndRedirect(session.user.id);
     } catch(e) {
       console.error('Session restore failed:', e);
-      showScreen('s-login');
     }
-  } else {
-    showScreen('s-login');
   }
 })();
 </script>
 </body>
 </html>
-
