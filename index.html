@@ -2229,16 +2229,103 @@ async function bookFlight() {
     initClientPortal();
   } catch(e) { toast('Erreur : ' + e.message, 'error'); }
 }
+// ── CALENDRIER DYNAMIQUE ──
+let currentCalDate = new Date();
 
-// ── SESSION RESTORE ──────────────────────────────────────────────
+async function renderCalendar() {
+  const grid = document.getElementById('cal-grid');
+  const title = document.getElementById('cal-month-title');
+  if (!grid || !title) return;
+
+  grid.innerHTML = '';
+  const year = currentCalDate.getFullYear();
+  const month = currentCalDate.getMonth();
+
+  const monthNames = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+  title.innerText = `${monthNames[month]} ${year}`;
+
+  // Récupérer les missions du mois sur Supabase
+  const firstDayStr = `${year}-${String(month + 1).padStart(2, '0')}-01`;
+  const lastDayStr = `${year}-${String(month + 1).padStart(2, '0')}-31`;
+
+  const { data: missions } = await sb
+    .from('missions')
+    .select('scheduled_date, type')
+    .gte('scheduled_date', firstDayStr)
+    .lte('scheduled_date', lastDayStr);
+
+  const firstDayIndex = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const offset = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
+
+  // Cases vides (mois précédent)
+  for (let i = 0; i < offset; i++) {
+    grid.innerHTML += `<div class="cal-cell other-month"></div>`;
+  }
+
+  // Jours du mois
+  for (let d = 1; d <= daysInMonth; d++) {
+    const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+    const hasMission = missions?.find(m => m.scheduled_date === dateStr);
+    
+    let dotClass = "";
+    if (hasMission) {
+      dotClass = hasMission.type === 'sim' ? 'has-sim' : 'has-flight';
+    }
+
+    const isToday = new Date().toDateString() === new Date(year, month, d).toDateString();
+    
+    grid.innerHTML += `
+      <div class="cal-cell ${isToday ? 'today' : ''} ${dotClass}" onclick="toast('Date sélectionnée : ${dateStr}', 'info')">
+        ${d}
+      </div>`;
+  }
+}
+
+// ── FONCTIONS DE NAVIGATION DU CALENDRIER ──
+function changeMonth(diff) {
+  currentCalDate.setMonth(currentCalDate.getMonth() + diff);
+  renderCalendar();
+}
+
+// ── LE CHEF D'ORCHESTRE (INDISPENSABLE) ──
+function showScreen(id) {
+  // On cache tous les écrans
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  // On affiche l'écran demandé
+  const target = document.getElementById(id);
+  if (target) target.classList.add('active');
+
+  // Si on va sur l'accueil
+  if (id === 's-home') initHome();
+  // Si on va sur le portail client
+  if (id === 's-client') initClientPortal();
+  
+  // SI ON VA SUR LE PLANNING -> ON LANCE LE CALENDRIER
+  if (id === 's-planning') {
+    renderCalendar();
+  }
+}
+
+// ── SESSION RESTORE (DÉMARRAGE) ──
 (async () => {
   const { data: { session } } = await sb.auth.getSession();
   if (session?.user) {
     try {
-      await loadUserAndRedirect(session.user.id);
+      // On récupère le profil et on affiche l'accueil
+      const { data: prof } = await sb.from('profiles').select('*').eq('id', session.user.id).single();
+      if (prof) {
+        currentUser = prof;
+        showScreen('s-home');
+      } else {
+        showScreen('s-login');
+      }
     } catch(e) {
       console.error('Session restore failed:', e);
+      showScreen('s-login');
     }
+  } else {
+    showScreen('s-login');
   }
 })();
 </script>
