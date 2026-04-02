@@ -380,30 +380,8 @@ input, select, textarea, button { font-family: inherit; }
       <div class="login-title">HOVE OPS</div>
       <div class="login-sub">AVIATION EXECUTIVE · v3.0</div>
 
-      <div class="profile-select" id="profile-list">
-        <div class="profile-opt sel" onclick="selectProfile('jb', this)" data-uid="jb">
-          <div class="po-av" style="background:rgba(201,168,76,.2);color:var(--gold)">JB</div>
-          <div><div class="po-name">Jean-Baptiste Honoret</div><div class="po-role">Président · Accountable Manager</div></div>
-          <span class="po-badge admin">ADMIN</span>
-        </div>
-        <div class="profile-opt" onclick="selectProfile('ve', this)" data-uid="ve">
-          <div class="po-av" style="background:rgba(59,91,169,.3);color:#93c5fd">VE</div>
-          <div><div class="po-name">Victor Eickmayer</div><div class="po-role">Director of Operations · PIC</div></div>
-          <span class="po-badge admin">ADMIN</span>
-        </div>
-        <div class="profile-opt" onclick="selectProfile('demo', this)" data-uid="demo">
-          <div class="po-av" style="background:rgba(124,58,237,.2);color:#a78bfa">AL</div>
-          <div><div class="po-name">Alexandre Leblanc</div><div class="po-role">Pilote — Démo</div></div>
-          <span class="po-badge pilot">PILOTE</span>
-        </div>
-        <div class="profile-opt" onclick="selectProfile('client', this)" data-uid="client">
-          <div class="po-av" style="background:rgba(16,185,129,.2);color:#6ee7b7">BD</div>
-          <div><div class="po-name">Bernard Durand</div><div class="po-role">Client HOVE</div></div>
-          <span class="po-badge client">CLIENT</span>
-        </div>
-      </div>
-
-      <input class="pin-input" type="password" id="pin-in" placeholder="Code d'accès" maxlength="6"/>
+      <input class="pin-input" type="email" id="login-email" placeholder="Email" style="margin-bottom:10px;letter-spacing:0;text-align:left"/>
+      <input class="pin-input" type="password" id="pin-in" placeholder="Mot de passe"/>
       <div id="login-error"></div>
       <button class="login-btn" onclick="doLogin()">Connexion →</button>
       <div class="login-version">HOVE AVIATION EXECUTIVE · NCO · LFQT</div>
@@ -1245,10 +1223,14 @@ function selectProfile(id, el) {
 
 // LA NOUVELLE FONCTION QUI SE CONNECTE À TA BASE
 async function doLogin() {
-    const email = prompt("Email HOVE Executive :");
-    const password = prompt("Mot de passe :");
+    const email = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('pin-in').value;
     
-    if (!email || !password) return;
+    if (!email || !password) {
+        document.getElementById('login-error').textContent = 'Email et mot de passe requis.';
+        return;
+    }
+    document.getElementById('login-error').textContent = '';
 
     try {
         // 1. Connexion Authentification
