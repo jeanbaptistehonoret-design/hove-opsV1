@@ -15,64 +15,93 @@
    HOVE OPS — Global Styles
    ═══════════════════════════════════════════ */
 :root {
-  --navy: #1E3A8A;
-  --navy-dark: #112254;
-  --navy-light: #EFF4FF;
-  --mid: #3B5BA9;
+  /* ── DARK THEME ── */
+  --navy: #C9A84C;
+  --navy-dark: #a8873a;
+  --navy-light: #1a1a1a;
+  --mid: #C9A84C;
   --gold: #C9A84C;
-  --gold-light: #FDF6E3;
-  --g: #059669;
-  --g-light: #D1FAE5;
-  --r: #DC2626;
-  --r-light: #FEE2E2;
-  --a: #D97706;
-  --a-light: #FEF3C7;
-  --text: #0F172A;
-  --text2: #475569;
-  --text3: #94A3B8;
-  --border: #E2E8F0;
-  --surface: #F8FAFC;
-  --white: #FFFFFF;
+  --gold-light: #1f1c14;
+  --g: #22c55e;
+  --g-light: #0d2818;
+  --r: #ef4444;
+  --r-light: #2a0f0f;
+  --a: #f59e0b;
+  --a-light: #1f1800;
+  --text: #f1f5f9;
+  --text2: #94a3b8;
+  --text3: #475569;
+  --border: #1e1e1e;
+  --surface: #0d0d0d;
+  --white: #111111;
+  --topbar: #0a0a0a;
+  --card-bg: #161616;
   --radius: 12px;
   --radius-sm: 8px;
-  --shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
-  --shadow-md: 0 4px 12px rgba(0,0,0,.1);
-  --shadow-lg: 0 20px 40px rgba(0,0,0,.15);
+  --shadow: 0 1px 3px rgba(0,0,0,.4), 0 1px 2px rgba(0,0,0,.3);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.5);
+  --shadow-lg: 0 20px 40px rgba(0,0,0,.6);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 html, body { height: 100%; font-family: 'DM Sans', sans-serif; background: var(--surface); color: var(--text); }
 input, select, textarea, button { font-family: inherit; }
 
-/* ── APP SHELL ── */
-#app { max-width: 430px; margin: 0 auto; height: 100vh; display: flex; flex-direction: column; background: var(--white); position: relative; overflow: hidden; box-shadow: var(--shadow-lg); }
+/* ── APP SHELL — RESPONSIVE ── */
+#app {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Tablette */
+@media (min-width: 768px) {
+  body { background: #050505; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+  #app { max-width: 540px; height: 95vh; border-radius: 20px; }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  #app { max-width: 430px; height: 92vh; border-radius: 24px; }
+  .scroll { scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+  .scroll::-webkit-scrollbar { display: block; width: 4px; }
+  .scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  .modal { max-width: 480px; border-radius: 16px 16px 0 0; }
+}
 .screen { display: none; flex-direction: column; flex: 1; overflow: hidden; }
 .screen.active { display: flex; }
 .scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
 .scroll::-webkit-scrollbar { display: none; }
 
 /* ── TOPBAR ── */
-.topbar { background: var(--navy); padding: 14px 18px 12px; color: #fff; flex-shrink: 0; position: relative; }
-.topbar::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: rgba(255,255,255,.1); }
-.tb-eyebrow { font-size: 10px; font-weight: 500; opacity: .45; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 3px; font-family: 'DM Mono', monospace; display: flex; align-items: center; gap: 5px; }
+.topbar { background: var(--topbar); border-bottom: 1px solid var(--border); padding: 14px 18px 12px; color: #fff; flex-shrink: 0; position: relative; }
+.topbar::after { display: none; }
+.tb-eyebrow { font-size: 10px; font-weight: 500; opacity: .4; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 3px; font-family: 'DM Mono', monospace; display: flex; align-items: center; gap: 5px; }
 .hove-mark { width: 11px; height: 11px; flex-shrink: 0; }
 .tb-row { display: flex; align-items: center; justify-content: space-between; }
-.tb-title { font-size: 18px; font-weight: 600; letter-spacing: -.02em; }
-.tb-action { background: rgba(255,255,255,.15); border: none; color: #fff; border-radius: 8px; padding: 5px 12px; font-size: 12px; font-weight: 500; cursor: pointer; font-family: inherit; transition: background .15s; }
-.tb-action:hover { background: rgba(255,255,255,.22); }
-.tb-icon-btn { background: none; border: none; cursor: pointer; padding: 4px; color: rgba(255,255,255,.7); display: flex; align-items: center; }
+.tb-title { font-size: 18px; font-weight: 600; letter-spacing: -.02em; color: #fff; }
+.tb-action { background: rgba(201,168,76,.15); border: 1px solid rgba(201,168,76,.3); color: var(--gold); border-radius: 8px; padding: 5px 12px; font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit; transition: all .15s; }
+.tb-action:hover { background: rgba(201,168,76,.25); }
+.tb-icon-btn { background: none; border: none; cursor: pointer; padding: 4px; color: rgba(255,255,255,.5); display: flex; align-items: center; }
 
 /* ── BOTTOM NAV ── */
-.bnav { display: flex; background: var(--white); border-top: 1px solid var(--border); padding: 6px 0 16px; flex-shrink: 0; }
+.bnav { display: flex; background: var(--topbar); border-top: 1px solid var(--border); padding: 6px 0 16px; flex-shrink: 0; }
 .ni { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; padding: 4px 0; border: none; background: none; position: relative; }
 .ni svg { width: 20px; height: 20px; stroke: var(--text3); fill: none; stroke-width: 1.5; transition: stroke .15s; }
 .ni span { font-size: 9px; color: var(--text3); font-weight: 500; letter-spacing: .02em; transition: color .15s; }
-.ni.on svg { stroke: var(--navy); }
-.ni.on span { color: var(--navy); }
-.ni .nbadge { position: absolute; top: 2px; right: calc(50% - 14px); width: 16px; height: 16px; background: var(--r); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 600; color: #fff; border: 2px solid var(--white); }
+.ni.on svg { stroke: var(--gold); }
+.ni.on span { color: var(--gold); }
+.ni .nbadge { position: absolute; top: 2px; right: calc(50% - 14px); width: 16px; height: 16px; background: var(--r); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 600; color: #fff; border: 2px solid var(--topbar); }
 
 /* ── CARDS ── */
-.card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; margin-bottom: 10px; box-shadow: var(--shadow); transition: box-shadow .15s; }
-.card:hover { box-shadow: var(--shadow-md); }
+.card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; margin-bottom: 10px; box-shadow: var(--shadow); transition: box-shadow .15s, border-color .15s; }
+.card:hover { box-shadow: var(--shadow-md); border-color: #2a2a2a; }
 .card-r { display: flex; justify-content: space-between; align-items: center; }
 .ct { font-size: 14px; font-weight: 600; color: var(--text); }
 .cs { font-size: 11px; color: var(--text2); margin-top: 2px; }
@@ -82,13 +111,13 @@ input, select, textarea, button { font-family: inherit; }
 /* ── BUTTONS ── */
 .btn { padding: 10px 18px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: all .15s; font-family: inherit; letter-spacing: .01em; }
 .btn:active { transform: scale(.97); }
-.btn-p { background: var(--navy); color: #fff; }
+.btn-p { background: var(--gold); color: #000; }
 .btn-p:hover { background: var(--navy-dark); }
-.btn-o { background: transparent; border: 1px solid var(--border); color: var(--text); }
-.btn-o:hover { background: var(--surface); }
-.btn-g { background: var(--g); color: #fff; }
+.btn-o { background: transparent; border: 1px solid var(--border); color: var(--text2); }
+.btn-o:hover { background: var(--surface); color: var(--text); }
+.btn-g { background: var(--g); color: #000; }
 .btn-r { background: var(--r); color: #fff; }
-.btn-gold { background: var(--gold); color: #fff; }
+.btn-gold { background: var(--gold); color: #000; }
 .btn-sm { padding: 5px 12px; font-size: 11px; }
 .btn-full { width: 100%; padding: 13px; font-size: 14px; }
 
@@ -97,8 +126,8 @@ input, select, textarea, button { font-family: inherit; }
 .badge-g { background: var(--g-light); color: var(--g); }
 .badge-r { background: var(--r-light); color: var(--r); }
 .badge-a { background: var(--a-light); color: var(--a); }
-.badge-b { background: var(--navy-light); color: var(--navy); }
-.badge-gold { background: var(--gold-light); color: var(--gold); }
+.badge-b { background: rgba(201,168,76,.12); color: var(--gold); }
+.badge-gold { background: rgba(201,168,76,.15); color: var(--gold); border: 1px solid rgba(201,168,76,.3); }
 
 /* ── STATUS PILLS ── */
 .status-ok { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 500; color: var(--g); }
@@ -109,21 +138,22 @@ input, select, textarea, button { font-family: inherit; }
 
 /* ── ALERTS ── */
 .alert { border-radius: var(--radius-sm); padding: 10px 13px; font-size: 12px; font-weight: 500; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; }
-.alert-info { background: var(--navy-light); color: var(--navy); border-left: 3px solid var(--navy); }
+.alert-info { background: rgba(201,168,76,.08); color: var(--gold); border-left: 3px solid var(--gold); }
 .alert-warn { background: var(--a-light); color: var(--a); border-left: 3px solid var(--a); }
 .alert-danger { background: var(--r-light); color: var(--r); border-left: 3px solid var(--r); }
 .alert-success { background: var(--g-light); color: var(--g); border-left: 3px solid var(--g); }
 
 /* ── FORMS ── */
 .ig { margin-bottom: 12px; }
-.ig label { font-size: 11px; font-weight: 600; color: var(--text2); display: block; margin-bottom: 5px; letter-spacing: .02em; }
-.ig input, .ig select, .ig textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 13px; color: var(--text); background: var(--white); transition: border .15s; outline: none; }
-.ig input:focus, .ig select:focus, .ig textarea:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(30,58,138,.1); }
+.ig label { font-size: 11px; font-weight: 600; color: var(--text2); display: block; margin-bottom: 5px; letter-spacing: .02em; text-transform: uppercase; }
+.ig input, .ig select, .ig textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 13px; color: var(--text); background: var(--surface); transition: border .15s; outline: none; }
+.ig input:focus, .ig select:focus, .ig textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,.1); }
 .ig textarea { min-height: 80px; resize: vertical; }
+.ig select option { background: #1a1a1a; color: var(--text); }
 
 /* ── METRICS ── */
 .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
-.mc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; }
+.mc { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; }
 .ml { font-size: 10px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
 .mv { font-size: 22px; font-weight: 600; color: var(--text); letter-spacing: -.02em; }
 .mv-g { color: var(--g); } .mv-r { color: var(--r); } .mv-a { color: var(--a); }
@@ -134,8 +164,8 @@ input, select, textarea, button { font-family: inherit; }
 
 /* ── TABS ── */
 .tab-row { display: flex; gap: 4px; margin-bottom: 14px; background: var(--surface); padding: 4px; border-radius: 10px; border: 1px solid var(--border); }
-.tab { flex: 1; padding: 7px 4px; border-radius: 8px; font-size: 12px; font-weight: 500; border: none; cursor: pointer; color: var(--text2); background: transparent; transition: all .15s; text-align: center; }
-.tab.on { background: var(--white); color: var(--navy); box-shadow: var(--shadow); font-weight: 600; }
+.tab { flex: 1; padding: 7px 4px; border-radius: 8px; font-size: 12px; font-weight: 500; border: none; cursor: pointer; color: var(--text3); background: transparent; transition: all .15s; text-align: center; }
+.tab.on { background: var(--card-bg); color: var(--gold); box-shadow: var(--shadow); font-weight: 600; }
 
 /* ── TOGGLES ── */
 .tgl-row { display: flex; justify-content: space-between; align-items: center; padding: 11px 0; border-bottom: 1px solid var(--border); }
@@ -143,8 +173,8 @@ input, select, textarea, button { font-family: inherit; }
 .tgl-label { font-size: 13px; color: var(--text); }
 .tgl-sub { font-size: 11px; color: var(--text3); margin-top: 1px; }
 .tgl { width: 38px; height: 22px; border-radius: 11px; background: var(--border); position: relative; cursor: pointer; transition: background .2s; flex-shrink: 0; }
-.tgl.on { background: var(--navy); }
-.tgl::after { content: ''; width: 16px; height: 16px; border-radius: 50%; background: #fff; position: absolute; top: 3px; left: 3px; transition: transform .2s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+.tgl.on { background: var(--gold); }
+.tgl::after { content: ''; width: 16px; height: 16px; border-radius: 50%; background: #fff; position: absolute; top: 3px; left: 3px; transition: transform .2s; box-shadow: 0 1px 3px rgba(0,0,0,.4); }
 .tgl.on::after { transform: translateX(16px); }
 
 /* ── CHECKLIST ── */
@@ -152,42 +182,42 @@ input, select, textarea, button { font-family: inherit; }
 .ci:last-child { border-bottom: none; }
 .ci:active { background: var(--surface); }
 .cbox { width: 20px; height: 20px; border-radius: 6px; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .15s; }
-.cbox.on { background: var(--navy); border-color: var(--navy); }
-.cbox.on::after { content: ''; width: 10px; height: 6px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(-45deg) translate(1px,-1px); display: block; }
+.cbox.on { background: var(--gold); border-color: var(--gold); }
+.cbox.on::after { content: ''; width: 10px; height: 6px; border-left: 2px solid #000; border-bottom: 2px solid #000; transform: rotate(-45deg) translate(1px,-1px); display: block; }
 .ci-text { font-size: 13px; color: var(--text); flex: 1; }
 .ci-text.done { color: var(--text3); text-decoration: line-through; }
 
 /* ══════════════════════════════════════════
    LOGIN SCREEN
    ══════════════════════════════════════════ */
-#s-login { background: var(--navy); justify-content: center; align-items: center; }
+#s-login { background: #000; justify-content: center; align-items: center; }
 .login-wrap { width: 100%; padding: 32px 28px; display: flex; flex-direction: column; align-items: center; }
-.login-logo { width: 72px; height: 72px; border-radius: 22px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
-.login-logo svg { width: 34px; height: 34px; stroke: #fff; fill: none; stroke-width: 1.5; }
+.login-logo { width: 72px; height: 72px; border-radius: 22px; background: rgba(201,168,76,.08); border: 1px solid rgba(201,168,76,.2); display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
+.login-logo svg { width: 34px; height: 34px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
 .login-title { font-size: 27px; font-weight: 600; color: #fff; letter-spacing: -.03em; margin-bottom: 4px; }
-.login-sub { font-size: 11px; color: rgba(255,255,255,.35); margin-bottom: 36px; font-family: 'DM Mono', monospace; letter-spacing: .08em; text-transform: uppercase; }
-.pin-input { width: 100%; padding: 13px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.07); color: #fff; font-size: 14px; outline: none; font-family: inherit; margin-bottom: 10px; transition: border .15s; }
-.pin-input:focus { border-color: rgba(255,255,255,.3); background: rgba(255,255,255,.1); }
-.pin-input::placeholder { color: rgba(255,255,255,.3); }
-.login-btn { width: 100%; padding: 14px; border-radius: 12px; background: #fff; color: var(--navy); font-size: 14px; font-weight: 700; border: none; cursor: pointer; margin-top: 4px; font-family: inherit; letter-spacing: -.01em; transition: opacity .15s; }
+.login-sub { font-size: 11px; color: rgba(255,255,255,.25); margin-bottom: 36px; font-family: 'DM Mono', monospace; letter-spacing: .08em; text-transform: uppercase; }
+.pin-input { width: 100%; padding: 13px 16px; border-radius: 12px; border: 1px solid rgba(201,168,76,.15); background: rgba(255,255,255,.04); color: #fff; font-size: 14px; outline: none; font-family: inherit; margin-bottom: 10px; transition: border .15s; }
+.pin-input:focus { border-color: rgba(201,168,76,.4); background: rgba(255,255,255,.06); }
+.pin-input::placeholder { color: rgba(255,255,255,.2); }
+.login-btn { width: 100%; padding: 14px; border-radius: 12px; background: var(--gold); color: #000; font-size: 14px; font-weight: 700; border: none; cursor: pointer; margin-top: 4px; font-family: inherit; letter-spacing: -.01em; transition: opacity .15s; }
 .login-btn:hover { opacity: .9; }
-.login-version { font-size: 10px; color: rgba(255,255,255,.18); margin-top: 28px; font-family: 'DM Mono', monospace; letter-spacing: .08em; }
+.login-version { font-size: 10px; color: rgba(255,255,255,.12); margin-top: 28px; font-family: 'DM Mono', monospace; letter-spacing: .08em; }
 #login-error { color: #fca5a5; font-size: 12px; text-align: center; margin-top: 8px; min-height: 16px; }
 
 /* ══════════════════════════════════════════
    HOME SCREEN
    ══════════════════════════════════════════ */
-.crew-banner { background: var(--navy); border-radius: var(--radius); padding: 16px; color: #fff; margin-bottom: 14px; cursor: pointer; }
+.crew-banner { background: linear-gradient(135deg, #1a1508 0%, #0d0d0d 100%); border: 1px solid rgba(201,168,76,.2); border-radius: var(--radius); padding: 16px; color: #fff; margin-bottom: 14px; cursor: pointer; }
 .crew-banner-row { display: flex; align-items: center; gap: 13px; }
-.cb-av { width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,.15); border: 2px solid rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; flex-shrink: 0; }
+.cb-av { width: 50px; height: 50px; border-radius: 50%; background: rgba(201,168,76,.15); border: 2px solid rgba(201,168,76,.3); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; flex-shrink: 0; color: var(--gold); }
 .cb-name { font-size: 16px; font-weight: 600; }
-.cb-role { font-size: 11px; opacity: .55; margin-top: 2px; font-family: 'DM Mono', monospace; }
+.cb-role { font-size: 11px; opacity: .45; margin-top: 2px; font-family: 'DM Mono', monospace; }
 .cb-badges { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 11px; }
-.cb-badge { font-size: 10px; padding: 3px 9px; border-radius: 20px; background: rgba(255,255,255,.1); color: rgba(255,255,255,.8); font-weight: 500; font-family: 'DM Mono', monospace; }
-.cb-badge.warn { background: rgba(239,68,68,.2); color: #fca5a5; }
+.cb-badge { font-size: 10px; padding: 3px 9px; border-radius: 20px; background: rgba(201,168,76,.1); color: rgba(201,168,76,.7); font-weight: 500; font-family: 'DM Mono', monospace; border: 1px solid rgba(201,168,76,.15); }
+.cb-badge.warn { background: rgba(239,68,68,.15); color: #fca5a5; border-color: rgba(239,68,68,.2); }
 .home-quick { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
-.hq-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 13px; cursor: pointer; transition: all .15s; }
-.hq-card:hover { border-color: var(--navy); box-shadow: var(--shadow-md); }
+.hq-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 13px; cursor: pointer; transition: all .15s; }
+.hq-card:hover { border-color: rgba(201,168,76,.3); box-shadow: var(--shadow-md); }
 .hq-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; }
 .hq-icon svg { width: 16px; height: 16px; stroke-width: 1.8; }
 .hq-title { font-size: 13px; font-weight: 600; color: var(--text); }
@@ -199,42 +229,42 @@ input, select, textarea, button { font-family: inherit; }
 .badge-scene { perspective: 900px; margin: 0 auto 16px; width: 290px; height: 178px; cursor: pointer; }
 .badge-inner { width: 100%; height: 100%; transition: transform .65s cubic-bezier(.4,0,.2,1); transform-style: preserve-3d; position: relative; }
 .badge-scene.flipped .badge-inner { transform: rotateY(180deg); }
-.badge-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,.18); }
-.badge-front { background: #f8fafc; border: 1px solid #dde5f5; }
-.badge-back { background: #f8fafc; border: 1px solid #dde5f5; transform: rotateY(180deg); }
-.bf-header { background: var(--navy); padding: 8px 12px; display: flex; align-items: center; justify-content: space-between; }
-.bf-logo { font-size: 12px; font-weight: 700; color: #fff; letter-spacing: .06em; }
+.badge-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,.5); }
+.badge-front { background: #0d0d0d; border: 1px solid rgba(201,168,76,.2); }
+.badge-back { background: #0d0d0d; border: 1px solid rgba(201,168,76,.2); transform: rotateY(180deg); }
+.bf-header { background: linear-gradient(135deg,#1a1508,#0d0b04); padding: 8px 12px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(201,168,76,.15); }
+.bf-logo { font-size: 12px; font-weight: 700; color: var(--gold); letter-spacing: .06em; }
 .bf-arrow { display: flex; align-items: center; gap: 4px; }
-.bf-arrow span { width: 20px; height: 1.5px; background: rgba(255,255,255,.4); }
-.bf-arrow svg { width: 14px; height: 14px; stroke: rgba(255,255,255,.4); fill: none; stroke-width: 2; }
+.bf-arrow span { width: 20px; height: 1.5px; background: rgba(201,168,76,.3); }
+.bf-arrow svg { width: 14px; height: 14px; stroke: rgba(201,168,76,.3); fill: none; stroke-width: 2; }
 .bf-body { display: flex; gap: 12px; padding: 11px 12px; }
-.bf-photo { width: 58px; height: 72px; border-radius: 7px; background: #e8edf7; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; color: var(--navy); flex-shrink: 0; border: 1.5px solid #c5d0e8; overflow: hidden; font-family: 'DM Mono', monospace; }
+.bf-photo { width: 58px; height: 72px; border-radius: 7px; background: #1a1a1a; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; color: var(--gold); flex-shrink: 0; border: 1.5px solid rgba(201,168,76,.2); overflow: hidden; font-family: 'DM Mono', monospace; }
 .bf-photo img { width: 100%; height: 100%; object-fit: cover; }
 .bf-info { flex: 1; }
-.bf-serial { font-size: 8.5px; color: #9ca3af; font-family: 'DM Mono', monospace; letter-spacing: .04em; }
-.bf-name { font-size: 14px; font-weight: 700; color: #0f172a; line-height: 1.15; margin: 4px 0 3px; }
-.bf-role { font-size: 10px; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: .08em; }
-.bf-lic { font-size: 9px; color: #6b7280; margin-top: 4px; font-family: 'DM Mono', monospace; }
-.bf-footer { background: var(--navy); padding: 6px 12px; display: flex; justify-content: space-between; align-items: center; }
-.bf-footer-l { font-size: 10px; font-weight: 700; color: #fff; letter-spacing: .08em; }
-.bf-footer-r { font-size: 9px; color: rgba(255,255,255,.5); }
+.bf-serial { font-size: 8.5px; color: var(--text3); font-family: 'DM Mono', monospace; letter-spacing: .04em; }
+.bf-name { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.15; margin: 4px 0 3px; }
+.bf-role { font-size: 10px; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: .08em; }
+.bf-lic { font-size: 9px; color: var(--text3); margin-top: 4px; font-family: 'DM Mono', monospace; }
+.bf-footer { background: rgba(201,168,76,.06); border-top: 1px solid rgba(201,168,76,.1); padding: 6px 12px; display: flex; justify-content: space-between; align-items: center; }
+.bf-footer-l { font-size: 10px; font-weight: 700; color: var(--gold); letter-spacing: .08em; }
+.bf-footer-r { font-size: 9px; color: var(--text3); }
 .bf-footer-r span { color: var(--gold); font-weight: 600; }
-.bb-header { background: var(--navy); padding: 7px 12px; display: flex; justify-content: space-between; align-items: center; }
-.bb-serial { font-size: 9px; color: rgba(255,255,255,.55); font-family: 'DM Mono', monospace; }
+.bb-header { background: rgba(201,168,76,.06); border-bottom: 1px solid rgba(201,168,76,.1); padding: 7px 12px; display: flex; justify-content: space-between; align-items: center; }
+.bb-serial { font-size: 9px; color: var(--text3); font-family: 'DM Mono', monospace; }
 .bb-body { padding: 10px 12px; }
-.bb-name { font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 7px; }
+.bb-name { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 7px; }
 .bb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 10px; margin-bottom: 7px; }
-.bb-field-label { font-size: 8px; color: #9ca3af; text-transform: uppercase; letter-spacing: .06em; }
-.bb-field-val { font-size: 11px; font-weight: 600; color: #0f172a; }
-.barcode { height: 26px; background: repeating-linear-gradient(90deg,#0f172a 0,#0f172a 2px,transparent 2px,transparent 4.5px); border-radius: 1px; margin: 5px 0 4px; }
-.bb-disc { font-size: 7.5px; color: #dc2626; font-weight: 600; text-align: center; }
-.bb-prop { font-size: 7.5px; color: #9ca3af; text-align: center; margin-top: 2px; }
-.badge-hint { text-align: center; font-size: 11px; color: var(--text3); margin-bottom: 12px; letter-spacing: .01em; }
+.bb-field-label { font-size: 8px; color: var(--text3); text-transform: uppercase; letter-spacing: .06em; }
+.bb-field-val { font-size: 11px; font-weight: 600; color: var(--text); }
+.barcode { height: 26px; background: repeating-linear-gradient(90deg,rgba(201,168,76,.4) 0,rgba(201,168,76,.4) 2px,transparent 2px,transparent 4.5px); border-radius: 1px; margin: 5px 0 4px; }
+.bb-disc { font-size: 7.5px; color: var(--r); font-weight: 600; text-align: center; }
+.bb-prop { font-size: 7.5px; color: var(--text3); text-align: center; margin-top: 2px; }
+.badge-hint { text-align: center; font-size: 11px; color: var(--text3); margin-bottom: 12px; }
 
 /* ══════════════════════════════════════════
    CLIENT PORTAL
    ══════════════════════════════════════════ */
-.client-hero { background: var(--navy); border-radius: var(--radius); padding: 20px; color: #fff; margin-bottom: 16px; text-align: center; }
+.client-hero { background: linear-gradient(135deg,#1a1508,#0d0d0d); border: 1px solid rgba(201,168,76,.2); border-radius: var(--radius); padding: 20px; color: #fff; margin-bottom: 16px; text-align: center; }
 .ch-greeting { font-size: 11px; opacity: .5; margin-bottom: 4px; letter-spacing: .06em; font-family: 'DM Mono', monospace; text-transform: uppercase; }
 .ch-name { font-size: 22px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 14px; }
 .ch-stats { display: flex; justify-content: center; gap: 24px; }
@@ -259,7 +289,7 @@ input, select, textarea, button { font-family: inherit; }
 .li-name { font-size: 13px; font-weight: 600; color: var(--text); }
 .li-sub { font-size: 11px; color: var(--text2); margin-top: 1px; }
 .li-actions { display: flex; gap: 5px; }
-.icon-btn { width: 30px; height: 30px; border-radius: 7px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid var(--border); background: var(--white); transition: all .15s; }
+.icon-btn { width: 30px; height: 30px; border-radius: 7px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid var(--border); background: var(--card-bg); transition: all .15s; }
 .icon-btn:hover { background: var(--surface); }
 .icon-btn.del:hover { background: var(--r-light); border-color: var(--r); }
 .icon-btn svg { width: 13px; height: 13px; stroke: var(--text2); fill: none; stroke-width: 2; }
@@ -268,23 +298,23 @@ input, select, textarea, button { font-family: inherit; }
 /* ══════════════════════════════════════════
    WEATHER WIDGET
    ══════════════════════════════════════════ */
-.wx-card { background: var(--navy); border-radius: var(--radius); padding: 14px; color: #fff; margin-bottom: 10px; }
-.wx-station { font-size: 16px; font-weight: 700; letter-spacing: .04em; margin-bottom: 2px; }
-.wx-metar { font-size: 10px; font-family: 'DM Mono', monospace; margin: 6px 0; line-height: 1.5; opacity: .6; word-break: break-all; }
+.wx-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; color: var(--text); margin-bottom: 10px; }
+.wx-station { font-size: 16px; font-weight: 700; letter-spacing: .04em; margin-bottom: 2px; color: var(--gold); }
+.wx-metar { font-size: 10px; font-family: 'DM Mono', monospace; margin: 6px 0; line-height: 1.5; opacity: .5; word-break: break-all; }
 .wx-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-top: 10px; }
-.wx-item label { font-size: 9px; opacity: .5; text-transform: uppercase; letter-spacing: .07em; }
+.wx-item label { font-size: 9px; opacity: .4; text-transform: uppercase; letter-spacing: .07em; }
 .wx-item p { font-size: 14px; font-weight: 600; margin-top: 2px; }
 
 /* ══════════════════════════════════════════
    MEL DIGITAL
    ══════════════════════════════════════════ */
-.mel-item { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; margin-bottom: 8px; cursor: pointer; transition: all .15s; }
+.mel-item { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; margin-bottom: 8px; cursor: pointer; transition: all .15s; background: var(--card-bg); }
 .mel-item:hover { border-color: var(--a); box-shadow: var(--shadow); }
 .mel-item.mel-cat-a { border-left: 3px solid var(--r); }
 .mel-item.mel-cat-b { border-left: 3px solid var(--a); }
 .mel-item.mel-cat-c { border-left: 3px solid #f59e0b; }
-.mel-item.mel-cat-d { border-left: 3px solid var(--navy); }
-.mel-item.mel-closed { opacity: .5; }
+.mel-item.mel-cat-d { border-left: 3px solid var(--gold); }
+.mel-item.mel-closed { opacity: .4; }
 .mel-ref { font-size: 10px; font-family: 'DM Mono', monospace; color: var(--text3); margin-bottom: 3px; }
 .mel-title { font-size: 13px; font-weight: 600; color: var(--text); }
 .mel-meta { display: flex; align-items: center; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
@@ -295,8 +325,8 @@ input, select, textarea, button { font-family: inherit; }
 .mel-cat-badge { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; font-family: 'DM Mono', monospace; }
 .mel-cat-A { background: var(--r-light); color: var(--r); }
 .mel-cat-B { background: var(--a-light); color: var(--a); }
-.mel-cat-C { background: #fef3c7; color: #92400e; }
-.mel-cat-D { background: var(--navy-light); color: var(--navy); }
+.mel-cat-C { background: #1a1200; color: #f59e0b; }
+.mel-cat-D { background: rgba(201,168,76,.1); color: var(--gold); }
 .mel-detail { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); display: none; }
 .mel-detail.open { display: block; }
 .mel-detail-row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px; }
@@ -306,9 +336,9 @@ input, select, textarea, button { font-family: inherit; }
 /* ══════════════════════════════════════════
    MODAL
    ══════════════════════════════════════════ */
-.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 100; display: none; align-items: flex-end; justify-content: center; }
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.7); z-index: 100; display: none; align-items: flex-end; justify-content: center; backdrop-filter: blur(4px); }
 .modal-overlay.open { display: flex; }
-.modal { background: var(--white); border-radius: 20px 20px 0 0; padding: 20px 20px 32px; width: 100%; max-width: 430px; max-height: 85vh; overflow-y: auto; animation: slideUp .25s ease; }
+.modal { background: #111; border: 1px solid var(--border); border-radius: 20px 20px 0 0; padding: 20px 20px 32px; width: 100%; max-width: 480px; max-height: 88vh; overflow-y: auto; animation: slideUp .25s ease; }
 .modal-handle { width: 36px; height: 4px; background: var(--border); border-radius: 2px; margin: 0 auto 16px; }
 .modal-title { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; letter-spacing: -.02em; }
 @keyframes slideUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
@@ -317,10 +347,10 @@ input, select, textarea, button { font-family: inherit; }
    TOAST
    ══════════════════════════════════════════ */
 .toast-container { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 200; display: flex; flex-direction: column; gap: 8px; pointer-events: none; max-width: 390px; width: 90%; }
-.toast { background: var(--text); color: #fff; padding: 11px 16px; border-radius: 10px; font-size: 13px; font-weight: 500; box-shadow: var(--shadow-lg); animation: toastIn .2s ease; text-align: center; }
-.toast.success { background: var(--g); }
-.toast.error { background: var(--r); }
-.toast.warning { background: var(--a); }
+.toast { background: #1a1a1a; border: 1px solid var(--border); color: #fff; padding: 11px 16px; border-radius: 10px; font-size: 13px; font-weight: 500; box-shadow: var(--shadow-lg); animation: toastIn .2s ease; text-align: center; }
+.toast.success { background: var(--g-light); border-color: var(--g); color: var(--g); }
+.toast.error { background: var(--r-light); border-color: var(--r); color: var(--r); }
+.toast.warning { background: var(--a-light); border-color: var(--a); color: var(--a); }
 @keyframes toastIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
 /* ══════════════════════════════════════════
@@ -334,43 +364,63 @@ input, select, textarea, button { font-family: inherit; }
 .empty-state { text-align: center; padding: 32px 20px; color: var(--text3); }
 .empty-state svg { width: 40px; height: 40px; stroke: var(--border); fill: none; stroke-width: 1.5; margin: 0 auto 10px; display: block; }
 .empty-state p { font-size: 13px; }
-.spinner { width: 24px; height: 24px; border: 2.5px solid var(--border); border-top-color: var(--navy); border-radius: 50%; animation: spin .7s linear infinite; margin: 20px auto; }
+.spinner { width: 24px; height: 24px; border: 2.5px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin .7s linear infinite; margin: 20px auto; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .loading-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; gap: 12px; }
 .loading-screen p { font-size: 13px; color: var(--text3); font-family: 'DM Mono', monospace; }
-.type-flight { background: var(--navy-light); color: var(--navy); }
+.type-flight { background: rgba(201,168,76,.1); color: var(--gold); border: 1px solid rgba(201,168,76,.2); }
 .type-sim { background: var(--g-light); color: var(--g); }
 .type-ferry { background: var(--a-light); color: var(--a); }
-.type-training { background: #f3e8ff; color: #7c3aed; }
+.type-training { background: rgba(124,58,237,.15); color: #a78bfa; }
 
 /* ── HOVE LOGO ── */
 .hove-logo-img { height: 28px; object-fit: contain; }
-.hove-logo-topbar { height: 22px; object-fit: contain; opacity: .9; }
-.login-logo-img { width: 90px; height: 90px; object-fit: contain; border-radius: 18px; margin-bottom: 18px; }
+.hove-logo-topbar { height: 26px; object-fit: contain; opacity: .95; }
+.login-logo-img { width: 110px; height: 110px; object-fit: contain; border-radius: 22px; margin-bottom: 22px; }
 
 /* ── CALENDAR ── */
-.cal-wrap { margin-bottom: 14px; }
+.cal-wrap { margin-bottom: 14px; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px; }
 .cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-.cal-month { font-size: 15px; font-weight: 700; color: var(--text); letter-spacing: -.01em; }
-.cal-nav { background: none; border: 1px solid var(--border); border-radius: 8px; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text2); font-size: 14px; transition: background .15s; }
-.cal-nav:hover { background: var(--surface); }
+.cal-month { font-size: 15px; font-weight: 700; color: var(--gold); letter-spacing: -.01em; }
+.cal-nav { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text2); font-size: 14px; transition: all .15s; }
+.cal-nav:hover { border-color: var(--gold); color: var(--gold); }
 .cal-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; }
 .cal-dow { font-size: 9px; font-weight: 600; color: var(--text3); text-align: center; padding: 4px 0; text-transform: uppercase; letter-spacing: .05em; }
-.cal-day { aspect-ratio: 1; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: var(--text2); cursor: pointer; position: relative; transition: background .1s; gap: 2px; }
-.cal-day:hover { background: var(--surface); }
-.cal-day.today { background: var(--navy); color: #fff; font-weight: 700; }
-.cal-day.has-mission::after { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); position: absolute; bottom: 3px; }
-.cal-day.today.has-mission::after { background: rgba(255,255,255,.8); }
-.cal-day.has-sim::after { background: var(--g); }
-.cal-day.other-month { color: var(--border); }
-.cal-day.selected { background: var(--navy-light); color: var(--navy); font-weight: 700; border: 1.5px solid var(--navy); }
-.cal-day.today.selected { background: var(--navy); color: #fff; }
-.cal-legend { display: flex; gap: 12px; margin: 6px 0 12px; }
+.cal-day { aspect-ratio: 1; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: var(--text2); cursor: pointer; position: relative; transition: all .15s; gap: 2px; min-height: 34px; }
+.cal-day:hover { background: rgba(201,168,76,.08); color: var(--text); }
+.cal-day.today { background: var(--gold); color: #000; font-weight: 700; border-radius: 50%; }
+.cal-day.other-month { color: #2a2a2a; }
+.cal-day.selected { background: rgba(201,168,76,.15); color: var(--gold); font-weight: 700; border: 1.5px solid rgba(201,168,76,.4); }
+.cal-day.today.selected { background: var(--gold); color: #000; border: none; }
+/* ── PASTILLES AMÉLIORÉES ── */
+.cal-dots { display: flex; gap: 2px; justify-content: center; position: absolute; bottom: 3px; }
+.cal-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.cal-dot-mission { background: #60a5fa; }
+.cal-dot-sim { background: var(--g); }
+.cal-dot-both { background: var(--gold); }
+.cal-legend { display: flex; gap: 12px; margin: 8px 0 0; }
 .cal-leg-item { display: flex; align-items: center; gap: 4px; font-size: 10px; color: var(--text3); }
 .cal-leg-dot { width: 7px; height: 7px; border-radius: 50%; }
 
 /* ── SIM SESSION CARD ── */
 .sim-session-card { border-left: 3px solid var(--g); }
+
+/* ── FORMS OPÉRATIONNELS ── */
+.form-section { margin-bottom: 18px; }
+.form-section-title { font-size: 11px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid rgba(201,168,76,.2); display: flex; align-items: center; gap: 6px; }
+.form-check-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.form-check-row:last-child { border-bottom: none; }
+.form-check-row label { flex: 1; font-size: 13px; color: var(--text); }
+.form-radio-group { display: flex; gap: 8px; flex-wrap: wrap; }
+.form-radio { flex: 1; min-width: 80px; padding: 8px 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); text-align: center; cursor: pointer; font-size: 12px; font-weight: 600; color: var(--text2); transition: all .15s; }
+.form-radio.selected { border-color: var(--gold); background: rgba(201,168,76,.1); color: var(--gold); }
+.form-radio.go { border-color: var(--g); background: var(--g-light); color: var(--g); }
+.form-radio.nogo { border-color: var(--r); background: var(--r-light); color: var(--r); }
+.go-nogo-result { padding: 12px; border-radius: var(--radius-sm); text-align: center; font-size: 15px; font-weight: 700; letter-spacing: .05em; margin-top: 8px; }
+.go-nogo-result.go { background: var(--g-light); color: var(--g); border: 1px solid var(--g); }
+.go-nogo-result.nogo { background: var(--r-light); color: var(--r); border: 1px solid var(--r); }
+.scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.scroll::-webkit-scrollbar { display: none; }
 </style>
 </head>
 <body>
@@ -384,7 +434,7 @@ input, select, textarea, button { font-family: inherit; }
   ══════════════════════════════════════════ -->
   <div class="screen active" id="s-login">
     <div class="login-wrap">
-      <img src="https://image2url.com/r2/default/images/1775162871276-e08c72be-4ddc-4046-89db-d70dc9226f8b.png" class="login-logo-img" alt="HOVE Aviation" onerror="this.style.display='none';document.getElementById('login-logo-fallback').style.display='flex'"/>
+      <img src="https://image2url.com/r2/default/images/1775222021136-65ec17d6-3695-4b9c-9b46-287ae4ef70dd.png" class="login-logo-img" alt="HOVE Aviation" onerror="this.style.display='none';document.getElementById('login-logo-fallback').style.display='flex'"/>
       <div class="login-logo" id="login-logo-fallback" style="display:none">
         <svg viewBox="0 0 24 24">
           <polygon points="12 2 2 8 12 14 22 8 12 2"/>
@@ -415,7 +465,7 @@ input, select, textarea, button { font-family: inherit; }
       <div class="tb-row">
         <div class="tb-title" id="h-greeting">Bonjour</div>
         <div style="display:flex;gap:6px;align-items:center">
-          <img src="https://image2url.com/r2/default/images/1775162871276-e08c72be-4ddc-4046-89db-d70dc9226f8b.png" class="hove-logo-topbar" alt="HOVE" onerror="this.style.display='none'"/>
+          <img src="https://image2url.com/r2/default/images/1775222021136-65ec17d6-3695-4b9c-9b46-287ae4ef70dd.png" class="hove-logo-topbar" alt="HOVE" onerror="this.style.display='none'"/>
           <span id="h-role-tag" class="badge badge-gold" style="font-size:9px">—</span>
           <button class="tb-icon-btn" onclick="showNotifs()" title="Notifications">
             <svg width="18" height="18" viewBox="0 0 24 24" stroke="rgba(255,255,255,.7)" fill="none" stroke-width="1.8"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
@@ -495,7 +545,7 @@ input, select, textarea, button { font-family: inherit; }
         <div class="badge-inner">
           <div class="badge-face badge-front">
             <div class="bf-header">
-              <img src="https://image2url.com/r2/default/images/1775162871276-e08c72be-4ddc-4046-89db-d70dc9226f8b.png" style="height:18px;object-fit:contain" alt="HOVE" onerror="this.parentNode.querySelector('.bf-logo').style.display='block';this.style.display='none'"/>
+              <img src="https://image2url.com/r2/default/images/1775222021136-65ec17d6-3695-4b9c-9b46-287ae4ef70dd.png" style="height:18px;object-fit:contain" alt="HOVE" onerror="this.parentNode.querySelector('.bf-logo').style.display='block';this.style.display='none'"/>
               <div class="bf-logo" style="display:none">HOVE AVIATION</div>
               <div class="bf-arrow"><span></span><svg viewBox="0 0 24 24"><polyline points="5 12 19 12"/><polyline points="14 7 19 12 14 17"/></svg></div>
             </div>
@@ -549,7 +599,7 @@ input, select, textarea, button { font-family: inherit; }
     <div class="topbar">
       <div class="tb-eyebrow"><svg class="hove-mark" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="7 1 1 5 7 9 13 5 7 1"/><line x1="1" y1="9" x2="7" y2="13"/><line x1="13" y1="9" x2="7" y2="13"/></svg>Planning opérationnel</div>
       <div class="tb-row">
-        <img src="https://image2url.com/r2/default/images/1775162871276-e08c72be-4ddc-4046-89db-d70dc9226f8b.png" class="hove-logo-topbar" alt="HOVE" onerror="this.style.display='none'"/>
+        <img src="https://image2url.com/r2/default/images/1775222021136-65ec17d6-3695-4b9c-9b46-287ae4ef70dd.png" class="hove-logo-topbar" alt="HOVE" onerror="this.style.display='none'"/>
         <div class="tb-title">Planning</div>
         <div style="display:flex;gap:5px">
           <button class="tb-action" id="planning-sim-btn" style="display:none;background:rgba(5,150,105,.25);color:#fff" onclick="openModal('modal-sim-session')">+ Simu</button>
@@ -657,9 +707,42 @@ input, select, textarea, button { font-family: inherit; }
       <div class="sec" id="admin-section-label" style="display:none">Administration</div>
       <div class="card" id="admin-section-card" style="padding:0;overflow:hidden;display:none">
         <div class="list-item" style="padding:13px 14px;cursor:pointer;border-bottom:none" onclick="goTo('s-admin')">
-          <div class="hq-icon" style="background:var(--gold-light);width:36px;height:36px;border-radius:9px"><svg viewBox="0 0 24 24" stroke="var(--gold)" width="16" height="16"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M20 12h-2M19.07 19.07l-1.41-1.41M12 20v-2M4.93 19.07l1.41-1.41M4 12H2M4.93 4.93l1.41 1.41"/></svg></div>
+          <div class="hq-icon" style="background:rgba(201,168,76,.1);width:36px;height:36px;border-radius:9px"><svg viewBox="0 0 24 24" stroke="var(--gold)" width="16" height="16"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M20 12h-2M19.07 19.07l-1.41-1.41M12 20v-2M4.93 19.07l1.41-1.41M4 12H2M4.93 4.93l1.41 1.41"/></svg></div>
           <div class="li-content"><div class="li-name">Panneau Admin</div><div class="li-sub">Équipage · Clients · Tarifs</div></div>
           <svg width="14" height="14" viewBox="0 0 24 24" stroke="var(--text3)" fill="none" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+      <div class="sec">Formulaires Opérationnels</div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <div class="list-item" style="padding:13px 14px;cursor:pointer" onclick="goTo('s-f01')">
+          <div class="hq-icon" style="background:rgba(201,168,76,.08);width:36px;height:36px;border-radius:9px"><svg viewBox="0 0 24 24" stroke="var(--gold)" width="16" height="16"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div class="li-content"><div class="li-name">HOVE-F01 · Dispatch Sheet</div><div class="li-sub">Fiche de Préparation Vol</div></div>
+          <span class="badge badge-gold" style="font-size:8px">AVANT VOL</span>
+        </div>
+        <div class="list-item" style="padding:13px 14px;cursor:pointer" onclick="goTo('s-f02')">
+          <div class="hq-icon" style="background:rgba(34,197,94,.08);width:36px;height:36px;border-radius:9px"><svg viewBox="0 0 24 24" stroke="var(--g)" width="16" height="16"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <div class="li-content"><div class="li-name">HOVE-F02 · Post-Flight</div><div class="li-sub">Rapport de Vol</div></div>
+          <span class="badge badge-g" style="font-size:8px">APRÈS VOL</span>
+        </div>
+        <div class="list-item" style="padding:13px 14px;cursor:pointer" onclick="goTo('s-f03')">
+          <div class="hq-icon" style="background:rgba(239,68,68,.08);width:36px;height:36px;border-radius:9px"><svg viewBox="0 0 24 24" stroke="var(--r)" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+          <div class="li-content"><div class="li-name">HOVE-F03 · REX</div><div class="li-sub">Fiche Incident / Occurrence</div></div>
+          <span class="badge badge-r" style="font-size:8px">ÉVÉNEMENT</span>
+        </div>
+        <div class="list-item" style="padding:13px 14px;cursor:pointer" onclick="goTo('s-f04')">
+          <div class="hq-icon" style="background:rgba(96,165,250,.08);width:36px;height:36px;border-radius:9px"><svg viewBox="0 0 24 24" stroke="#60a5fa" width="16" height="16"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+          <div class="li-content"><div class="li-name">HOVE-F04 · Fiche Pilote</div><div class="li-sub">Dossier Individuel</div></div>
+          <span class="badge" style="background:rgba(96,165,250,.1);color:#60a5fa;font-size:8px">PILOTE</span>
+        </div>
+        <div class="list-item" style="padding:13px 14px;cursor:pointer" onclick="goTo('s-f05')">
+          <div class="hq-icon" style="background:rgba(245,158,11,.08);width:36px;height:36px;border-radius:9px"><svg viewBox="0 0 24 24" stroke="var(--a)" width="16" height="16"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+          <div class="li-content"><div class="li-name">HOVE-F05 · Dérogation VFR</div><div class="li-sub">IFR Waiver — AM requis</div></div>
+          <span class="badge badge-a" style="font-size:8px">VFR EXCEP.</span>
+        </div>
+        <div class="list-item" style="padding:13px 14px;cursor:pointer;border-bottom:none" onclick="goTo('s-f06')">
+          <div class="hq-icon" style="background:rgba(167,139,250,.08);width:36px;height:36px;border-radius:9px"><svg viewBox="0 0 24 24" stroke="#a78bfa" width="16" height="16"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+          <div class="li-content"><div class="li-name">HOVE-F06 · Weight & Balance</div><div class="li-sub">Masse & Centrage SR22 G7+</div></div>
+          <span class="badge" style="background:rgba(167,139,250,.1);color:#a78bfa;font-size:8px">W&B</span>
         </div>
       </div>
     </div>
@@ -899,7 +982,7 @@ input, select, textarea, button { font-family: inherit; }
     <div class="topbar" style="background:var(--navy)">
       <div class="tb-eyebrow"><svg class="hove-mark" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="7 1 1 5 7 9 13 5 7 1"/><line x1="1" y1="9" x2="7" y2="13"/><line x1="13" y1="9" x2="7" y2="13"/></svg>HOVE AVIATION</div>
       <div class="tb-row">
-        <img src="https://image2url.com/r2/default/images/1775162871276-e08c72be-4ddc-4046-89db-d70dc9226f8b.png" class="hove-logo-topbar" alt="HOVE" onerror="this.style.display='none'"/>
+        <img src="https://image2url.com/r2/default/images/1775222021136-65ec17d6-3695-4b9c-9b46-287ae4ef70dd.png" class="hove-logo-topbar" alt="HOVE" onerror="this.style.display='none'"/>
         <div class="tb-title">Mon Espace</div>
         <button class="tb-action" onclick="doLogout()">⏻</button>
       </div>
@@ -1078,6 +1161,637 @@ input, select, textarea, button { font-family: inherit; }
     </div>
   </div>
 
+  <!-- ══════════════════════════════════════
+       HOVE-F01 — DISPATCH SHEET
+  ══════════════════════════════════════════ -->
+  <div class="screen" id="s-f01">
+    <div class="topbar">
+      <div class="tb-eyebrow">HOVE-F01 · Issue 01 / Rev 00 · NCO.OP.105</div>
+      <div class="tb-row">
+        <div class="tb-title">Dispatch Sheet</div>
+        <button class="tb-icon-btn" onclick="goBack()"><svg width="20" height="20" viewBox="0 0 24 24" stroke="rgba(255,255,255,.6)" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+      </div>
+    </div>
+    <div class="scroll" style="padding:14px">
+      <div class="alert alert-info">Fiche de Préparation Vol — À compléter avant chaque vol · HOVE AVIATION EXECUTIVE</div>
+
+      <div class="form-section">
+        <div class="form-section-title">✈ 1 — Identification Mission</div>
+        <div class="ig"><label>Date</label><input type="date" id="f01-date"/></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="ig"><label>N° Mission</label><input type="text" placeholder="HOVE-2025-001"/></div>
+          <div class="ig"><label>Type</label><select id="f01-type"><option>Vol à la demande</option><option>Liaison</option><option>Convoyage</option><option>Entraînement</option><option>Maintenance</option></select></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="ig"><label>Aéronef</label><input type="text" placeholder="SR22 G7+" value="SR22 G7+"/></div>
+          <div class="ig"><label>PIC</label><input type="text" id="f01-pic" placeholder="Nom PIC"/></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+          <div class="ig"><label>PAX</label><input type="number" min="0" max="3" placeholder="0"/></div>
+          <div class="ig"><label>Bagages (kg)</label><input type="number" placeholder="0"/></div>
+          <div class="ig"><label>Règle de vol</label><select><option>IFR</option><option>VFR*</option></select></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">🗺 2 — Itinéraire & Plan de Vol</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+          <div class="ig"><label>Départ ICAO</label><input type="text" placeholder="LFQT" style="text-transform:uppercase"/></div>
+          <div class="ig"><label>Destination ICAO</label><input type="text" placeholder="LFPB" style="text-transform:uppercase"/></div>
+          <div class="ig"><label>Alternate ICAO</label><input type="text" placeholder="LFQQ" style="text-transform:uppercase"/></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="ig"><label>FL / Altitude croisière</label><input type="text" placeholder="FL080"/></div>
+          <div class="ig"><label>ETE (hh:mm)</label><input type="time" placeholder="01:30"/></div>
+        </div>
+        <div class="ig"><label>Route / FPL</label><textarea placeholder="DCT LFQT DCT RANUX DCT LFPB" style="min-height:50px"></textarea></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="ig"><label>Plan de vol déposé</label><select><option>OUI</option><option>NON</option></select></div>
+          <div class="ig"><label>Heure dépôt</label><input type="time"/></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">☁ 3 — Météorologie</div>
+        <div class="ig"><label>METAR Départ</label><textarea placeholder="LFQT 031000Z 27010KT 9999 FEW030 18/10 Q1015" style="min-height:50px;font-family:'DM Mono',monospace;font-size:11px"></textarea></div>
+        <div class="ig"><label>TAF Départ</label><textarea placeholder="TAF LFQT 031100Z 0312/0412..." style="min-height:50px;font-family:'DM Mono',monospace;font-size:11px"></textarea></div>
+        <div class="ig"><label>METAR Destination</label><textarea placeholder="LFPB 031000Z..." style="min-height:50px;font-family:'DM Mono',monospace;font-size:11px"></textarea></div>
+        <div class="ig"><label>TAF Destination</label><textarea placeholder="TAF LFPB..." style="min-height:50px;font-family:'DM Mono',monospace;font-size:11px"></textarea></div>
+        <div class="ig"><label>SIGMET / GAMET</label><select><option>Aucun</option><option>Voir notes</option></select></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="ig"><label>Givrage prévu</label><select><option>Aucun</option><option>Faible</option><option>Modéré</option><option>Fort</option></select></div>
+          <div class="ig"><label>FIKI prévu</label><select><option>N/A</option><option>OUI</option><option>NON</option></select></div>
+        </div>
+        <div class="ig"><label>Décision météo</label>
+          <div class="form-radio-group" id="f01-meteo-decision">
+            <div class="form-radio" onclick="selectRadio(this,'f01-meteo-decision')">GO</div>
+            <div class="form-radio" onclick="selectRadio(this,'f01-meteo-decision')">GO avec atténuations</div>
+            <div class="form-radio" onclick="selectRadio(this,'f01-meteo-decision')">NO-GO</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">⛽ 4 — Carburant</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="ig"><label>Taxi (5 min)</label><input type="number" placeholder="0"/></div>
+          <div class="ig"><label>Trip fuel (L)</label><input type="number" placeholder="0"/></div>
+          <div class="ig"><label>Contingence 5% (L)</label><input type="number" placeholder="0"/></div>
+          <div class="ig"><label>Alternate fuel (L)</label><input type="number" placeholder="0"/></div>
+          <div class="ig"><label>Réserve finale IFR (L)</label><input type="number" placeholder="0"/></div>
+          <div class="ig"><label>Supplément PIC (L)</label><input type="number" placeholder="0"/></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+          <div class="ig"><label>TOTAL requis (L)</label><input type="number" placeholder="0" style="font-weight:700;color:var(--gold)"/></div>
+          <div class="ig"><label>Réservoir gauche (L)</label><input type="number" placeholder="0"/></div>
+          <div class="ig"><label>Réservoir droit (L)</label><input type="number" placeholder="0"/></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">⚖ 5 — Masse & Centrage</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="ig"><label>Masse décollage (kg)</label><input type="number" placeholder="≤ 1633"/></div>
+          <div class="ig"><label>Conforme</label><select><option>CONFORME</option><option>NON CONFORME</option></select></div>
+          <div class="ig"><label>CG décollage (in)</label><input type="number" step="0.1" placeholder="137.5–141.0"/></div>
+          <div class="ig"><label>F06 joint</label><select><option>OUI — annexé</option><option>NON — calcul intégré</option></select></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">📋 7 — Documents à bord</div>
+        <div class="card" style="padding:10px">
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>CdN + Immatriculation</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>ARC valide</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Licence radio</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Assurance valide</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>AFM/POH à bord</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>MEL vérifiée</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>OM à bord</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Carnet de route</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Licence PIC valide</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Médical PIC valide</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>CAPS armé (pin OFF)</label></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">🚦 8 — Décision GO / NO-GO</div>
+        <div class="ig"><label>Risques identifiés</label><textarea placeholder="Lister les risques identifiés..." style="min-height:60px"></textarea></div>
+        <div class="ig"><label>Atténuations</label><textarea placeholder="Mesures prises pour atténuer les risques..." style="min-height:60px"></textarea></div>
+        <div class="ig"><label>Décision finale</label>
+          <div class="form-radio-group" id="f01-gonogo">
+            <div class="form-radio go" onclick="setGoNoGoForm('go','f01-gonogo')">✈ GO</div>
+            <div class="form-radio" onclick="setGoNoGoForm('cond','f01-gonogo')">GO avec conditions</div>
+            <div class="form-radio nogo" onclick="setGoNoGoForm('nogo','f01-gonogo')">⛔ NO-GO</div>
+          </div>
+        </div>
+        <div class="ig"><label>Signature PIC</label><input type="text" placeholder="Signature / Initiales PIC"/></div>
+        <div class="ig"><label>Heure départ réelle</label><input type="time"/></div>
+        <div class="ig"><label>Entrée LARK</label><select><option>OUI</option><option>NON</option></select></div>
+      </div>
+
+      <div class="flex-row" style="margin-top:8px;margin-bottom:24px">
+        <button class="btn btn-o" onclick="goBack()">Retour</button>
+        <button class="btn btn-p" onclick="saveForm('F01')">Enregistrer & Archiver</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       HOVE-F02 — POST-FLIGHT
+  ══════════════════════════════════════════ -->
+  <div class="screen" id="s-f02">
+    <div class="topbar">
+      <div class="tb-eyebrow">HOVE-F02 · Issue 01 / Rev 00 · NCO.GEN.140</div>
+      <div class="tb-row">
+        <div class="tb-title">Rapport Post-Flight</div>
+        <button class="tb-icon-btn" onclick="goBack()"><svg width="20" height="20" viewBox="0 0 24 24" stroke="rgba(255,255,255,.6)" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+      </div>
+    </div>
+    <div class="scroll" style="padding:14px">
+      <div class="alert alert-success">Rapport de Vol Post-Flight — À compléter après chaque vol</div>
+
+      <div class="form-section">
+        <div class="form-section-title">✈ 1 — Identification</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="ig"><label>Date</label><input type="date"/></div>
+          <div class="ig"><label>N° Mission</label><input type="text" placeholder="HOVE-2025-001"/></div>
+          <div class="ig"><label>Aéronef</label><input type="text" placeholder="SR22 G7+" value="SR22 G7+"/></div>
+          <div class="ig"><label>PIC</label><input type="text" placeholder="Nom PIC"/></div>
+          <div class="ig"><label>Départ ICAO</label><input type="text" placeholder="LFQT" style="text-transform:uppercase"/></div>
+          <div class="ig"><label>Destination ICAO</label><input type="text" placeholder="LFPB" style="text-transform:uppercase"/></div>
+          <div class="ig"><label>Alternate utilisé</label><input type="text" placeholder="—"/></div>
+          <div class="ig"><label>Règle de vol</label><select><option>IFR</option><option>VFR</option></select></div>
+          <div class="ig"><label>Bloc départ (Z)</label><input type="time"/></div>
+          <div class="ig"><label>Bloc arrivée (Z)</label><input type="time"/></div>
+          <div class="ig"><label>Heures de vol (hh:mm)</label><input type="text" placeholder="01:30"/></div>
+          <div class="ig"><label>Heures moteur (hh:mm)</label><input type="text" placeholder="01:35"/></div>
+          <div class="ig"><label>PAX transportés</label><input type="number" min="0" max="3" placeholder="0"/></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">🌤 2 — Déroulement du Vol</div>
+        <div class="ig"><label>Météo réelle</label><select><option>Conforme aux prévisions</option><option>Écarts — voir notes</option></select></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="ig"><label>Givrage rencontré</label><select><option>Aucun</option><option>Léger</option><option>Modéré</option><option>Fort</option></select></div>
+          <div class="ig"><label>FIKI utilisé</label><select><option>NON</option><option>OUI</option></select></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+          <div class="ig"><label>Type approche</label><input type="text" placeholder="ILS / RNAV / VOR"/></div>
+          <div class="ig"><label>RWY</label><input type="text" placeholder="25"/></div>
+          <div class="ig"><label>DA/MDA (ft)</label><input type="number" placeholder="400"/></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="ig"><label>Remise de gaz</label><select><option>Aucune</option><option>OUI — voir raison</option></select></div>
+          <div class="ig"><label>Déroutement</label><select><option>Aucun</option><option>OUI — voir destination</option></select></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+          <div class="ig"><label>Carburant résiduel G (L)</label><input type="number" placeholder="0"/></div>
+          <div class="ig"><label>Carburant résiduel D (L)</label><input type="number" placeholder="0"/></div>
+          <div class="ig"><label>Carburant uplifté (L)</label><input type="number" placeholder="0"/></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">🔧 3 — Anomalies Techniques</div>
+        <div class="ig"><label>Défauts moteur / avionique</label><select><option>Aucun</option><option>OUI — description</option></select></div>
+        <div class="ig"><label>Description anomalie</label><textarea placeholder="Décrire si applicable..." style="min-height:60px"></textarea></div>
+        <div class="ig"><label>Alarmes déclenchées</label><select><option>Aucune</option><option>OUI — description</option></select></div>
+        <div class="ig"><label>Items MEL utilisés</label><select><option>Aucun</option><option>OUI — référence MEL</option></select></div>
+        <div class="ig"><label>Carnet de route complété</label><select><option>OUI</option><option>NON — justification</option></select></div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">⚠ 4 — Événements Sécurité</div>
+        <div class="ig"><label>Occurrence à signaler</label><select id="f02-occurrence"><option>Aucune</option><option>OUI → compléter HOVE-F03</option></select></div>
+        <div class="ig"><label>Infraction espace aérien</label><select><option>Aucune</option><option>OUI → signalement réglementaire</option></select></div>
+        <div class="ig"><label>Commentaires PIC</label><textarea placeholder="Observations, remarques..." style="min-height:80px"></textarea></div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">⏱ 5 — Compteurs</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+          <div class="ig"><label>Airframe TT avant</label><input type="number" step="0.1" placeholder="1247.3"/></div>
+          <div class="ig"><label>Engine TT avant</label><input type="number" step="0.1" placeholder="1247.3"/></div>
+          <div class="ig"></div>
+          <div class="ig"><label>Airframe TT après</label><input type="number" step="0.1" placeholder="1249.1"/></div>
+          <div class="ig"><label>Engine TT après</label><input type="number" step="0.1" placeholder="1249.1"/></div>
+          <div class="ig"></div>
+          <div class="ig"><label>H PIC ce mois</label><input type="number" step="0.1" placeholder="0.0"/></div>
+          <div class="ig"><label>H PIC cette année</label><input type="number" step="0.1" placeholder="0.0"/></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">✍ 6 — Signature</div>
+        <div class="ig"><label>Signature PIC</label><input type="text" placeholder="Initiales / Signature"/></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="ig"><label>Entrée LARK</label><select><option>OUI</option><option>NON</option></select></div>
+          <div class="ig"><label>Transmis au DO</label><select><option>OUI</option><option>NON</option></select></div>
+        </div>
+      </div>
+
+      <div class="flex-row" style="margin-top:8px;margin-bottom:24px">
+        <button class="btn btn-o" onclick="goBack()">Retour</button>
+        <button class="btn btn-g" onclick="saveForm('F02')">Enregistrer Post-Flight</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       HOVE-F03 — REX
+  ══════════════════════════════════════════ -->
+  <div class="screen" id="s-f03">
+    <div class="topbar">
+      <div class="tb-eyebrow">HOVE-F03 · EU Reg. 376/2014 · Culture Juste</div>
+      <div class="tb-row">
+        <div class="tb-title">Fiche REX / Occurrence</div>
+        <button class="tb-icon-btn" onclick="goBack()"><svg width="20" height="20" viewBox="0 0 24 24" stroke="rgba(255,255,255,.6)" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+      </div>
+    </div>
+    <div class="scroll" style="padding:14px">
+      <div class="alert alert-warn">⚖ CULTURE JUSTE — Tout incident involontaire signalé honnêtement est protégé. Aucune sanction pour erreur déclarée de bonne foi.</div>
+
+      <div class="form-section">
+        <div class="form-section-title">📋 1 — Identification</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="ig"><label>Date / heure</label><input type="datetime-local"/></div>
+          <div class="ig"><label>Phase de vol / lieu</label><input type="text" placeholder="Ex: Finale ILS RWY 25"/></div>
+          <div class="ig"><label>Aéronef</label><input type="text" placeholder="SR22 G7+ [F-XXXX]"/></div>
+          <div class="ig"><label>PIC</label><input type="text" placeholder="Nom PIC"/></div>
+          <div class="ig"><label>Déclarant</label><input type="text" placeholder="Nom déclarant"/></div>
+          <div class="ig"><label>Fonction</label><input type="text" placeholder="PIC / Copilote / Technique"/></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">🏷 2 — Classification</div>
+        <div class="card" style="padding:10px">
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Accident</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Incident grave</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Incident</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Anomalie technique</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Écart procédure</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Facteur humain / fatigue</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Météo non prévue</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Pression externe</label></div>
+        </div>
+        <div class="ig" style="margin-top:10px"><label>Déclaration ECCAIRS 2</label><select><option>NON</option><option>OUI → délai 72h</option></select></div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">📝 3 — Description des Faits</div>
+        <div class="ig"><label>Contexte (météo, phase de vol, configuration)</label><textarea placeholder="Conditions météo, phase de vol, configuration avion..." style="min-height:80px"></textarea></div>
+        <div class="ig"><label>Chronologie des faits</label><textarea placeholder="Décrire les faits dans l'ordre chronologique..." style="min-height:100px"></textarea></div>
+        <div class="ig"><label>Conséquences immédiates</label><textarea placeholder="Dommages, blessures, impact sur la mission..." style="min-height:60px"></textarea></div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">🔍 4 — Analyse — Facteurs Contributifs</div>
+        <div class="card" style="padding:10px">
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Facteur humain</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Facteur technique</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Facteur organisationnel</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Facteur environnemental</label></div>
+        </div>
+        <div class="ig" style="margin-top:10px"><label>Analyse du déclarant — Pourquoi ?</label><textarea placeholder="Analyse causale..." style="min-height:80px"></textarea></div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">📊 5 — Évaluation du Risque</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="ig"><label>Probabilité</label>
+            <div class="form-radio-group" id="f03-prob">
+              <div class="form-radio" onclick="selectRadio(this,'f03-prob')">Faible</div>
+              <div class="form-radio" onclick="selectRadio(this,'f03-prob')">Modérée</div>
+              <div class="form-radio" onclick="selectRadio(this,'f03-prob')">Élevée</div>
+            </div>
+          </div>
+          <div class="ig"><label>Gravité</label>
+            <div class="form-radio-group" id="f03-grav">
+              <div class="form-radio" onclick="selectRadio(this,'f03-grav')">Mineure</div>
+              <div class="form-radio" onclick="selectRadio(this,'f03-grav')">Sérieuse</div>
+              <div class="form-radio" onclick="selectRadio(this,'f03-grav')">Critique</div>
+            </div>
+          </div>
+        </div>
+        <div class="ig"><label>Niveau de risque</label>
+          <div class="form-radio-group" id="f03-risk">
+            <div class="form-radio go" onclick="selectRadio(this,'f03-risk')">🟢 VERT — GO</div>
+            <div class="form-radio" style="border-color:var(--a);color:var(--a)" onclick="selectRadio(this,'f03-risk')">🟠 ORANGE</div>
+            <div class="form-radio nogo" onclick="selectRadio(this,'f03-risk')">🔴 ROUGE — NO-GO</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">💡 6 — Propositions d'Amélioration</div>
+        <div class="ig"><label>Suggestions du déclarant</label><textarea placeholder="Actions correctives suggérées, améliorations proposées..." style="min-height:80px"></textarea></div>
+      </div>
+
+      <div class="flex-row" style="margin-top:8px;margin-bottom:24px">
+        <button class="btn btn-o" onclick="goBack()">Retour</button>
+        <button class="btn btn-r" onclick="saveForm('F03')">Soumettre REX</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       HOVE-F04 — FICHE PILOTE
+  ══════════════════════════════════════════ -->
+  <div class="screen" id="s-f04">
+    <div class="topbar">
+      <div class="tb-eyebrow">HOVE-F04 · Part-FCL / OM-D Section 4</div>
+      <div class="tb-row">
+        <div class="tb-title">Fiche Pilote</div>
+        <button class="tb-icon-btn" onclick="goBack()"><svg width="20" height="20" viewBox="0 0 24 24" stroke="rgba(255,255,255,.6)" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+      </div>
+    </div>
+    <div class="scroll" style="padding:14px">
+      <div class="alert alert-info">Dossier Individuel Pilote — Archivage durée d'activité + 3 ans</div>
+
+      <div class="form-section">
+        <div class="form-section-title">👤 1 — Identité</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="ig"><label>Nom</label><input type="text" placeholder="NOM"/></div>
+          <div class="ig"><label>Prénom</label><input type="text" placeholder="Prénom"/></div>
+          <div class="ig"><label>Date de naissance</label><input type="date"/></div>
+          <div class="ig"><label>Nationalité</label><input type="text" placeholder="Française"/></div>
+          <div class="ig"><label>Téléphone</label><input type="tel" placeholder="+33 6..."/></div>
+          <div class="ig"><label>Email</label><input type="email" placeholder="pilot@hove-aviation.fr"/></div>
+        </div>
+        <div class="ig"><label>Adresse</label><textarea placeholder="Adresse complète..." style="min-height:50px"></textarea></div>
+        <div class="ig"><label>Statut HOVE</label><select><option>PIC autorisé</option><option>Safety pilot</option><option>Stagiaire</option></select></div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">📄 2 — Licences & Qualifications</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+          <div class="ig"><label>Type licence</label><select><option>PPL(A)</option><option>CPL(A)</option><option>ATPL(A)</option></select></div>
+          <div class="ig"><label>N° Licence</label><input type="text" placeholder="FR.FCL.2025.XXXXX"/></div>
+          <div class="ig"><label>Expiration</label><input type="date"/></div>
+          <div class="ig"><label>IR(A)</label><input type="text" placeholder="N° référence"/></div>
+          <div class="ig"><label>Expiration IR</label><input type="date"/></div>
+          <div class="ig"><label>SEP</label><input type="text" placeholder="SEP avion"/></div>
+          <div class="ig"><label>Expiration SEP</label><input type="date"/></div>
+          <div class="ig"><label>Médical classe</label><select><option>Classe 1</option><option>Classe 2</option></select></div>
+          <div class="ig"><label>Expiration médical</label><input type="date"/></div>
+          <div class="ig"><label>Niveau anglais OACI</label><select><option>4 — Opérationnel</option><option>5 — Étendu</option><option>6 — Expert</option></select></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">⏱ 3 — Expérience Totale</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="ig"><label>Heures totales (TTIME)</label><input type="number" step="0.1" placeholder="0.0"/></div>
+          <div class="ig"><label>Heures SR22 (type)</label><input type="number" step="0.1" placeholder="0.0"/></div>
+          <div class="ig"><label>Heures IFR</label><input type="number" step="0.1" placeholder="0.0"/></div>
+          <div class="ig"><label>Heures de nuit</label><input type="number" step="0.1" placeholder="0.0"/></div>
+          <div class="ig"><label>Heures CDB</label><input type="number" step="0.1" placeholder="0.0"/></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">✅ 4 — Récence</div>
+        <div class="card" style="padding:10px">
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>3 atterrissages / 90 jours (jour)</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>3 atterrissages nuit / 90 jours</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>3 approches IFR / 90 jours</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Min 10h SR22 / 12 mois</label></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">🎓 5 — Formations HOVE</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+          <div class="ig"><label>Formation initiale SR22</label><input type="date"/></div>
+          <div class="ig"><label>OPC (12 mois)</label><input type="date"/></div>
+          <div class="ig"><label>Prochain OPC</label><input type="date"/></div>
+          <div class="ig"><label>CAPS Training (12 mois)</label><input type="date"/></div>
+          <div class="ig"><label>Formation FIKI (24 mois)</label><input type="date"/></div>
+          <div class="ig"><label>CRM (24 mois)</label><input type="date"/></div>
+          <div class="ig"><label>Relecture OM+SOP (12 mois)</label><input type="date"/></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">🔓 6 — Autorisation HOVE</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="ig"><label>Autorisé SR22 G7+</label><select><option>OUI</option><option>NON</option></select></div>
+          <div class="ig"><label>Autorisé IFR</label><select><option>OUI</option><option>NON</option></select></div>
+        </div>
+        <div class="ig"><label>Restrictions</label><input type="text" placeholder="Aucune / Détail restrictions"/></div>
+        <div class="ig"><label>Signature DO — EICKMAYER Victor</label><input type="text" placeholder="Visa DO"/></div>
+      </div>
+
+      <div class="flex-row" style="margin-top:8px;margin-bottom:24px">
+        <button class="btn btn-o" onclick="goBack()">Retour</button>
+        <button class="btn btn-p" onclick="saveForm('F04')">Enregistrer Dossier</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       HOVE-F05 — DÉROGATION VFR
+  ══════════════════════════════════════════ -->
+  <div class="screen" id="s-f05">
+    <div class="topbar">
+      <div class="tb-eyebrow">HOVE-F05 · NCO.OP.105(c) · AM Requis</div>
+      <div class="tb-row">
+        <div class="tb-title">Dérogation VFR</div>
+        <button class="tb-icon-btn" onclick="goBack()"><svg width="20" height="20" viewBox="0 0 24 24" stroke="rgba(255,255,255,.6)" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+      </div>
+    </div>
+    <div class="scroll" style="padding:14px">
+      <div class="alert alert-warn">⚠ RAPPEL — Politique IFR par défaut HOVE Aviation. Tout vol VFR exceptionnel nécessite une validation expresse de l'Accountable Manager AVANT le départ.</div>
+
+      <div class="form-section">
+        <div class="form-section-title">📋 1 — Identification</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="ig"><label>Date demande</label><input type="date"/></div>
+          <div class="ig"><label>Date vol prévu</label><input type="date"/></div>
+          <div class="ig"><label>Demandeur (PIC)</label><input type="text" placeholder="Nom PIC"/></div>
+          <div class="ig"><label>Aéronef</label><input type="text" placeholder="SR22 G7+ [F-XXXX]"/></div>
+          <div class="ig"><label>Départ ICAO</label><input type="text" placeholder="LFQT" style="text-transform:uppercase"/></div>
+          <div class="ig"><label>Destination ICAO</label><input type="text" placeholder="LFPB" style="text-transform:uppercase"/></div>
+          <div class="ig"><label>ETE</label><input type="text" placeholder="01:30"/></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">📝 2 — Justification VFR</div>
+        <div class="ig"><label>Raison principale</label><textarea placeholder="Pourquoi IFR n'est pas applicable ou approprié..." style="min-height:70px"></textarea></div>
+        <div class="card" style="padding:10px">
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Entraînement VFR spécifique</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Circuit local court</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Conditions CAVOK confirmées</label></div>
+          <div class="form-check-row"><div class="cbox" onclick="toggleCheck(this)"></div><label>Autre — voir justification</label></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">☁ 3 — Conditions Météo Vérifiées</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="ig"><label>Visibilité prévue (km)</label><input type="number" placeholder="≥ 5 km jour / 8 km nuit"/></div>
+          <div class="ig"><label>Plafond prévu (ft)</label><input type="number" placeholder="ft"/></div>
+          <div class="ig"><label>Source METAR</label><input type="text" placeholder="CheckWX / Météo France"/></div>
+          <div class="ig"><label>Source TAF</label><input type="text" placeholder="CheckWX / Météo France"/></div>
+          <div class="ig"><label>Vent (kt)</label><input type="text" placeholder="270/10"/></div>
+          <div class="ig"><label>Vent traversier (kt)</label><input type="number" placeholder="0"/></div>
+        </div>
+        <div class="ig"><label>Minima SERA.5001 respectés</label>
+          <div class="form-radio-group" id="f05-minima">
+            <div class="form-radio go" onclick="selectRadio(this,'f05-minima')">OUI — Vis ≥ 5 km</div>
+            <div class="form-radio nogo" onclick="selectRadio(this,'f05-minima')">NON — Vol interdit</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">⚠ 4 — Évaluation Risques VFR</div>
+        <div class="ig"><label>Risques spécifiques VFR</label><textarea placeholder="Zones trafic, terrain, espaces contrôlés, nuit..." style="min-height:70px"></textarea></div>
+        <div class="ig"><label>Atténuations prévues</label><textarea placeholder="Mesures pour réduire les risques..." style="min-height:60px"></textarea></div>
+        <div class="ig"><label>Niveau de risque</label>
+          <div class="form-radio-group" id="f05-risk">
+            <div class="form-radio go" onclick="selectRadio(this,'f05-risk')">🟢 VERT — Autorisé</div>
+            <div class="form-radio" style="border-color:var(--a);color:var(--a)" onclick="selectRadio(this,'f05-risk')">🟠 ORANGE — Avec conditions</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">✍ 5 — Décision Accountable Manager — HONORET Jean-Baptiste</div>
+        <div class="ig"><label>Décision</label>
+          <div class="form-radio-group" id="f05-decision">
+            <div class="form-radio go" onclick="selectRadio(this,'f05-decision')">✅ DÉROGATION ACCORDÉE</div>
+            <div class="form-radio nogo" onclick="selectRadio(this,'f05-decision')">❌ DÉROGATION REFUSÉE</div>
+          </div>
+        </div>
+        <div class="ig"><label>Conditions imposées</label><textarea placeholder="Conditions spécifiques imposées par l'AM..." style="min-height:60px"></textarea></div>
+        <div class="ig"><label>Signature AM</label><input type="text" placeholder="HONORET Jean-Baptiste"/></div>
+        <div class="ig"><label>Date et heure décision</label><input type="datetime-local"/></div>
+      </div>
+
+      <div class="flex-row" style="margin-top:8px;margin-bottom:24px">
+        <button class="btn btn-o" onclick="goBack()">Retour</button>
+        <button class="btn btn-a" style="background:var(--a);color:#000" onclick="saveForm('F05')">Soumettre Dérogation</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       HOVE-F06 — WEIGHT & BALANCE
+  ══════════════════════════════════════════ -->
+  <div class="screen" id="s-f06">
+    <div class="topbar">
+      <div class="tb-eyebrow">HOVE-F06 · SR22 G7+ AFM Section 6</div>
+      <div class="tb-row">
+        <div class="tb-title">Weight & Balance</div>
+        <button class="tb-icon-btn" onclick="goBack()"><svg width="20" height="20" viewBox="0 0 24 24" stroke="rgba(255,255,255,.6)" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+      </div>
+    </div>
+    <div class="scroll" style="padding:14px">
+      <div class="alert alert-warn">⚠ Formulaire simplifié. L'AFM Section 6 est la référence authoritative. Vérifier CG au décollage ET à l'atterrissage. Archiver 3 mois minimum.</div>
+
+      <div class="form-section">
+        <div class="form-section-title">✈ 1 — Données du Vol</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="ig"><label>Date</label><input type="date" id="f06-date"/></div>
+          <div class="ig"><label>PIC</label><input type="text" id="f06-pic" placeholder="Nom PIC"/></div>
+          <div class="ig"><label>Aéronef</label><input type="text" value="SR22 G7+" readonly style="opacity:.5"/></div>
+          <div class="ig"><label>Mission N°</label><input type="text" placeholder="HOVE-2025-001"/></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">⚖ 2 — Calcul Masse & Centrage — Décollage</div>
+        <div class="alert alert-info" style="font-size:11px">BEW = 1 077 kg · Bras ref. 139.4 in</div>
+        <div style="font-size:11px;color:var(--text3);margin-bottom:8px;font-family:'DM Mono',monospace">MASSE (kg) × BRAS (in) = MOMENT (kg·in)</div>
+
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:6px;margin-bottom:6px">
+          <div style="font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase">Poste</div>
+          <div style="font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase">Masse (kg)</div>
+          <div style="font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase">Moment</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:6px;align-items:center;margin-bottom:6px">
+          <div style="font-size:12px;color:var(--text2)">BEW (bras 139.4 in)</div>
+          <input type="number" value="1077" id="wb-bew" oninput="calcWB()" style="padding:6px 8px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text);font-size:12px"/>
+          <div style="font-size:12px;color:var(--text3);font-family:'DM Mono',monospace" id="wb-mom-bew">—</div>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:6px;align-items:center;margin-bottom:6px">
+          <div style="font-size:12px;color:var(--text2)">PIC siège AV G (bras 143.0)</div>
+          <input type="number" placeholder="85" id="wb-pic" oninput="calcWB()" style="padding:6px 8px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text);font-size:12px"/>
+          <div style="font-size:12px;color:var(--text3);font-family:'DM Mono',monospace" id="wb-mom-pic">—</div>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:6px;align-items:center;margin-bottom:6px">
+          <div style="font-size:12px;color:var(--text2)">PAX siège AV D (bras 143.0)</div>
+          <input type="number" placeholder="0" id="wb-pax1" oninput="calcWB()" style="padding:6px 8px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text);font-size:12px"/>
+          <div style="font-size:12px;color:var(--text3);font-family:'DM Mono',monospace" id="wb-mom-pax1">—</div>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:6px;align-items:center;margin-bottom:6px">
+          <div style="font-size:12px;color:var(--text2)">PAX arrière G (bras 175.0)</div>
+          <input type="number" placeholder="0" id="wb-pax2" oninput="calcWB()" style="padding:6px 8px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text);font-size:12px"/>
+          <div style="font-size:12px;color:var(--text3);font-family:'DM Mono',monospace" id="wb-mom-pax2">—</div>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:6px;align-items:center;margin-bottom:6px">
+          <div style="font-size:12px;color:var(--text2)">PAX arrière D (bras 175.0)</div>
+          <input type="number" placeholder="0" id="wb-pax3" oninput="calcWB()" style="padding:6px 8px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text);font-size:12px"/>
+          <div style="font-size:12px;color:var(--text3);font-family:'DM Mono',monospace" id="wb-mom-pax3">—</div>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:6px;align-items:center;margin-bottom:6px">
+          <div style="font-size:12px;color:var(--text2)">Bagages — max 54 kg (bras 181.0)</div>
+          <input type="number" placeholder="0" max="54" id="wb-bag" oninput="calcWB()" style="padding:6px 8px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text);font-size:12px"/>
+          <div style="font-size:12px;color:var(--text3);font-family:'DM Mono',monospace" id="wb-mom-bag">—</div>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:6px;align-items:center;margin-bottom:6px">
+          <div style="font-size:12px;color:var(--text2)">Carburant embarqué (bras 141.5) kg</div>
+          <input type="number" placeholder="0" max="276" id="wb-fuel" oninput="calcWB()" style="padding:6px 8px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text);font-size:12px"/>
+          <div style="font-size:12px;color:var(--text3);font-family:'DM Mono',monospace" id="wb-mom-fuel">—</div>
+        </div>
+
+        <div style="background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:12px;margin-top:10px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div>
+              <div style="font-size:10px;color:var(--text3);text-transform:uppercase;font-weight:600">Masse décollage</div>
+              <div style="font-size:20px;font-weight:700;color:var(--gold)" id="wb-total-mass">— kg</div>
+              <div style="font-size:10px;color:var(--text3)">Limite : ≤ 1 633 kg</div>
+              <div style="font-size:12px;font-weight:600;margin-top:4px" id="wb-mass-status">—</div>
+            </div>
+            <div>
+              <div style="font-size:10px;color:var(--text3);text-transform:uppercase;font-weight:600">CG décollage</div>
+              <div style="font-size:20px;font-weight:700;color:var(--gold)" id="wb-cg">— in</div>
+              <div style="font-size:10px;color:var(--text3)">Limites : 137.5 – 141.0 in</div>
+              <div style="font-size:12px;font-weight:600;margin-top:4px" id="wb-cg-status">—</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">🛬 3 — Vérification Masse Atterrissage</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="ig"><label>Carburant estimé consommé (kg)</label><input type="number" placeholder="0" id="wb-fuel-consumed" oninput="calcLanding()"/></div>
+          <div class="ig"><label>Masse atterrissage (kg)</label><input type="number" readonly id="wb-ldg-mass" style="background:var(--surface);font-weight:700;color:var(--gold)"/></div>
+        </div>
+        <div style="font-size:12px;margin-top:4px" id="wb-ldg-status"></div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">✅ 5 — Résultat & Signature</div>
+        <div id="wb-result" class="go-nogo-result" style="background:var(--surface);color:var(--text3);border:1px solid var(--border)">Compléter le tableau ci-dessus</div>
+        <div class="ig" style="margin-top:12px"><label>Signature PIC</label><input type="text" placeholder="Initiales / Signature PIC"/></div>
+      </div>
+
+      <div class="flex-row" style="margin-top:8px;margin-bottom:24px">
+        <button class="btn btn-o" onclick="goBack()">Retour</button>
+        <button class="btn btn-p" onclick="saveForm('F06')">Enregistrer W&B</button>
+      </div>
+    </div>
+  </div>
+
 </div><!-- /#app -->
 
   <!-- Sim Session Modal -->
@@ -1085,7 +1799,7 @@ input, select, textarea, button { font-family: inherit; }
     <div class="modal">
       <div class="modal-handle"></div>
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
-        <img src="https://image2url.com/r2/default/images/1775162871276-e08c72be-4ddc-4046-89db-d70dc9226f8b.png" style="height:28px;object-fit:contain" alt="HOVE" onerror="this.style.display='none'"/>
+        <img src="https://image2url.com/r2/default/images/1775222021136-65ec17d6-3695-4b9c-9b46-287ae4ef70dd.png" style="height:28px;object-fit:contain" alt="HOVE" onerror="this.style.display='none'"/>
         <div class="modal-title" style="margin:0">Séance Simulateur</div>
       </div>
       <div class="ig"><label>Nom du client</label><input type="text" id="sim-client-name" placeholder="Prénom Nom du client"/></div>
@@ -1126,14 +1840,11 @@ input, select, textarea, button { font-family: inherit; }
       <div class="ig"><label>Provenance du client</label>
         <select id="sim-origin">
           <option value="">Sélectionner...</option>
-          <option value="Recommandation">Recommandation / Bouche à oreille</option>
           <option value="Site web">Site web HOVE</option>
-          <option value="Réseaux sociaux">Réseaux sociaux</option>
-          <option value="Client existant">Client existant</option>
-          <option value="Aéroclub">Aéroclub / École partenaire</option>
-          <option value="Événement">Événement / Salon</option>
-          <option value="Google">Recherche Google</option>
-          <option value="Autre">Autre</option>
+          <option value="Bouche à oreille">Bouche à oreille</option>
+          <option value="Cap Adrénaline">Cap Adrénaline</option>
+          <option value="Adrenactive">Adrenactive</option>
+          <option value="Groupon">Groupon</option>
         </select>
       </div>
       <div class="ig"><label>Notes (optionnel)</label><textarea id="sim-notes" placeholder="Remarques, objectifs de séance..." style="min-height:60px"></textarea></div>
@@ -1225,6 +1936,7 @@ function goTo(id) {
   if (id === 's-manex') initManexCompliance();
   if (id === 's-checklist') initChecklist();
   if (id === 's-wx') { if (!document.getElementById('wx-cards').querySelector('.wx-card')) loadWeather(); }
+  if (id === 's-f06') { setTimeout(calcWB, 100); }
 }
 
 function goBack() { goTo(previousScreen || 's-home'); }
@@ -2378,14 +3090,11 @@ function renderCalendar() {
   const MONTHS_FR = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
   document.getElementById('cal-month-label').textContent = MONTHS_FR[calMonth] + ' ' + calYear;
   const grid = document.getElementById('cal-grid');
-  // Day of week headers
   let html = DAYS_FR.map(d => `<div class="cal-dow">${d}</div>`).join('');
   const first = new Date(calYear, calMonth, 1);
   const last = new Date(calYear, calMonth + 1, 0);
   const todayStr = new Date().toISOString().split('T')[0];
-  // Monday-based offset (0=Mon ... 6=Sun)
   let startOffset = (first.getDay() + 6) % 7;
-  // Previous month days
   for (let i = startOffset - 1; i >= 0; i--) {
     const d = new Date(calYear, calMonth, -i);
     html += `<div class="cal-day other-month">${d.getDate()}</div>`;
@@ -2400,9 +3109,15 @@ function renderCalendar() {
     let cls = 'cal-day';
     if (isToday) cls += ' today';
     if (isSelected && !isToday) cls += ' selected';
-    if (hasSim) cls += ' has-sim';
-    else if (hasMission) cls += ' has-mission';
-    html += `<div class="${cls}" onclick="calSelectDay('${dateStr}')">${day}</div>`;
+    // Build dots
+    let dots = '';
+    if (hasMission || hasSim) {
+      dots = '<div class="cal-dots">';
+      if (hasMission) dots += `<div class="cal-dot cal-dot-mission"></div>`;
+      if (hasSim) dots += `<div class="cal-dot cal-dot-sim"></div>`;
+      dots += '</div>';
+    }
+    html += `<div class="${cls}" onclick="calSelectDay('${dateStr}')">${day}${dots}</div>`;
   }
   grid.innerHTML = html;
 }
@@ -2524,6 +3239,94 @@ function saveSimSession() {
 document.getElementById('sim-duration')?.addEventListener('change', function() {
   document.getElementById('sim-duration-custom-wrap').style.display = this.value === 'Autre' ? 'block' : 'none';
 });
+
+// ── FORM HELPERS ─────────────────────────────────────────────────
+function toggleCheck(el) { el.classList.toggle('on'); }
+
+function selectRadio(el, groupId) {
+  document.getElementById(groupId).querySelectorAll('.form-radio').forEach(r => r.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function setGoNoGoForm(val, groupId) {
+  document.getElementById(groupId).querySelectorAll('.form-radio').forEach(r => r.classList.remove('selected'));
+  const btns = document.getElementById(groupId).querySelectorAll('.form-radio');
+  if (val === 'go') btns[0].classList.add('selected');
+  else if (val === 'cond') btns[1].classList.add('selected');
+  else btns[2].classList.add('selected');
+}
+
+function saveForm(ref) {
+  toast(`${ref} enregistré et archivé ✓`, 'success');
+}
+
+// ── WEIGHT & BALANCE CALCULATOR ───────────────────────────────────
+const WB_ARMS = { bew:139.4, pic:143.0, pax1:143.0, pax2:175.0, pax3:175.0, bag:181.0, fuel:141.5 };
+
+function calcWB() {
+  const vals = {
+    bew: parseFloat(document.getElementById('wb-bew').value) || 1077,
+    pic: parseFloat(document.getElementById('wb-pic').value) || 0,
+    pax1: parseFloat(document.getElementById('wb-pax1').value) || 0,
+    pax2: parseFloat(document.getElementById('wb-pax2').value) || 0,
+    pax3: parseFloat(document.getElementById('wb-pax3').value) || 0,
+    bag: parseFloat(document.getElementById('wb-bag').value) || 0,
+    fuel: parseFloat(document.getElementById('wb-fuel').value) || 0,
+  };
+  let totalMass = 0, totalMoment = 0;
+  Object.keys(vals).forEach(k => {
+    const m = vals[k];
+    const arm = WB_ARMS[k];
+    const moment = m * arm;
+    totalMass += m;
+    totalMoment += moment;
+    const el = document.getElementById('wb-mom-' + k);
+    if (el) el.textContent = moment.toFixed(0);
+  });
+  const cg = totalMass > 0 ? (totalMoment / totalMass).toFixed(2) : 0;
+  document.getElementById('wb-total-mass').textContent = totalMass.toFixed(1) + ' kg';
+  document.getElementById('wb-cg').textContent = cg + ' in';
+  // Mass check
+  const massOk = totalMass <= 1633;
+  document.getElementById('wb-mass-status').textContent = massOk ? '✓ CONFORME' : '⛔ DÉPASSE MTOW';
+  document.getElementById('wb-mass-status').style.color = massOk ? 'var(--g)' : 'var(--r)';
+  // CG check
+  const cgOk = parseFloat(cg) >= 137.5 && parseFloat(cg) <= 141.0;
+  document.getElementById('wb-cg-status').textContent = cgOk ? '✓ DANS ENVELOPPE' : '⛔ HORS ENVELOPPE';
+  document.getElementById('wb-cg-status').style.color = cgOk ? 'var(--g)' : 'var(--r)';
+  // Result
+  const res = document.getElementById('wb-result');
+  if (massOk && cgOk) {
+    res.textContent = '✈ CONFORME — Vol autorisé';
+    res.className = 'go-nogo-result go';
+  } else {
+    res.textContent = '⛔ NON CONFORME — Vol interdit';
+    res.className = 'go-nogo-result nogo';
+  }
+  // Update landing
+  calcLanding(totalMass);
+}
+
+function calcLanding(takeoffMass) {
+  const consumed = parseFloat(document.getElementById('wb-fuel-consumed').value) || 0;
+  if (!takeoffMass) {
+    const m = parseFloat(document.getElementById('wb-bew').value) || 1077;
+    takeoffMass = m;
+  }
+  const ldgMass = takeoffMass - consumed;
+  const ldgEl = document.getElementById('wb-ldg-mass');
+  const stEl = document.getElementById('wb-ldg-status');
+  if (ldgEl) ldgEl.value = ldgMass.toFixed(1);
+  if (stEl) {
+    if (ldgMass <= 1542) {
+      stEl.textContent = '✓ Masse atterrissage CONFORME (≤ 1 542 kg)';
+      stEl.style.color = 'var(--g)';
+    } else {
+      stEl.textContent = '⛔ Masse atterrissage NON CONFORME';
+      stEl.style.color = 'var(--r)';
+    }
+  }
+}
 
 // ── SESSION RESTORE ──────────────────────────────────────────────
 (async () => {
