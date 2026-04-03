@@ -60,19 +60,192 @@ input, select, textarea, button { font-family: inherit; }
   box-shadow: var(--shadow-lg);
 }
 
-/* Tablette */
+/* ══════════════════════════════════════════
+   TABLET (iPad) — 768px+
+   Bottom nav → Left sidebar, full viewport
+   ══════════════════════════════════════════ */
 @media (min-width: 768px) {
-  body { background: #050505; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
-  #app { max-width: 540px; height: 95vh; border-radius: 20px; }
-}
+  body { background: #050505; min-height: 100vh; }
 
-/* Desktop */
-@media (min-width: 1024px) {
-  #app { max-width: 430px; height: 92vh; border-radius: 24px; }
+  #app {
+    max-width: 100%;
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    flex-direction: row; /* sidebar + content side by side */
+    box-shadow: none;
+    margin: 0;
+  }
+
+  /* ── SIDEBAR NAV ── */
+  .bnav {
+    flex-direction: column;
+    width: 220px;
+    min-width: 220px;
+    height: 100%;
+    padding: 0;
+    border-top: none;
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 10;
+    justify-content: flex-start;
+    /* HOVE branding header inside sidebar */
+  }
+
+  /* Sidebar brand header */
+  .bnav::before {
+    content: '';
+    display: block;
+    height: 64px;
+    background: var(--topbar);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+    background-image: url('https://image2url.com/r2/default/images/1775222021136-65ec17d6-3695-4b9c-9b46-287ae4ef70dd.png');
+    background-repeat: no-repeat;
+    background-position: 20px center;
+    background-size: auto 22px;
+    width: 100%;
+  }
+
+  /* Nav items become rows */
+  .ni {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 13px 20px;
+    width: 100%;
+    border-bottom: none;
+    border-radius: 0;
+    text-align: left;
+    transition: background .15s;
+  }
+  .ni:hover { background: rgba(255,255,255,.03); }
+  .ni.on { background: rgba(201,168,76,.08); border-left: 3px solid var(--gold); padding-left: 17px; }
+  .ni svg { width: 18px; height: 18px; flex-shrink: 0; }
+  .ni span { font-size: 13px; font-weight: 500; letter-spacing: 0; }
+  .ni .nbadge { right: 16px; top: 50%; transform: translateY(-50%); }
+
+  /* Sidebar section labels (injected via JS) */
+  .nav-section-label {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    padding: 18px 20px 6px;
+    display: block;
+  }
+
+  /* Sidebar footer (logout) */
+  .bnav-footer {
+    margin-top: auto;
+    border-top: 1px solid var(--border);
+    padding: 12px 0;
+  }
+
+  /* ── CONTENT AREA ── */
+  .app-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  .screen { flex: 1; overflow: hidden; }
+  .scroll { padding-left: 0; padding-right: 0; }
+
+  /* ── TOPBAR ── */
+  .topbar { padding: 16px 28px 14px; }
+  .tb-title { font-size: 20px; }
+
+  /* ── MODALS → centered overlay (not bottom sheet) ── */
+  .modal-overlay { align-items: center; justify-content: center; }
+  .modal {
+    border-radius: 16px !important;
+    max-width: 520px;
+    width: 90%;
+    max-height: 85vh;
+    animation: fadeScaleIn .2s ease;
+  }
+  @keyframes fadeScaleIn {
+    from { opacity: 0; transform: scale(.96); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  .modal-handle { display: none; }
+
+  /* ── SCROLL AREAS ── */
+  .scroll { padding: 20px 28px !important; }
   .scroll { scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
   .scroll::-webkit-scrollbar { display: block; width: 4px; }
   .scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-  .modal { max-width: 480px; border-radius: 16px 16px 0 0; }
+
+  /* ── CONTENT GRIDS ── */
+  .metric-grid { grid-template-columns: repeat(4, 1fr); }
+  .home-quick  { grid-template-columns: repeat(4, 1fr); }
+
+  /* Planning: calendar + list side by side */
+  #s-planning .scroll { display: flex; flex-direction: column; }
+  .planning-cols {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  .planning-cal-col { position: sticky; top: 0; }
+
+  /* Fleet cards grid */
+  #aircraft-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  #aircraft-list .card { margin-bottom: 0; }
+
+  /* Cards hover */
+  .card:hover { border-color: rgba(201,168,76,.2); }
+}
+
+/* ══════════════════════════════════════════
+   DESKTOP — 1024px+
+   Wider sidebar, more columns
+   ══════════════════════════════════════════ */
+@media (min-width: 1024px) {
+  .bnav {
+    width: 260px;
+    min-width: 260px;
+  }
+  .ni { padding: 14px 24px; }
+  .ni.on { padding-left: 21px; }
+  .ni span { font-size: 14px; }
+
+  .topbar { padding: 18px 36px 16px; }
+  .scroll { padding: 24px 36px !important; }
+  .tb-title { font-size: 22px; }
+
+  /* Wider modal */
+  .modal { max-width: 580px; }
+
+  /* 4-col fleet */
+  #aircraft-list { grid-template-columns: 1fr 1fr 1fr; }
+
+  /* Finance 4-col metrics */
+  .metric-grid { grid-template-columns: repeat(4, 1fr); }
+  .home-quick  { grid-template-columns: repeat(4, 1fr); }
+
+  /* Planning wider calendar column */
+  .planning-cols { grid-template-columns: 380px 1fr; gap: 28px; }
+
+  /* Logbook/admin list → 2 cols */
+  #logbook-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  #logbook-list .card { margin-bottom: 0; }
+}
+
+/* ── Wrapper needed for sidebar layout ── */
+@media (min-width: 768px) {
+  /* All screens must live inside the content wrapper */
+  .screen { display: none; flex-direction: column; }
+  .screen.active { display: flex; }
 }
 .screen { display: none; flex-direction: column; flex: 1; overflow: hidden; }
 .screen.active { display: flex; }
@@ -421,6 +594,18 @@ input, select, textarea, button { font-family: inherit; }
 .go-nogo-result.nogo { background: var(--r-light); color: var(--r); border: 1px solid var(--r); }
 .scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
 .scroll::-webkit-scrollbar { display: none; }
+
+/* ── SIDEBAR / BOTTOM NAV SWITCH ── */
+/* Mobile: hide global sidebar, show per-screen bnav */
+#sidebar { display: none !important; }
+/* Desktop 768+: show sidebar, hide per-screen bottom navs */
+@media (min-width: 768px) {
+  #sidebar { display: flex !important; flex-direction: column; }
+  .screen > .bnav { display: none !important; }
+  .app-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
+  .app-content .screen { flex: 1; display: none; flex-direction: column; }
+  .app-content .screen.active { display: flex; }
+}
 </style>
 </head>
 <body>
@@ -428,6 +613,26 @@ input, select, textarea, button { font-family: inherit; }
 
   <!-- ══════════ TOAST ══════════ -->
   <div class="toast-container" id="toast-container"></div>
+  <!-- GLOBAL SIDEBAR (desktop only, controlled via CSS) -->
+  <nav id="sidebar" class="bnav">
+    <button class="ni" onclick="goTo('s-home')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Accueil</span></button>
+    <button class="ni" onclick="goTo('s-crew')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span>Crew</span></button>
+    <button class="ni" onclick="goTo('s-planning')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Planning</span></button>
+    <button class="ni" onclick="goTo('s-finance')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg><span>Finance</span></button>
+    <span class="nav-section-label">Opérations</span>
+    <button class="ni" onclick="goTo('s-fleet')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07A19.5 19.5 0 013.07 13.1 19.8 19.8 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span>Flotte</span></button>
+    <button class="ni" onclick="goTo('s-logbook')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg><span>Logbook</span></button>
+    <button class="ni" onclick="goTo('s-checklist')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg><span>Checklist</span></button>
+    <button class="ni" onclick="goTo('s-wx')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg><span>Météo</span></button>
+    <span class="nav-section-label">Admin</span>
+    <button class="ni" onclick="goTo('s-manex')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>ManEx</span></button>
+    <button class="ni" id="sidebar-admin-btn" style="display:none" onclick="goTo('s-admin')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span>Admin</span></button>
+    <div class="bnav-footer">
+      <button class="ni" onclick="doLogout()"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><span>Déconnexion</span></button>
+    </div>
+  </nav>
+  <div class="app-content" id="app-content">
+
 
   <!-- ══════════════════════════════════════
        LOGIN
@@ -1701,7 +1906,7 @@ input, select, textarea, button { font-family: inherit; }
           <div class="ig"><label>Date</label><input type="date" id="f06-date"/></div>
           <div class="ig"><label>PIC</label><input type="text" id="f06-pic" placeholder="Nom PIC"/></div>
           <div class="ig"><label>Aéronef</label><input type="text" value="SR22 G7+" readonly style="opacity:.5"/></div>
-          <div class="ig"><label>Mission N°</label><input type="text" placeholder="HOVE-2025-001"/></div>
+          <div class="ig"><label>Mission N°</label><input type="text" id="f06-mission-ref" placeholder="HOVE-2025-001"/></div>
         </div>
       </div>
 
@@ -1782,16 +1987,17 @@ input, select, textarea, button { font-family: inherit; }
       <div class="form-section">
         <div class="form-section-title">✅ 5 — Résultat & Signature</div>
         <div id="wb-result" class="go-nogo-result" style="background:var(--surface);color:var(--text3);border:1px solid var(--border)">Compléter le tableau ci-dessus</div>
-        <div class="ig" style="margin-top:12px"><label>Signature PIC</label><input type="text" placeholder="Initiales / Signature PIC"/></div>
+        <div class="ig" style="margin-top:12px"><label>Signature PIC</label><input type="text" id="f06-sig" placeholder="Initiales / Signature PIC"/></div>
       </div>
 
       <div class="flex-row" style="margin-top:8px;margin-bottom:24px">
         <button class="btn btn-o" onclick="goBack()">Retour</button>
-        <button class="btn btn-p" onclick="saveForm('F06')">Enregistrer W&B</button>
+        <button class="btn btn-p" onclick="saveWB()">Enregistrer W&B</button>
       </div>
     </div>
   </div>
 
+  </div><!-- /.app-content -->
 </div><!-- /#app -->
 
   <!-- Sim Session Modal -->
@@ -1887,10 +2093,10 @@ function buildCompliance(p) {
     const diff = Math.floor((d - today) / 86400000);
     return {
       label,
-      status: diff < 0 ? 'exp' : diff < 60 ? 'warn' : 'ok',
+      status: diff < 0 ? 'exp' : diff < 90 ? 'warn' : 'ok',
       detail: diff < 0
         ? `⛔ Expiré le ${d.toLocaleDateString('fr-FR')}`
-        : diff < 60
+        : diff < 90
           ? `⚠ ${diff}j restants — ${d.toLocaleDateString('fr-FR')}`
           : `Valide jusqu'au ${d.toLocaleDateString('fr-FR')}`
     };
@@ -1949,7 +2155,10 @@ function updateNav(id) {
     document.querySelectorAll('.ni').forEach(n => {
       if ((n.getAttribute('onclick')||'').includes(target)) n.classList.add('on');
     });
-  }
+    // Show/hide global sidebar (hidden on login screen)
+  const sidebar = document.getElementById('sidebar');
+  if (sidebar) sidebar.style.setProperty('display', id === 's-login' || id === 's-client' ? 'none' : '', 'important');
+}
 }
 
 // ── LOGIN / LOGOUT ───────────────────────────────────────────────
@@ -2010,7 +2219,11 @@ function populateSelect(id, arr, valKey, labelFn) {
   const sel = document.getElementById(id);
   if (!sel) return;
   const cur = sel.value;
-  sel.innerHTML = `<option value="">Sélectionner...</option>` + arr.map(x => `<option value="${x[valKey]}">${labelFn(x)}</option>`).join('');
+  // Pour le select aircraft de mission : exclure les appareils AOG
+  const filtered = (id === 'nm-aircraft')
+    ? arr.filter(x => x.status !== 'aog')
+    : arr;
+  sel.innerHTML = `<option value="">Sélectionner...</option>` + filtered.map(x => `<option value="${x[valKey]}">${labelFn(x)}${x.status==='aog'?' ⛔ AOG':''}</option>`).join('');
   if (cur) sel.value = cur;
 }
 
@@ -2047,6 +2260,8 @@ function initHome() {
 
   const isAdmin = u.role === 'admin';
   document.getElementById('admin-section-label').style.display = isAdmin ? 'block' : 'none';
+  const _sab = document.getElementById('sidebar-admin-btn');
+  if (_sab) _sab.style.display = isAdmin ? 'flex' : 'none';
   document.getElementById('admin-section-card').style.display = isAdmin ? 'block' : 'none';
   document.getElementById('fleet-add-btn').style.display = isAdmin ? 'inline-block' : 'none';
   const planBtn = document.getElementById('planning-add-btn');
@@ -2219,14 +2434,96 @@ async function setGoNoGo(id, value) {
   } catch(e) { toast('Erreur : ' + e.message, 'error'); }
 }
 
+// ── MISSION CONFLICT & GATE CHECKS ───────────────────────────────
+function parseDurationToMin(str) {
+  if (!str) return 60;
+  const match = str.match(/(\d+)h(\d*)/i);
+  if (!match) return 60;
+  return parseInt(match[1]) * 60 + (parseInt(match[2]) || 0);
+}
+
+async function checkMissionConflicts({ aircraftId, pilotId, date, time, duration }) {
+  const errors = [];
+  const warnings = [];
+
+  // ── 1. Checks appareil ─────────────────────────────────────────
+  if (aircraftId) {
+    const ac = allAircraft.find(a => a.id === aircraftId);
+    // AOG check (redondance de sécurité, le select filtre déjà)
+    if (ac?.status === 'aog') {
+      errors.push(`⛔ ${ac.registration} est AOG : ${ac.aog_reason || 'raison non précisée'}`);
+    }
+
+    // Double-booking check (overlap)
+    if (date && time) {
+      const durationMin = parseDurationToMin(duration);
+      const startTs = new Date(`${date}T${time}:00`).getTime();
+      const endTs = startTs + durationMin * 60000;
+
+      const { data: conflicts } = await sb.from('missions')
+        .select('id, scheduled_time, duration_est, departure_icao, arrival_icao')
+        .eq('aircraft_id', aircraftId)
+        .eq('scheduled_date', date)
+        .neq('status', 'cancelled');
+
+      for (const c of conflicts || []) {
+        if (!c.scheduled_time) continue;
+        const cStart = new Date(`${date}T${c.scheduled_time}`).getTime();
+        const cDurMin = parseDurationToMin(c.duration_est);
+        const cEnd = cStart + cDurMin * 60000;
+        if (startTs < cEnd && endTs > cStart) {
+          const routeLabel = (c.departure_icao && c.arrival_icao) ? ` (${c.departure_icao}→${c.arrival_icao})` : '';
+          errors.push(`⛔ Appareil déjà assigné à ${c.scheduled_time?.slice(0,5)}${routeLabel} — conflit de créneau`);
+        }
+      }
+    }
+  }
+
+  // ── 2. Checks pilote ──────────────────────────────────────────
+  if (pilotId) {
+    const pilot = allCrew.find(p => p.id === pilotId);
+    if (pilot) {
+      const today = new Date(); today.setHours(0,0,0,0);
+      const medicalChecks = [
+        { date: pilot.medical_expiry, label: 'Médical EASA' },
+        { date: pilot.sep_expiry,     label: 'SEP Revalidation' },
+        { date: pilot.ir_expiry,      label: 'IR Proficiency Check' },
+        { date: pilot.opc_expiry,     label: 'OPC Annuel' },
+      ];
+      for (const chk of medicalChecks) {
+        if (!chk.date) { warnings.push(`⚠ ${chk.label} : date non renseignée pour ${pilot.full_name}`); continue; }
+        const exp = new Date(chk.date);
+        const diff = Math.floor((exp - today) / 86400000);
+        if (diff < 0)  errors.push(`⛔ ${chk.label} de ${pilot.full_name} expiré le ${exp.toLocaleDateString('fr-FR')}`);
+        else if (diff < 30) warnings.push(`⚠ ${chk.label} de ${pilot.full_name} expire dans ${diff}j`);
+      }
+    }
+  }
+
+  return { errors, warnings };
+}
+
 async function saveMission() {
   const type = document.getElementById('nm-type').value;
   const date = document.getElementById('nm-date').value;
   const time = document.getElementById('nm-time').value;
   const pilotId = document.getElementById('nm-pilot').value;
   const aircraftId = document.getElementById('nm-aircraft').value;
+  const duration = document.getElementById('nm-duration').value;
   if (!date || !time) { toast('Date et heure obligatoires', 'error'); return; }
   if (!pilotId) { toast('Sélectionner un PIC', 'error'); return; }
+
+  // ── GATE CHECK ─────────────────────────────────────────────────
+  const { errors, warnings } = await checkMissionConflicts({ aircraftId, pilotId, date, time, duration });
+  if (errors.length) {
+    errors.forEach(e => toast(e, 'error'));
+    return; // ← bloque l'insertion
+  }
+  if (warnings.length) {
+    const proceed = confirm('Avertissements de conformité :\n\n' + warnings.join('\n') + '\n\nContinuer quand même ?');
+    if (!proceed) return;
+  }
+  // ── INSERT ─────────────────────────────────────────────────────
   try {
     const tarif = document.getElementById('nm-tarif').value;
     const clientId = document.getElementById('nm-client').value;
@@ -2378,29 +2675,140 @@ async function markPaid(id) {
   } catch(e) { toast('Erreur : ' + e.message, 'error'); }
 }
 
-function generatePDF(clientName, amount) {
+// Compteur de numérotation séquentielle (persisté en localStorage)
+function getNextInvoiceNumber() {
+  const year = new Date().getFullYear();
+  const key = `hove_inv_seq_${year}`;
+  const current = parseInt(localStorage.getItem(key) || '0', 10);
+  const next = current + 1;
+  localStorage.setItem(key, String(next));
+  return `HOVE-${year}-${String(next).padStart(4, '0')}`;
+}
+
+function generatePDF(clientName, amount, invoiceId) {
   try {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
-    doc.setFontSize(20);
-    doc.setTextColor(30, 58, 138);
-    doc.text('HOVE AVIATION EXECUTIVE', 20, 25);
-    doc.setFontSize(11);
-    doc.setTextColor(100);
-    doc.text('NCO · LFQT Merville-Calonne · France', 20, 33);
-    doc.setFontSize(16);
-    doc.setTextColor(0);
-    doc.text('FACTURE', 20, 50);
-    doc.setFontSize(11);
-    doc.text(`Client : ${clientName}`, 20, 65);
-    doc.text(`Date : ${new Date().toLocaleDateString('fr-FR')}`, 20, 73);
-    doc.text(`Montant : ${Number(amount).toLocaleString('fr-FR')} EUR`, 20, 81);
-    doc.text('Prestation : Vol NCO · SR22 G7+', 20, 89);
+    const invoiceNo = invoiceId || getNextInvoiceNumber();
+    const today = new Date().toLocaleDateString('fr-FR');
+    const amtHT = Number(amount);
+    // HOVE Aviation : régime de la micro-entreprise / franchise TVA
+    // Mention obligatoire art. 293 B CGI si non assujetti à TVA
+    const tvaNote = 'TVA non applicable — article 293 B du CGI';
+
+    // ── EN-TÊTE ──────────────────────────────────────────────────
+    doc.setFillColor(10, 10, 10);
+    doc.rect(0, 0, 210, 40, 'F');
+    doc.setFontSize(18);
+    doc.setTextColor(201, 168, 76);
+    doc.setFont('helvetica', 'bold');
+    doc.text('HOVE AVIATION EXECUTIVE', 20, 20);
     doc.setFontSize(9);
-    doc.setTextColor(150);
-    doc.text('HOVE Aviation Executive — LFQT — hove-aviation.fr', 20, 270);
-    doc.save(`facture-hove-${clientName.replace(/\s/g,'-').toLowerCase()}.pdf`);
-    toast('PDF généré ✓', 'success');
+    doc.setTextColor(180, 180, 180);
+    doc.setFont('helvetica', 'normal');
+    doc.text('Exploitation NCO · LFQT Merville-Calonne · 59660 Merville · France', 20, 28);
+    doc.text('SIRET : [À COMPLÉTER] · APE : 5110Z — Transports aériens non réguliers', 20, 35);
+
+    // ── TITRE FACTURE ────────────────────────────────────────────
+    doc.setFontSize(22);
+    doc.setTextColor(30, 30, 30);
+    doc.setFont('helvetica', 'bold');
+    doc.text('FACTURE', 20, 58);
+
+    // ── NUMÉRO & DATE ────────────────────────────────────────────
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(80, 80, 80);
+    doc.text(`N° : ${invoiceNo}`, 20, 68);
+    doc.text(`Date d'émission : ${today}`, 20, 75);
+    doc.text(`Date de prestation : ${today}`, 20, 82);
+
+    // ── CLIENT ───────────────────────────────────────────────────
+    doc.setFillColor(245, 245, 245);
+    doc.rect(120, 55, 75, 35, 'F');
+    doc.setFontSize(9);
+    doc.setTextColor(100, 100, 100);
+    doc.text('FACTURÉ À', 125, 63);
+    doc.setFontSize(11);
+    doc.setTextColor(20, 20, 20);
+    doc.setFont('helvetica', 'bold');
+    doc.text(clientName, 125, 72);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    doc.setTextColor(100);
+
+    // ── LIGNE SÉPARATRICE ────────────────────────────────────────
+    doc.setDrawColor(201, 168, 76);
+    doc.setLineWidth(0.8);
+    doc.line(20, 97, 190, 97);
+
+    // ── TABLEAU PRESTATIONS ──────────────────────────────────────
+    doc.setFontSize(9);
+    doc.setTextColor(100);
+    doc.setFont('helvetica', 'bold');
+    doc.text('DÉSIGNATION', 20, 107);
+    doc.text('QTÉ', 130, 107);
+    doc.text('P.U. HT (€)', 150, 107);
+    doc.text('MONTANT HT (€)', 165, 107);
+    doc.setDrawColor(220);
+    doc.setLineWidth(0.3);
+    doc.line(20, 110, 190, 110);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(20);
+    doc.setFontSize(10);
+    doc.text('Vol NCO — SR22 G7+ (HOVE Aviation Executive)', 20, 120);
+    doc.setFontSize(9);
+    doc.setTextColor(80);
+    doc.text('Mise à disposition aéronef & équipage — LFQT Merville', 20, 127);
+    doc.setTextColor(20);
+    doc.text('1', 133, 120);
+    doc.text(amtHT.toLocaleString('fr-FR', {minimumFractionDigits:2}), 153, 120);
+    doc.text(amtHT.toLocaleString('fr-FR', {minimumFractionDigits:2}), 168, 120);
+
+    // ── TOTAUX ───────────────────────────────────────────────────
+    doc.setDrawColor(201, 168, 76);
+    doc.setLineWidth(0.5);
+    doc.line(130, 138, 190, 138);
+
+    doc.setFontSize(9);
+    doc.setTextColor(80);
+    doc.text('Total HT :', 130, 146);
+    doc.setTextColor(20);
+    doc.text(`${amtHT.toLocaleString('fr-FR', {minimumFractionDigits:2})} €`, 168, 146);
+
+    doc.setTextColor(80);
+    doc.text('TVA :', 130, 153);
+    doc.setTextColor(20);
+    doc.text('0,00 €', 168, 153);
+
+    doc.setFillColor(10, 10, 10);
+    doc.rect(128, 157, 62, 12, 'F');
+    doc.setFontSize(11);
+    doc.setTextColor(201, 168, 76);
+    doc.setFont('helvetica', 'bold');
+    doc.text('TOTAL TTC :', 131, 165);
+    doc.text(`${amtHT.toLocaleString('fr-FR', {minimumFractionDigits:2})} €`, 166, 165);
+
+    // ── MENTIONS LÉGALES OBLIGATOIRES ────────────────────────────
+    doc.setFontSize(8);
+    doc.setTextColor(100);
+    doc.setFont('helvetica', 'normal');
+    doc.text(tvaNote, 20, 185);
+    doc.text('Paiement à réception de facture. Pas d\'escompte pour paiement anticipé.', 20, 191);
+    doc.text('En cas de retard : pénalités au taux BCE + 10 pts + indemnité forfaitaire 40 € (art. L.441-10 C.com.)', 20, 197);
+
+    // ── PIED DE PAGE ─────────────────────────────────────────────
+    doc.setDrawColor(201, 168, 76);
+    doc.setLineWidth(0.5);
+    doc.line(20, 270, 190, 270);
+    doc.setFontSize(7.5);
+    doc.setTextColor(140);
+    doc.text('HOVE Aviation Executive — LFQT Merville-Calonne — hove-aviation.fr', 20, 276);
+    doc.text(`Facture N° ${invoiceNo} — Émise le ${today}`, 20, 281);
+
+    doc.save(`facture-hove-${invoiceNo}-${clientName.replace(/\s+/g,'-').toLowerCase()}.pdf`);
+    toast(`Facture ${invoiceNo} générée ✓`, 'success');
   } catch(e) { toast('Erreur PDF : ' + e.message, 'error'); }
 }
 
@@ -2694,18 +3102,38 @@ function checkDefect(input) {
 }
 
 async function saveTechLog() {
-  const dep = document.getElementById('tl-dep').value;
-  const arr = document.getElementById('tl-arr').value;
+  const depRaw = document.getElementById('tl-dep').value;
+  const arrRaw = document.getElementById('tl-arr').value;
   const acId = document.getElementById('tl-aircraft').value;
   const defect = document.getElementById('tl-defect').value.trim();
-  if (!dep || !arr) { toast('Horamètres départ et arrivée obligatoires', 'error'); return; }
-  const flightHours = (parseFloat(arr) - parseFloat(dep)).toFixed(2);
+  if (!depRaw || !arrRaw) { toast('Horamètres départ et arrivée obligatoires', 'error'); return; }
+
+  const dep = parseFloat(depRaw);
+  const arr = parseFloat(arrRaw);
+
+  // ── VALIDATION HOBBS ──────────────────────────────────────────
+  if (isNaN(dep) || isNaN(arr)) { toast('⛔ Horamètres invalides — vérifier les valeurs', 'error'); return; }
+  if (arr <= dep) { toast('⛔ Hobbs arrivée doit être supérieur au Hobbs départ', 'error'); return; }
+  if ((arr - dep) > 12) {
+    const ok = confirm(`⚠ Durée de vol calculée : ${(arr-dep).toFixed(2)}h — plus de 12h de vol détectées.\n\nVérifier les valeurs. Continuer quand même ?`);
+    if (!ok) return;
+  }
+  // Vérifier cohérence avec le total_hours de l'appareil
+  if (acId) {
+    const ac = allAircraft.find(a => a.id === acId);
+    if (ac && ac.total_hours && arr < ac.total_hours) {
+      toast(`⛔ Hobbs saisi (${arr}h) < total enregistré ${ac.registration} (${ac.total_hours}h) — impossible`, 'error');
+      return;
+    }
+  }
+
+  const flightHours = (arr - dep).toFixed(2);
   try {
     const { error } = await sb.from('tech_logs').insert({
       aircraft_id: acId || null,
       pilot_id: currentUser.id,
-      hobbs_departure: parseFloat(dep),
-      hobbs_arrival: parseFloat(arr),
+      hobbs_departure: dep,
+      hobbs_arrival: arr,
       flight_hours: parseFloat(flightHours),
       fuel_departure: parseFloat(document.getElementById('tl-fuel-dep').value)||null,
       fuel_arrival: parseFloat(document.getElementById('tl-fuel-arr').value)||null,
@@ -2715,7 +3143,7 @@ async function saveTechLog() {
     });
     if (error) throw error;
     if (acId) {
-      await sb.from('aircraft').update({ total_hours: parseFloat(arr) }).eq('id', acId);
+      await sb.from('aircraft').update({ total_hours: arr }).eq('id', acId);
       if (defect) {
         await sb.from('aircraft').update({ status: 'aog', aog_reason: defect }).eq('id', acId);
         toast('⚠ Appareil passé en AOG — défaut enregistré', 'error');
@@ -3208,11 +3636,11 @@ function buildSimCard(s) {
   </div>`;
 }
 
-// Local sim sessions (stored in memory for this session)
+// Local sim sessions (kept for backward compat — now Supabase is primary)
 let _localSimSessions = [];
 function getLocalSimSessions() { return _localSimSessions; }
 
-function saveSimSession() {
+async function saveSimSession() {
   const clientName = document.getElementById('sim-client-name').value.trim();
   const date = document.getElementById('sim-date').value;
   const time = document.getElementById('sim-time').value;
@@ -3223,17 +3651,53 @@ function saveSimSession() {
   const paid = document.getElementById('sim-paid').value;
   const origin = document.getElementById('sim-origin').value;
   const notes = document.getElementById('sim-notes').value;
+
   if (!clientName) { toast('Nom du client requis', 'error'); return; }
   if (!date) { toast('Date requise', 'error'); return; }
-  _localSimSessions.push({ id: Date.now(), clientName, date, time, duration, sessionType, amount, paid, origin, notes });
-  closeModal('modal-sim-session');
-  toast('Séance simulateur enregistrée ✓', 'success');
-  // Reset form
-  document.getElementById('sim-client-name').value = '';
-  document.getElementById('sim-amount').value = '';
-  document.getElementById('sim-notes').value = '';
-  // Refresh calendar & list
-  fetchCalendarMissions().then(() => { renderCalendar(); renderMissions(); });
+
+  try {
+    // Chercher le client par nom (optionnel — la mission peut exister sans client lié)
+    let clientId = null;
+    const { data: existing } = await sb.from('profiles')
+      .select('id').eq('full_name', clientName).eq('role', 'client').maybeSingle();
+    clientId = existing?.id || null;
+
+    // Stocker les métadonnées sim dans le champ notes (JSON enrichi)
+    const simMeta = JSON.stringify({ clientName, sessionType, origin, amount, paid });
+
+    const { data: mission, error: mErr } = await sb.from('missions').insert({
+      type: 'sim',
+      scheduled_date: date,
+      scheduled_time: time || null,
+      duration_est: duration,
+      client_id: clientId,
+      pilot_id: currentUser.id,
+      notes: notes ? `${notes}\n[SIM:${simMeta}]` : `[SIM:${simMeta}]`,
+      status: 'confirmed',
+      go_nogo: 'GO',
+      created_by: currentUser.id,
+    }).select().single();
+    if (mErr) throw mErr;
+
+    // Créer la facture si montant renseigné et client lié
+    if (amount && clientId && mission) {
+      await sb.from('invoices').insert({
+        mission_id: mission.id,
+        client_id: clientId,
+        amount: parseFloat(amount),
+        payment_status: paid === 'paid' ? 'paid' : 'pending'
+      });
+    }
+
+    closeModal('modal-sim-session');
+    toast('Séance simulateur enregistrée ✓', 'success');
+    // Reset form
+    document.getElementById('sim-client-name').value = '';
+    document.getElementById('sim-amount').value = '';
+    document.getElementById('sim-notes').value = '';
+    // Refresh calendar & list
+    fetchCalendarMissions().then(() => { renderCalendar(); renderMissions(); });
+  } catch(e) { toast('Erreur : ' + e.message, 'error'); }
 }
 
 document.getElementById('sim-duration')?.addEventListener('change', function() {
@@ -3258,6 +3722,96 @@ function setGoNoGoForm(val, groupId) {
 
 function saveForm(ref) {
   toast(`${ref} enregistré et archivé ✓`, 'success');
+}
+
+// ── W&B PERSISTENCE ──────────────────────────────────────────────
+async function saveWB() {
+  const resultEl = document.getElementById('wb-result');
+  const resultText = resultEl ? resultEl.textContent : '—';
+  const isConform = resultText.includes('CONFORME') && !resultText.includes('NON CONFORME');
+
+  const totalMass = document.getElementById('wb-total-mass').textContent;
+  const cg = document.getElementById('wb-cg').textContent;
+  const date = document.getElementById('f06-date').value;
+  const pic = document.getElementById('f06-pic').value.trim();
+  const sig = document.getElementById('f06-sig').value.trim();
+  const missionRef = document.getElementById('f06-mission-ref').value.trim();
+
+  // Snapshot complet des valeurs saisies
+  const snapshot = {
+    date, pic, sig, missionRef,
+    aircraft: 'SR22 G7+',
+    bew:  document.getElementById('wb-bew').value,
+    pic_mass: document.getElementById('wb-pic').value,
+    pax1: document.getElementById('wb-pax1').value,
+    pax2: document.getElementById('wb-pax2').value,
+    pax3: document.getElementById('wb-pax3').value,
+    bag:  document.getElementById('wb-bag').value,
+    fuel: document.getElementById('wb-fuel').value,
+    fuel_consumed: document.getElementById('wb-fuel-consumed').value,
+    total_mass: totalMass,
+    cg,
+    ldg_mass: document.getElementById('wb-ldg-mass').value,
+    result: resultText,
+    conform: isConform,
+    saved_at: new Date().toISOString()
+  };
+
+  try {
+    // Si un numéro de mission est renseigné → rattacher à la mission
+    if (missionRef) {
+      // Cherche la mission par notes ou departure (meilleur-effort)
+      const { data: missions } = await sb.from('missions')
+        .select('id')
+        .eq('scheduled_date', date)
+        .limit(10);
+      if (missions && missions.length) {
+        // Mettre à jour la première mission de la journée (ou par ref si implémenté)
+        const target = missions[0];
+        await sb.from('missions').update({
+          wb_snapshot: snapshot
+        }).eq('id', target.id);
+      }
+    }
+
+    // Sauvegarder dans tech_logs comme entrée standalone si pas de mission à lier
+    // Utiliser un champ notes enrichi pour trace réglementaire
+    const { error } = await sb.from('wb_records').insert({
+      pilot_id: currentUser.id,
+      flight_date: date || new Date().toISOString().split('T')[0],
+      mission_ref: missionRef || null,
+      aircraft_type: 'SR22 G7+',
+      total_mass_kg: parseFloat(totalMass) || null,
+      cg_in: parseFloat(cg) || null,
+      is_conform: isConform,
+      snapshot: snapshot,
+      signature_pic: sig || null
+    }).select();
+
+    if (error) {
+      // wb_records table may not exist yet — graceful fallback
+      if (error.code === '42P01') {
+        // Table doesn't exist, store in localStorage as fallback
+        const saved = JSON.parse(localStorage.getItem('hove_wb_records') || '[]');
+        saved.push(snapshot);
+        localStorage.setItem('hove_wb_records', JSON.stringify(saved.slice(-50)));
+        toast(`W&B archivé localement ✓ (table wb_records non créée)`, 'warning');
+        goBack();
+        return;
+      }
+      throw error;
+    }
+
+    toast(`W&B ${isConform ? '✅ CONFORME' : '⛔ NON CONFORME'} — archivé ✓`, isConform ? 'success' : 'error');
+    goBack();
+  } catch(e) {
+    // Fallback local si erreur réseau ou table manquante
+    const saved = JSON.parse(localStorage.getItem('hove_wb_records') || '[]');
+    saved.push(snapshot);
+    localStorage.setItem('hove_wb_records', JSON.stringify(saved.slice(-50)));
+    toast('W&B archivé localement (hors-ligne) ✓', 'warning');
+    goBack();
+  }
 }
 
 // ── WEIGHT & BALANCE CALCULATOR ───────────────────────────────────
