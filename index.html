@@ -595,6 +595,134 @@ input, select, textarea, button { font-family: inherit; }
 .scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
 .scroll::-webkit-scrollbar { display: none; }
 
+/* ══════════════════════════════════════════
+   ENHANCED CALENDAR — Ocean App Style
+   ══════════════════════════════════════════ */
+.cal-wrap-v2 { margin-bottom: 0; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.cal-header-v2 { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px 10px; border-bottom: 1px solid var(--border); }
+.cal-month-v2 { font-size: 16px; font-weight: 700; color: var(--text); letter-spacing: -.02em; }
+.cal-month-v2 span { color: var(--gold); }
+.cal-today-btn { font-size: 11px; font-weight: 600; color: var(--gold); background: rgba(201,168,76,.1); border: 1px solid rgba(201,168,76,.2); border-radius: 6px; padding: 4px 10px; cursor: pointer; transition: all .15s; }
+.cal-grid-v2 { display: grid; grid-template-columns: repeat(7,1fr); }
+.cal-dow-v2 { font-size: 9px; font-weight: 700; color: var(--text3); text-align: center; padding: 7px 0 5px; text-transform: uppercase; letter-spacing: .06em; background: rgba(255,255,255,.015); border-bottom: 1px solid var(--border); }
+.cal-day-v2 { min-height: 62px; padding: 5px 4px 4px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); cursor: pointer; transition: background .12s; position: relative; display: flex; flex-direction: column; gap: 2px; }
+.cal-day-v2:hover { background: rgba(255,255,255,.03); }
+.cal-day-v2.today .cal-day-num { background: var(--gold); color: #000; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+.cal-day-v2.selected { background: rgba(201,168,76,.06); }
+.cal-day-v2.other-month-v2 { background: transparent; }
+.cal-day-v2.other-month-v2 .cal-day-num { color: var(--text3); opacity: .35; }
+.cal-day-num { font-size: 11px; font-weight: 600; color: var(--text2); line-height: 1; }
+.cal-day-v2.today .cal-day-num { font-size: 10px; }
+.cal-flight-badge { font-size: 8.5px; font-weight: 700; font-family: 'DM Mono', monospace; padding: 1.5px 4px; border-radius: 3px; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+.cal-flight-badge.type-flight { background: rgba(201,168,76,.15); color: var(--gold); }
+.cal-flight-badge.type-sim { background: var(--g-light); color: var(--g); }
+.cal-flight-badge.type-training { background: rgba(139,92,246,.15); color: #a78bfa; }
+.cal-flight-badge.type-ferry { background: var(--a-light); color: var(--a); }
+.cal-more-badge { font-size: 8px; color: var(--text3); padding-left: 2px; }
+.cal-day-v2.has-nogo { border-left: 2px solid var(--r); }
+.cal-day-v2.has-go { border-left: 2px solid var(--g); }
+.cal-legend-v2 { display: flex; gap: 10px; padding: 8px 14px; border-top: 1px solid var(--border); background: rgba(255,255,255,.01); flex-wrap: wrap; }
+.cal-leg-v2 { display: flex; align-items: center; gap: 4px; font-size: 9px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: .05em; }
+.cal-leg-dot-v2 { width: 8px; height: 8px; border-radius: 2px; }
+
+/* ── VIEW TOGGLE ── */
+.view-toggle { display: flex; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.vt-btn { flex: 1; padding: 6px 10px; font-size: 11px; font-weight: 600; border: none; cursor: pointer; color: var(--text3); background: transparent; transition: all .15s; display: flex; align-items: center; justify-content: center; gap: 4px; white-space: nowrap; font-family: inherit; }
+.vt-btn.on { background: var(--card-bg); color: var(--gold); box-shadow: var(--shadow); }
+.vt-btn svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+/* ── DAY DETAIL PANEL (slide-up) ── */
+.day-detail-overlay { position: absolute; inset: 0; z-index: 50; display: none; flex-direction: column; background: transparent; }
+.day-detail-overlay.open { display: flex; }
+.day-detail-backdrop { flex: 1; background: rgba(0,0,0,.5); backdrop-filter: blur(2px); }
+.day-detail-panel { background: #111; border-top: 1px solid var(--border); max-height: 70%; overflow: hidden; display: flex; flex-direction: column; animation: slideUp .25s ease; border-radius: 20px 20px 0 0; }
+.day-detail-handle { width: 36px; height: 4px; background: var(--border); border-radius: 2px; margin: 12px auto 0; flex-shrink: 0; }
+.day-detail-header { padding: 12px 18px 10px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.day-detail-date { font-size: 15px; font-weight: 700; color: var(--text); letter-spacing: -.01em; }
+.day-detail-sub { font-size: 11px; color: var(--text3); margin-top: 1px; }
+.day-detail-close { background: var(--surface); border: 1px solid var(--border); border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.day-detail-close svg { width: 14px; height: 14px; stroke: var(--text2); fill: none; stroke-width: 2; }
+.day-detail-scroll { overflow-y: auto; padding: 12px 14px 24px; flex: 1; -webkit-overflow-scrolling: touch; }
+.day-detail-scroll::-webkit-scrollbar { display: none; }
+
+/* ── MISSION CARD V2 ── */
+.mc2 { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 10px; overflow: hidden; transition: all .15s; }
+.mc2:hover { border-color: rgba(201,168,76,.25); }
+.mc2-header { padding: 12px 14px 8px; display: flex; align-items: flex-start; gap: 10px; }
+.mc2-route { flex: 1; }
+.mc2-airports { font-size: 17px; font-weight: 700; color: var(--text); letter-spacing: -.01em; display: flex; align-items: center; gap: 6px; }
+.mc2-arrow { color: var(--text3); font-size: 13px; }
+.mc2-meta { font-size: 11px; color: var(--text2); margin-top: 3px; }
+.mc2-badge { flex-shrink: 0; margin-top: 2px; }
+.mc2-footer { padding: 8px 14px; background: rgba(255,255,255,.015); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+.mc2-crew { font-size: 11px; color: var(--text2); display: flex; align-items: center; gap: 8px; }
+.mc2-gng { font-size: 11px; font-weight: 700; display: flex; align-items: center; gap: 4px; }
+.mc2-gng.go { color: var(--g); }
+.mc2-gng.nogo { color: var(--r); }
+.mc2-gng.pending { color: var(--a); }
+.mc2-actions { display: flex; gap: 4px; }
+/* Phase indicator */
+.phase-strip { display: flex; padding: 0 14px 10px; gap: 4px; }
+.phase-chip { flex: 1; padding: 5px 4px; border-radius: 6px; text-align: center; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; cursor: pointer; transition: all .15s; }
+.phase-chip.pre { background: rgba(201,168,76,.08); color: var(--gold); border: 1px solid rgba(201,168,76,.15); }
+.phase-chip.inflight { background: rgba(59,130,246,.08); color: #60a5fa; border: 1px solid rgba(59,130,246,.15); }
+.phase-chip.post { background: rgba(34,197,94,.08); color: var(--g); border: 1px solid rgba(34,197,94,.15); }
+.phase-chip.active { opacity: 1; transform: none; }
+.phase-chip:not(.active) { opacity: .4; }
+
+/* ── GANTT TIMELINE ── */
+.gantt-wrap { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.gantt-header { padding: 12px 16px 10px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+.gantt-title { font-size: 14px; font-weight: 700; color: var(--text); }
+.gantt-sub { font-size: 11px; color: var(--text3); }
+.gantt-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.gantt-scroll::-webkit-scrollbar { height: 3px; }
+.gantt-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+.gantt-table { min-width: 700px; }
+.gantt-thead { display: flex; border-bottom: 1px solid var(--border); }
+.gantt-ac-col { width: 90px; min-width: 90px; flex-shrink: 0; padding: 6px 10px; background: rgba(255,255,255,.02); border-right: 1px solid var(--border); }
+.gantt-dates-row { flex: 1; display: flex; }
+.gantt-date-cell { flex: 1; text-align: center; padding: 6px 2px; font-size: 9px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: .04em; border-right: 1px solid rgba(255,255,255,.03); }
+.gantt-date-cell.today-col { color: var(--gold); background: rgba(201,168,76,.05); }
+.gantt-date-cell.weekend { background: rgba(255,255,255,.01); }
+.gantt-body { }
+.gantt-row { display: flex; border-bottom: 1px solid var(--border); min-height: 48px; position: relative; }
+.gantt-row:last-child { border-bottom: none; }
+.gantt-ac-label { width: 90px; min-width: 90px; flex-shrink: 0; padding: 8px 10px; border-right: 1px solid var(--border); background: rgba(255,255,255,.01); display: flex; flex-direction: column; justify-content: center; }
+.gantt-ac-reg { font-size: 11px; font-weight: 700; color: var(--gold); font-family: 'DM Mono', monospace; }
+.gantt-ac-type { font-size: 9px; color: var(--text3); margin-top: 1px; }
+.gantt-timeline { flex: 1; position: relative; display: flex; }
+.gantt-day-col { flex: 1; border-right: 1px solid rgba(255,255,255,.03); position: relative; }
+.gantt-day-col.today-col { background: rgba(201,168,76,.04); }
+.gantt-block { position: absolute; top: 6px; height: 36px; border-radius: 5px; display: flex; align-items: center; padding: 0 6px; cursor: pointer; z-index: 2; font-size: 9px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: .02em; transition: opacity .15s; min-width: 8px; }
+.gantt-block:hover { opacity: .85; }
+.gantt-block.type-flight { background: rgba(201,168,76,.8); color: #000; }
+.gantt-block.type-sim { background: rgba(34,197,94,.6); color: #000; }
+.gantt-block.type-ferry { background: rgba(245,158,11,.6); color: #000; }
+.gantt-block.type-training { background: rgba(139,92,246,.6); color: #fff; }
+.gantt-block.go-nogo { box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.3); }
+.gantt-today-line { position: absolute; top: 0; bottom: 0; width: 1.5px; background: var(--gold); opacity: .7; z-index: 5; pointer-events: none; }
+.gantt-empty { padding: 20px; text-align: center; color: var(--text3); font-size: 12px; }
+
+/* ── FTL COUNTERS (Crew Companion Style) ── */
+.ftl-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.ftl-title { font-size: 13px; font-weight: 700; color: var(--text); }
+.ftl-status-pill { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 20px; }
+.ftl-status-ok { background: var(--g-light); color: var(--g); }
+.ftl-status-warn { background: var(--a-light); color: var(--a); }
+.ftl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.ftl-counter { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px; }
+.ftl-label { font-size: 9px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 5px; }
+.ftl-vals { display: flex; align-items: baseline; gap: 4px; margin-bottom: 5px; }
+.ftl-val { font-size: 18px; font-weight: 700; color: var(--text); letter-spacing: -.02em; }
+.ftl-limit { font-size: 10px; color: var(--text3); }
+.ftl-bar { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.ftl-fill { height: 100%; border-radius: 2px; transition: width .4s ease; }
+.ftl-fill.ok { background: var(--g); }
+.ftl-fill.warn { background: var(--a); }
+.ftl-fill.danger { background: var(--r); }
+
+#planning-cal-view { flex-direction: column; }
 /* ── SIDEBAR / BOTTOM NAV SWITCH ── */
 /* Mobile: hide global sidebar, show per-screen bnav */
 #sidebar { display: none !important; }
@@ -606,6 +734,28 @@ input, select, textarea, button { font-family: inherit; }
   .app-content .screen { flex: 1; display: none; flex-direction: column; }
   .app-content .screen.active { display: flex; }
 }
+
+/* ── PLANNING LAYOUT ── */
+#planning-cal-view { flex-direction: column; }
+/* ── HQ CARD POLISH ── */
+.hq-card { position: relative; overflow: hidden; }
+/* ── PHASE CHIPS ── */
+.phase-chip:not(.active):hover { opacity: .7; cursor: pointer; }
+.phase-chip.pre.active { background: rgba(201,168,76,.15); color: var(--gold); border-color: rgba(201,168,76,.3); }
+.phase-chip.inflight.active { background: rgba(59,130,246,.15); color: #60a5fa; border-color: rgba(59,130,246,.3); }
+.phase-chip.post.active { background: rgba(34,197,94,.15); color: var(--g); border-color: rgba(34,197,94,.3); }
+/* ── GANTT TABLET ── */
+@media (min-width: 768px) {
+  .gantt-row { min-height: 56px; }
+  .gantt-block { top: 8px; height: 40px; font-size: 9px; }
+  .gantt-ac-col { width: 110px; min-width: 110px; }
+  .gantt-ac-label { width: 110px; min-width: 110px; }
+}
+/* ── CAL GRID LAST COL ── */
+.cal-day-v2:nth-child(7n+1) { border-left: none; }
+/* ── DAY DETAIL POINTER ── */
+.day-detail-overlay { background: transparent; pointer-events: none; }
+.day-detail-overlay.open { pointer-events: all; }
 </style>
 </head>
 <body>
@@ -615,17 +765,18 @@ input, select, textarea, button { font-family: inherit; }
   <div class="toast-container" id="toast-container"></div>
   <!-- GLOBAL SIDEBAR (desktop only, controlled via CSS) -->
   <nav id="sidebar" class="bnav">
+    <span class="nav-section-label">Principal</span>
     <button class="ni" onclick="goTo('s-home')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Accueil</span></button>
-    <button class="ni" onclick="goTo('s-crew')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span>Crew</span></button>
+    <button class="ni" onclick="goTo('s-crew')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span>Crew ID</span></button>
     <button class="ni" onclick="goTo('s-planning')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Planning</span></button>
     <button class="ni" onclick="goTo('s-finance')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg><span>Finance</span></button>
     <span class="nav-section-label">Opérations</span>
-    <button class="ni" onclick="goTo('s-fleet')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07A19.5 19.5 0 013.07 13.1 19.8 19.8 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span>Flotte</span></button>
+    <button class="ni" onclick="goTo('s-fleet')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg><span>Flotte & MEL</span></button>
     <button class="ni" onclick="goTo('s-logbook')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg><span>Logbook</span></button>
     <button class="ni" onclick="goTo('s-checklist')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg><span>Checklist</span></button>
-    <button class="ni" onclick="goTo('s-wx')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg><span>Météo</span></button>
-    <span class="nav-section-label">Admin</span>
-    <button class="ni" onclick="goTo('s-manex')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>ManEx</span></button>
+    <button class="ni" onclick="goTo('s-wx')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg><span>Météo METAR</span></button>
+    <span class="nav-section-label">Conformité</span>
+    <button class="ni" onclick="goTo('s-manex')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>ManEx / SMS</span></button>
     <button class="ni" id="sidebar-admin-btn" style="display:none" onclick="goTo('s-admin')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span>Admin</span></button>
     <div class="bnav-footer">
       <button class="ni" onclick="doLogout()"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><span>Déconnexion</span></button>
@@ -790,6 +941,20 @@ input, select, textarea, button { font-family: inherit; }
       </div>
       <div class="sec">Conformité réglementaire</div>
       <div class="card" id="crew-compliance"><div class="spinner"></div></div>
+      <!-- FTL COUNTERS -->
+      <div class="sec" id="ftl-section-label" style="display:none">Compteurs FTL</div>
+      <div class="card" id="ftl-counters" style="display:none">
+        <div class="ftl-header">
+          <div class="ftl-title">Block Hours</div>
+          <span class="ftl-status-pill ftl-status-ok" id="ftl-status-pill">OK</span>
+        </div>
+        <div class="ftl-grid" id="ftl-grid">
+          <div class="ftl-counter"><div class="ftl-label">7 jours</div><div class="ftl-vals"><div class="ftl-val" id="ftl-7d">—</div><div class="ftl-limit">/ 60h</div></div><div class="ftl-bar"><div class="ftl-fill ok" id="ftl-7d-bar" style="width:0%"></div></div></div>
+          <div class="ftl-counter"><div class="ftl-label">28 jours</div><div class="ftl-vals"><div class="ftl-val" id="ftl-28d">—</div><div class="ftl-limit">/ 100h</div></div><div class="ftl-bar"><div class="ftl-fill ok" id="ftl-28d-bar" style="width:0%"></div></div></div>
+          <div class="ftl-counter"><div class="ftl-label">90 jours</div><div class="ftl-vals"><div class="ftl-val" id="ftl-90d">—</div><div class="ftl-limit">/ 270h</div></div><div class="ftl-bar"><div class="ftl-fill ok" id="ftl-90d-bar" style="width:0%"></div></div></div>
+          <div class="ftl-counter"><div class="ftl-label">12 mois</div><div class="ftl-vals"><div class="ftl-val" id="ftl-12m">—</div><div class="ftl-limit">/ 900h</div></div><div class="ftl-bar"><div class="ftl-fill ok" id="ftl-12m-bar" style="width:0%"></div></div></div>
+        </div>
+      </div>
       <div id="crew-switch-section" style="display:none">
         <div class="sec">Équipage HOVE</div>
         <div class="card" id="crew-switch-list"></div>
@@ -800,35 +965,76 @@ input, select, textarea, button { font-family: inherit; }
   <!-- ══════════════════════════════════════
        PLANNING
   ══════════════════════════════════════════ -->
-  <div class="screen" id="s-planning">
+  <div class="screen" id="s-planning" style="position:relative">
     <div class="topbar">
       <div class="tb-eyebrow"><svg class="hove-mark" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="7 1 1 5 7 9 13 5 7 1"/><line x1="1" y1="9" x2="7" y2="13"/><line x1="13" y1="9" x2="7" y2="13"/></svg>Planning opérationnel</div>
       <div class="tb-row">
-        <img src="https://image2url.com/r2/default/images/1775222021136-65ec17d6-3695-4b9c-9b46-287ae4ef70dd.png" class="hove-logo-topbar" alt="HOVE" onerror="this.style.display='none'"/>
-        <div class="tb-title">Planning</div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="tb-title">Planning</div>
+          <div class="view-toggle">
+            <button class="vt-btn on" id="vt-cal" onclick="switchPlanningView('cal')"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Cal</button>
+            <button class="vt-btn" id="vt-gantt" onclick="switchPlanningView('gantt')" style="display:none"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="6" height="4" rx="1"/><rect x="3" y="10" width="10" height="4" rx="1"/><rect x="3" y="16" width="8" height="4" rx="1"/></svg>Gantt</button>
+          </div>
+        </div>
         <div style="display:flex;gap:5px">
           <button class="tb-action" id="planning-sim-btn" style="display:none;background:rgba(5,150,105,.25);color:#fff" onclick="openModal('modal-sim-session')">+ Simu</button>
           <button class="tb-action" id="planning-add-btn" style="display:none" onclick="openModal('modal-new-mission')">+ Mission</button>
         </div>
       </div>
     </div>
-    <div class="scroll" style="padding:14px">
-      <!-- Calendrier -->
-      <div class="cal-wrap">
-        <div class="cal-header">
+
+    <!-- CALENDAR VIEW -->
+    <div id="planning-cal-view" class="scroll" style="padding:14px">
+      <div class="cal-wrap-v2">
+        <div class="cal-header-v2">
           <button class="cal-nav" onclick="calNav(-1)">&#8249;</button>
-          <div class="cal-month" id="cal-month-label">—</div>
-          <button class="cal-nav" onclick="calNav(1)">&#8250;</button>
+          <div class="cal-month-v2" id="cal-month-label">—</div>
+          <div style="display:flex;align-items:center;gap:6px">
+            <button class="cal-today-btn" onclick="calGoToday()">Auj.</button>
+            <button class="cal-nav" onclick="calNav(1)">&#8250;</button>
+          </div>
         </div>
-        <div class="cal-grid" id="cal-grid"></div>
-        <div class="cal-legend">
-          <div class="cal-leg-item"><div class="cal-leg-dot" style="background:var(--gold)"></div>Vol / Mission</div>
-          <div class="cal-leg-item"><div class="cal-leg-dot" style="background:var(--g)"></div>Simulateur</div>
+        <div class="cal-grid-v2" id="cal-grid"></div>
+        <div class="cal-legend-v2">
+          <div class="cal-leg-v2"><div class="cal-leg-dot-v2" style="background:var(--gold)"></div>Vol</div>
+          <div class="cal-leg-v2"><div class="cal-leg-dot-v2" style="background:var(--g)"></div>Simu</div>
+          <div class="cal-leg-v2"><div class="cal-leg-dot-v2" style="background:#a78bfa"></div>Training</div>
+          <div class="cal-leg-v2"><div class="cal-leg-dot-v2" style="background:var(--r)"></div>NO-GO</div>
         </div>
       </div>
-      <div class="sec" id="planning-list-title">Missions à venir</div>
+      <div class="sec" id="planning-list-title" style="margin-top:14px">Missions à venir</div>
       <div id="missions-list"><div class="loading-screen"><div class="spinner"></div><p>Chargement...</p></div></div>
     </div>
+
+    <!-- GANTT VIEW (admin only) -->
+    <div id="planning-gantt-view" style="display:none;flex:1;overflow-y:auto;padding:14px">
+      <div class="gantt-wrap">
+        <div class="gantt-header">
+          <div><div class="gantt-title">Fleet Timeline</div><div class="gantt-sub" id="gantt-range-label">—</div></div>
+          <div style="display:flex;gap:6px">
+            <button class="cal-nav" onclick="ganttNav(-14)">&#8249; -14j</button>
+            <button class="cal-nav" onclick="ganttNav(14)">+14j &#8250;</button>
+          </div>
+        </div>
+        <div class="gantt-scroll">
+          <div class="gantt-table" id="gantt-table"><div class="gantt-empty"><div class="spinner"></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY DETAIL PANEL (slide-up) -->
+    <div class="day-detail-overlay" id="day-detail-overlay">
+      <div class="day-detail-backdrop" onclick="closeDayDetailBtn()"></div>
+      <div class="day-detail-panel">
+        <div class="day-detail-handle"></div>
+        <div class="day-detail-header">
+          <div><div class="day-detail-date" id="day-detail-date">—</div><div class="day-detail-sub" id="day-detail-count">—</div></div>
+          <div class="day-detail-close" onclick="closeDayDetailBtn()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+        </div>
+        <div class="day-detail-scroll" id="day-detail-scroll"></div>
+      </div>
+    </div>
+
     <div class="bnav">
       <button class="ni" onclick="goTo('s-home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Accueil</span></button>
       <button class="ni" onclick="goTo('s-crew')"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span>Crew</span></button>
@@ -2111,7 +2317,46 @@ function buildCompliance(p) {
   ].filter(Boolean);
 }
 
-// ── TOAST ────────────────────────────────────────────────────────
+// ── FTL COUNTERS ─────────────────────────────────────────────────
+async function loadFTLCounters() {
+  const section = document.getElementById('ftl-section-label');
+  const card = document.getElementById('ftl-counters');
+  if (!section || !card) return;
+  section.style.display = 'block';
+  card.style.display = 'block';
+  try {
+    const now = new Date();
+    const cutoffs = {
+      '7d':  new Date(now - 7  * 86400000).toISOString().split('T')[0],
+      '28d': new Date(now - 28 * 86400000).toISOString().split('T')[0],
+      '90d': new Date(now - 90 * 86400000).toISOString().split('T')[0],
+      '12m': new Date(now.getFullYear()-1, now.getMonth(), now.getDate()).toISOString().split('T')[0],
+    };
+    const uid = currentUser.id;
+    const { data: logs } = await sb.from('tech_logs').select('flight_hours, created_at').eq('pilot_id', uid).gte('created_at', cutoffs['12m']);
+    if (!logs) return;
+    const sum = (since) => (logs.filter(l => l.created_at.split('T')[0] >= since).reduce((s,l) => s + Number(l.flight_hours||0), 0));
+    const vals = { '7d': sum(cutoffs['7d']), '28d': sum(cutoffs['28d']), '90d': sum(cutoffs['90d']), '12m': sum(cutoffs['12m']) };
+    const limits = { '7d': 60, '28d': 100, '90d': 270, '12m': 900 };
+    let anyWarn = false;
+    Object.keys(vals).forEach(k => {
+      const pct = Math.min(100, (vals[k] / limits[k]) * 100);
+      const cls = pct >= 90 ? 'danger' : pct >= 75 ? 'warn' : 'ok';
+      if (cls !== 'ok') anyWarn = true;
+      const el = document.getElementById(`ftl-${k.replace('d','d').replace('m','m')}`);
+      const bar = document.getElementById(`ftl-${k.replace('d','d').replace('m','m')}-bar`);
+      if (el) el.textContent = vals[k].toFixed(1) + 'h';
+      if (bar) { bar.style.width = pct + '%'; bar.className = `ftl-fill ${cls}`; }
+    });
+    const pill = document.getElementById('ftl-status-pill');
+    if (pill) {
+      pill.textContent = anyWarn ? 'Attention' : 'OK';
+      pill.className = `ftl-status-pill ${anyWarn ? 'ftl-status-warn' : 'ftl-status-ok'}`;
+    }
+  } catch(e) { console.error('loadFTLCounters:', e); }
+}
+
+
 function toast(msg, type = 'info') {
   const c = document.getElementById('toast-container');
   const t = document.createElement('div');
@@ -2134,7 +2379,7 @@ function goTo(id) {
   const s = document.getElementById(id);
   if (s) { s.classList.add('active'); s.scrollTop = 0; }
   updateNav(id);
-  if (id === 's-planning') { renderMissions(); initCalendar(); }
+  if (id === 's-planning') { renderMissions(); initCalendar(); currentPlanningView = 'cal'; switchPlanningView('cal'); }
   if (id === 's-logbook') renderLogbook();
   if (id === 's-fleet') { loadFleetData(); }
   if (id === 's-admin') renderAdmin();
@@ -2268,6 +2513,11 @@ function initHome() {
   const simBtn = document.getElementById('planning-sim-btn');
   if (planBtn) planBtn.style.display = (isAdmin||u.role==='pilot') ? 'inline-block' : 'none';
   if (simBtn) simBtn.style.display = (isAdmin||u.role==='pilot') ? 'inline-block' : 'none';
+  // Show Gantt view toggle for admin
+  const ganttBtn = document.getElementById('vt-gantt');
+  if (ganttBtn) ganttBtn.style.display = isAdmin ? 'flex' : 'none';
+  // Load FTL counters for pilots
+  if (u.role === 'pilot' || u.role === 'admin') { loadFTLCounters(); }
 
   updateCrewBadge(u);
   initCrewScreen(u);
@@ -2326,17 +2576,27 @@ async function loadNextMission() {
       return;
     }
     const m = data[0];
-    const dateStr = new Date(m.scheduled_date).toLocaleDateString('fr-FR', {day:'numeric',month:'short'});
-    el.innerHTML = `<div class="card">
-      <div class="card-r">
-        <div><div class="ct">${m.type==='sim'?'Séance Simu':(m.departure_icao||'—')+' → '+(m.arrival_icao||'—')}</div>
-        <div class="cs">${dateStr} · ${m.scheduled_time?.slice(0,5)||'—'} · ${m.aircraft?.registration||'—'}</div></div>
-        <span class="badge badge-b">${m.flight_rule||m.type?.toUpperCase()||'—'}</span>
+    const dateStr = new Date(m.scheduled_date).toLocaleDateString('fr-FR', {weekday:'short', day:'numeric',month:'short'});
+    const now = new Date();
+    const mDate = new Date(m.scheduled_date + 'T' + (m.scheduled_time||'00:00'));
+    const diffH = (mDate - now) / 3600000;
+    const phase = diffH > 2 ? 'pre' : diffH > -3 ? 'inflight' : 'post';
+    el.innerHTML = `<div class="mc2">
+      <div class="mc2-header">
+        <div class="mc2-route">
+          <div class="mc2-airports">${m.type==='sim'?'Séance Simu':(m.departure_icao||'—')+' <span class="mc2-arrow">→</span> '+(m.arrival_icao||'—')}</div>
+          <div class="mc2-meta">${dateStr} · ${m.scheduled_time?.slice(0,5)||'—'} · ${m.aircraft?.registration||'—'}</div>
+        </div>
+        <span class="badge badge-b" style="flex-shrink:0;margin-top:2px">${m.flight_rule||m.type?.toUpperCase()||'—'}</span>
       </div>
-      <div class="divider"></div>
-      <div class="card-r">
-        <span class="text-small text-muted">PIC: ${m.pilot?.full_name||'—'} · <span style="color:${m.go_nogo==='GO'?'var(--g)':m.go_nogo==='NO-GO'?'var(--r)':'var(--a)'}">● ${m.go_nogo||'PENDING'}</span></span>
-        <button class="btn btn-p btn-sm" onclick="goTo('s-checklist')">Pré-vol</button>
+      <div class="phase-strip">
+        <div class="phase-chip pre ${phase==='pre'?'active':''}" onclick="goTo('s-checklist')">Pré-vol</div>
+        <div class="phase-chip inflight ${phase==='inflight'?'active':''}">En vol</div>
+        <div class="phase-chip post ${phase==='post'?'active':''}" onclick="goTo('s-logbook')">Post-vol</div>
+      </div>
+      <div class="mc2-footer">
+        <div class="mc2-crew"><span>PIC: ${m.pilot?.full_name||'—'}</span></div>
+        <span class="mc2-gng ${(m.go_nogo||'PENDING')==='GO'?'go':(m.go_nogo==='NO-GO'?'nogo':'pending')}">● ${m.go_nogo||'PENDING'}</span>
       </div>
     </div>`;
   } catch(e) { console.error('loadNextMission:', e); }
@@ -2416,7 +2676,7 @@ async function renderMissions() {
       list.innerHTML = '<div class="empty-state"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><p>Aucune mission planifiée</p></div>';
       return;
     }
-    let cards = (data || []).map(m => buildMissionCard(m, isAdmin)).join('');
+    let cards = (data || []).map(m => buildMissionCard2(m, isAdmin)).join('');
     cards += localSims.sort((a,b)=>a.date.localeCompare(b.date)).map(s => buildSimCard(s)).join('');
     list.innerHTML = cards;
     document.getElementById('hq-planning-sub').textContent = ((data||[]).length + localSims.length) + ' mission' + (((data||[]).length + localSims.length)>1?'s':'');
@@ -3493,21 +3753,21 @@ async function fetchCalendarMissions() {
     const firstDay = new Date(calYear, calMonth, 1).toISOString().split('T')[0];
     const lastDay = new Date(calYear, calMonth + 1, 0).toISOString().split('T')[0];
     const { data } = await sb.from('missions')
-      .select('scheduled_date, type')
+      .select('scheduled_date, type, departure_icao, arrival_icao, go_nogo')
       .gte('scheduled_date', firstDay)
       .lte('scheduled_date', lastDay)
       .neq('status', 'cancelled');
     calMissionDates = {};
     (data || []).forEach(m => {
       if (!calMissionDates[m.scheduled_date]) calMissionDates[m.scheduled_date] = [];
-      calMissionDates[m.scheduled_date].push(m.type);
+      calMissionDates[m.scheduled_date].push({ type: m.type, dep: m.departure_icao, arr: m.arrival_icao, gonogo: m.go_nogo });
     });
     // Also fetch local sim sessions from localStorage
     const localSims = getLocalSimSessions();
     localSims.forEach(s => {
       if (s.date >= firstDay && s.date <= lastDay) {
         if (!calMissionDates[s.date]) calMissionDates[s.date] = [];
-        calMissionDates[s.date].push('sim');
+        calMissionDates[s.date].push({ type: 'sim', dep: null, arr: null, gonogo: 'GO' });
       }
     });
   } catch(e) { console.error('fetchCalendarMissions:', e); }
@@ -3516,36 +3776,50 @@ async function fetchCalendarMissions() {
 function renderCalendar() {
   const DAYS_FR = ['Lu','Ma','Me','Je','Ve','Sa','Di'];
   const MONTHS_FR = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
-  document.getElementById('cal-month-label').textContent = MONTHS_FR[calMonth] + ' ' + calYear;
+  document.getElementById('cal-month-label').innerHTML = `<span style="color:var(--text)">${MONTHS_FR[calMonth]}</span> <span>${calYear}</span>`;
   const grid = document.getElementById('cal-grid');
-  let html = DAYS_FR.map(d => `<div class="cal-dow">${d}</div>`).join('');
+  let html = DAYS_FR.map((d,i) => `<div class="cal-dow-v2" style="${i>=5?'color:rgba(255,255,255,.25)':''}">${d}</div>`).join('');
   const first = new Date(calYear, calMonth, 1);
   const last = new Date(calYear, calMonth + 1, 0);
   const todayStr = new Date().toISOString().split('T')[0];
   let startOffset = (first.getDay() + 6) % 7;
   for (let i = startOffset - 1; i >= 0; i--) {
     const d = new Date(calYear, calMonth, -i);
-    html += `<div class="cal-day other-month">${d.getDate()}</div>`;
+    html += `<div class="cal-day-v2 other-month-v2"><div class="cal-day-num">${d.getDate()}</div></div>`;
   }
   for (let day = 1; day <= last.getDate(); day++) {
     const dateStr = `${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-    const types = calMissionDates[dateStr] || [];
+    const missions = calMissionDates[dateStr] || [];
     const isToday = dateStr === todayStr;
     const isSelected = dateStr === calSelectedDate;
-    const hasSim = types.includes('sim');
-    const hasMission = types.some(t => t !== 'sim');
-    let cls = 'cal-day';
+    const hasNogo = missions.some(m => m.gonogo === 'NO-GO');
+    const hasGo = missions.some(m => m.gonogo === 'GO');
+    let cls = 'cal-day-v2';
     if (isToday) cls += ' today';
-    if (isSelected && !isToday) cls += ' selected';
-    // Build dots
-    let dots = '';
-    if (hasMission || hasSim) {
-      dots = '<div class="cal-dots">';
-      if (hasMission) dots += `<div class="cal-dot cal-dot-mission"></div>`;
-      if (hasSim) dots += `<div class="cal-dot cal-dot-sim"></div>`;
-      dots += '</div>';
+    if (isSelected) cls += ' selected';
+    if (hasNogo) cls += ' has-nogo';
+    else if (hasGo && missions.length) cls += ' has-go';
+    // Build mission badges (max 2 visible)
+    let badgesHtml = '';
+    const shown = missions.slice(0, 2);
+    shown.forEach(m => {
+      const label = m.type === 'sim' ? 'SIMU'
+        : m.type === 'flight' ? (m.dep && m.arr ? `${m.dep}→${m.arr}` : 'VOL')
+        : m.type === 'training' ? 'ENTR.'
+        : m.type === 'ferry' ? 'FERRY'
+        : (m.type||'VOL').toUpperCase();
+      badgesHtml += `<div class="cal-flight-badge type-${m.type||'flight'}">${label}</div>`;
+    });
+    if (missions.length > 2) badgesHtml += `<div class="cal-more-badge">+${missions.length-2}</div>`;
+    html += `<div class="${cls}" onclick="calSelectDay('${dateStr}')"><div class="cal-day-num">${day}</div>${badgesHtml}</div>`;
+  }
+  // Fill remaining cells to complete last week row
+  const totalCells = startOffset + last.getDate();
+  const remainder = totalCells % 7;
+  if (remainder > 0) {
+    for (let i = 1; i <= 7 - remainder; i++) {
+      html += `<div class="cal-day-v2 other-month-v2"><div class="cal-day-num">${i}</div></div>`;
     }
-    html += `<div class="${cls}" onclick="calSelectDay('${dateStr}')">${day}${dots}</div>`;
   }
   grid.innerHTML = html;
 }
@@ -3558,10 +3832,53 @@ async function calNav(dir) {
   renderCalendar();
 }
 
+function calGoToday() {
+  calYear = new Date().getFullYear();
+  calMonth = new Date().getMonth();
+  fetchCalendarMissions().then(renderCalendar);
+}
+
 function calSelectDay(dateStr) {
   calSelectedDate = dateStr;
   renderCalendar();
-  filterMissionsByDate(dateStr);
+  showDayDetail(dateStr);
+}
+
+async function showDayDetail(dateStr) {
+  const overlay = document.getElementById('day-detail-overlay');
+  const scrollEl = document.getElementById('day-detail-scroll');
+  const dateEl = document.getElementById('day-detail-date');
+  const countEl = document.getElementById('day-detail-count');
+  const d = new Date(dateStr + 'T00:00:00');
+  const DAYS = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
+  const MONTHS = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  dateEl.textContent = `${DAYS[d.getDay()]} ${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+  countEl.textContent = 'Chargement...';
+  scrollEl.innerHTML = '<div class="spinner" style="margin:20px auto"></div>';
+  overlay.classList.add('open');
+  try {
+    const { data, error } = await sb.from('missions')
+      .select('*, pilot:profiles!missions_pilot_id_fkey(full_name,initials), client:profiles!missions_client_id_fkey(full_name), aircraft(registration,type)')
+      .eq('scheduled_date', dateStr).neq('status','cancelled').order('scheduled_time');
+    if (error) throw error;
+    const isAdmin = currentUser.role === 'admin';
+    const localSims = getLocalSimSessions().filter(s => s.date === dateStr);
+    const total = (data||[]).length + localSims.length;
+    countEl.textContent = total === 0 ? 'Aucune mission' : `${total} mission${total>1?'s':''}`;
+    let cards = '';
+    (data||[]).forEach(m => { cards += buildMissionCard2(m, isAdmin); });
+    localSims.forEach(s => { cards += buildSimCard(s); });
+    if (!cards) cards = '<div class="empty-state"><p style="color:var(--text3)">Aucune mission ce jour</p></div>';
+    scrollEl.innerHTML = cards;
+  } catch(e) {
+    scrollEl.innerHTML = `<div class="alert alert-danger">${e.message}</div>`;
+  }
+}
+
+function closeDayDetailBtn() {
+  document.getElementById('day-detail-overlay').classList.remove('open');
+  calSelectedDate = null;
+  renderCalendar();
 }
 
 async function filterMissionsByDate(dateStr) {
@@ -3582,7 +3899,7 @@ async function filterMissionsByDate(dateStr) {
     const localSims = getLocalSimSessions().filter(s => s.date === dateStr);
     let cards = '';
     (data || []).forEach(m => {
-      cards += buildMissionCard(m, isAdmin);
+      cards += buildMissionCard2(m, isAdmin);
     });
     localSims.forEach(s => {
       cards += buildSimCard(s);
@@ -3596,7 +3913,142 @@ async function filterMissionsByDate(dateStr) {
   }
 }
 
-function buildMissionCard(m, isAdmin) {
+// ── PLANNING VIEW TOGGLE ─────────────────────────────────────────
+let currentPlanningView = 'cal';
+function switchPlanningView(view) {
+  currentPlanningView = view;
+  document.getElementById('planning-cal-view').style.display = view === 'cal' ? 'flex' : 'none';
+  const ganttEl = document.getElementById('planning-gantt-view');
+  ganttEl.style.display = view === 'gantt' ? 'block' : 'none';
+  document.getElementById('vt-cal').classList.toggle('on', view === 'cal');
+  document.getElementById('vt-gantt').classList.toggle('on', view === 'gantt');
+  if (view === 'gantt') renderGantt();
+}
+
+// ── MISSION CARD V2 ───────────────────────────────────────────────
+function buildMissionCard2(m, isAdmin) {
+  const timeStr = m.scheduled_time?.slice(0,5) || '—';
+  const dateStr = new Date(m.scheduled_date).toLocaleDateString('fr-FR',{day:'numeric',month:'short'});
+  const gng = (m.go_nogo || 'PENDING').toUpperCase();
+  const gngClass = gng === 'GO' ? 'go' : gng === 'NO-GO' ? 'nogo' : 'pending';
+  const gngDot = gng === 'GO' ? '●' : gng === 'NO-GO' ? '⛔' : '●';
+  const isSim = m.type === 'sim';
+  const routeDisplay = isSim ? 'Séance Simulateur' : `${m.departure_icao||'—'} → ${m.arrival_icao||'—'}`;
+  const badge = isSim ? 'type-sim' : m.type === 'training' ? 'type-training' : m.type === 'ferry' ? 'type-ferry' : 'type-flight';
+  const badgeLabel = TYPE_LABELS[m.type] || 'VOL';
+  // Determine flight phase
+  const now = new Date();
+  const mDate = new Date(m.scheduled_date + 'T' + (m.scheduled_time||'00:00'));
+  const diffH = (mDate - now) / 3600000;
+  const phase = diffH > 2 ? 'pre' : diffH > -3 ? 'inflight' : 'post';
+  const phaseLabels = { pre: 'Pré-vol', inflight: 'En vol', post: 'Post-vol' };
+  return `<div class="mc2">
+    <div class="mc2-header">
+      <div class="mc2-route">
+        <div class="mc2-airports">${routeDisplay}</div>
+        <div class="mc2-meta">${dateStr} · ${timeStr} · ${m.aircraft?.registration||'—'} ${m.flight_rule?'· '+m.flight_rule:''}</div>
+      </div>
+      <span class="badge ${badge} mc2-badge">${badgeLabel}</span>
+    </div>
+    <div class="phase-strip">
+      <div class="phase-chip pre ${phase==='pre'?'active':''}" onclick="goTo('s-checklist')">Pré-vol</div>
+      <div class="phase-chip inflight ${phase==='inflight'?'active':''}">En vol</div>
+      <div class="phase-chip post ${phase==='post'?'active':''}" onclick="goTo('s-logbook')">Post-vol</div>
+    </div>
+    <div class="mc2-footer">
+      <div class="mc2-crew">
+        <span>${m.pilot?.full_name||'—'}</span>
+        ${m.client?.full_name?`<span style="color:var(--text3)">·</span><span>${m.client.full_name}</span>`:''}
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="mc2-gng ${gngClass}">${gngDot} ${gng}</div>
+        ${isAdmin?`<button class="btn btn-p btn-sm" onclick="setGoNoGo('${m.id}','GO')">GO</button><button class="btn btn-r btn-sm" onclick="setGoNoGo('${m.id}','NO-GO')">NG</button>`:''}
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── GANTT TIMELINE ────────────────────────────────────────────────
+let ganttStartDate = new Date();
+ganttStartDate.setDate(ganttStartDate.getDate() - 3); // Start 3 days ago
+
+function ganttNav(days) {
+  ganttStartDate.setDate(ganttStartDate.getDate() + days);
+  renderGantt();
+}
+
+async function renderGantt() {
+  const tableEl = document.getElementById('gantt-table');
+  if (!tableEl) return;
+  tableEl.innerHTML = '<div class="gantt-empty"><div class="spinner"></div></div>';
+  const DAYS = 14;
+  const startD = new Date(ganttStartDate);
+  startD.setHours(0,0,0,0);
+  const endD = new Date(startD);
+  endD.setDate(endD.getDate() + DAYS - 1);
+  const startStr = startD.toISOString().split('T')[0];
+  const endStr = endD.toISOString().split('T')[0];
+  const todayStr = new Date().toISOString().split('T')[0];
+  // Update label
+  const rangeEl = document.getElementById('gantt-range-label');
+  if (rangeEl) rangeEl.textContent = `${startD.toLocaleDateString('fr-FR',{day:'numeric',month:'short'})} — ${endD.toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric'})}`;
+  // Fetch missions
+  try {
+    const { data: missions } = await sb.from('missions')
+      .select('*, aircraft(id,registration,type)')
+      .gte('scheduled_date', startStr).lte('scheduled_date', endStr).neq('status','cancelled');
+    // Build date columns
+    const dates = [];
+    for (let i = 0; i < DAYS; i++) {
+      const d = new Date(startD);
+      d.setDate(d.getDate() + i);
+      dates.push(d);
+    }
+    const DAYS_FR_SHORT = ['Di','Lu','Ma','Me','Je','Ve','Sa'];
+    // Build header
+    let html = '<div class="gantt-thead"><div class="gantt-ac-col" style="font-size:9px;font-weight:700;color:var(--text3);text-transform:uppercase;display:flex;align-items:flex-end">Appareil</div><div class="gantt-dates-row">';
+    dates.forEach(d => {
+      const dStr = d.toISOString().split('T')[0];
+      const isToday = dStr === todayStr;
+      const isWe = d.getDay() === 0 || d.getDay() === 6;
+      html += `<div class="gantt-date-cell${isToday?' today-col':''}${isWe?' weekend':''}">
+        <div>${DAYS_FR_SHORT[d.getDay()]}</div>
+        <div style="font-size:11px;font-weight:700;color:${isToday?'var(--gold)':'var(--text2)'}">${d.getDate()}</div>
+      </div>`;
+    });
+    html += '</div></div><div class="gantt-body">';
+    // Group missions by aircraft
+    const aircraft = allAircraft.length ? allAircraft : [...new Set((missions||[]).filter(m=>m.aircraft).map(m=>m.aircraft))].filter(Boolean);
+    if (!aircraft.length) {
+      html += '<div class="gantt-empty">Aucun appareil en flotte</div>';
+    } else {
+      aircraft.forEach(ac => {
+        const acMissions = (missions||[]).filter(m => m.aircraft_id === ac.id || m.aircraft?.id === ac.id);
+        html += `<div class="gantt-row"><div class="gantt-ac-label"><div class="gantt-ac-reg">${ac.registration}</div><div class="gantt-ac-type">${(ac.type||'').substring(0,10)}</div></div><div class="gantt-timeline">`;
+        dates.forEach((d,idx) => {
+          const dStr = d.toISOString().split('T')[0];
+          const isToday = dStr === todayStr;
+          html += `<div class="gantt-day-col${isToday?' today-col':''}" style="position:relative">`;
+          const dayMs = acMissions.filter(m => m.scheduled_date === dStr);
+          dayMs.forEach((m,mi) => {
+            const typeClass = `type-${m.type||'flight'}`;
+            const label = m.type === 'sim' ? 'SIMU' : m.type === 'flight' ? `${m.departure_icao||'?'}→${m.arrival_icao||'?'}` : (m.type||'VOL').toUpperCase();
+            const topOffset = 6 + mi * 20;
+            html += `<div class="gantt-block ${typeClass}" style="left:2px;right:2px;top:${topOffset}px;height:16px;font-size:8px" title="${label} · ${m.scheduled_time?.slice(0,5)||'—'}">${label}</div>`;
+          });
+          html += '</div>';
+        });
+        html += '</div></div>';
+      });
+    }
+    html += '</div>';
+    tableEl.innerHTML = html;
+  } catch(e) {
+    tableEl.innerHTML = `<div class="gantt-empty alert-danger">${e.message}</div>`;
+  }
+}
+
+
   const dateStr = new Date(m.scheduled_date).toLocaleDateString('fr-FR',{day:'numeric',month:'short'});
   return `<div class="card">
     <div class="card-r">
