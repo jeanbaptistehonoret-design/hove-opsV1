@@ -724,10 +724,10 @@ input, select, textarea, button { font-family: inherit; }
 #planning-cal-view { flex-direction: column; }
 /* ── SIDEBAR / BOTTOM NAV SWITCH ── */
 /* Mobile: hide global sidebar, show per-screen bnav */
-#sidebar { display: none !important; }
-/* Desktop 768+: show sidebar, hide per-screen bottom navs */
+#sidebar { display: none; }
+/* Desktop 768+: sidebar visible via class, hide per-screen bottom navs */
 @media (min-width: 768px) {
-  #sidebar { display: flex !important; flex-direction: column; }
+  #sidebar.sidebar-visible { display: flex; flex-direction: column; }
   .screen > .bnav { display: none !important; }
   .app-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
   .app-content .screen { flex: 1; display: none; flex-direction: column; }
@@ -763,7 +763,7 @@ input, select, textarea, button { font-family: inherit; }
   <!-- ══════════ TOAST ══════════ -->
   <div class="toast-container" id="toast-container"></div>
   <!-- GLOBAL SIDEBAR (desktop only, controlled via CSS) -->
-  <nav id="sidebar" class="bnav" style="display:none">
+  <nav id="sidebar" class="bnav">
     <span class="nav-section-label">Principal</span>
     <button class="ni" onclick="goTo('s-home')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Accueil</span></button>
     <button class="ni" onclick="goTo('s-crew')"><svg viewBox="0 0 24 24" stroke-width="1.5" fill="none"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span>Crew ID</span></button>
@@ -2400,15 +2400,11 @@ function updateNav(id) {
       if ((n.getAttribute('onclick')||'').includes(target)) n.classList.add('on');
     });
   }
-  // Show/hide global sidebar
+  // Show sidebar on all screens except login/client — simple class toggle, no !important
   const sidebar = document.getElementById('sidebar');
   if (sidebar) {
-    const isAuthScreen = id === 's-login' || id === 's-client';
-    if (isAuthScreen) {
-      sidebar.style.setProperty('display', 'none', 'important');
-    } else {
-      sidebar.style.removeProperty('display');
-    }
+    const show = id !== 's-login' && id !== 's-client';
+    sidebar.classList.toggle('sidebar-visible', show);
   }
 }
 
