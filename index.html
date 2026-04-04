@@ -80,8 +80,8 @@ input, select, textarea, button { font-family: inherit; }
   /* ── SIDEBAR NAV ── */
   .bnav {
     flex-direction: column;
-    width: 220px;
-    min-width: 220px;
+    width: 188px;
+    min-width: 188px;
     height: 100%;
     padding: 0;
     border-top: none;
@@ -92,7 +92,6 @@ input, select, textarea, button { font-family: inherit; }
     position: relative;
     z-index: 10;
     justify-content: flex-start;
-    /* HOVE branding header inside sidebar */
   }
 
   /* Sidebar brand header */
@@ -212,12 +211,12 @@ input, select, textarea, button { font-family: inherit; }
    ══════════════════════════════════════════ */
 @media (min-width: 1024px) {
   .bnav {
-    width: 260px;
-    min-width: 260px;
+    width: 210px;
+    min-width: 210px;
   }
-  .ni { padding: 14px 24px; }
-  .ni.on { padding-left: 21px; }
-  .ni span { font-size: 14px; }
+  .ni { padding: 13px 20px; }
+  .ni.on { padding-left: 17px; }
+  .ni span { font-size: 13px; }
 
   .topbar { padding: 18px 36px 16px; }
   .scroll { padding: 24px 36px !important; }
@@ -733,6 +732,12 @@ input, select, textarea, button { font-family: inherit; }
   .app-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
   .app-content .screen { flex: 1; display: none; flex-direction: column; }
   .app-content .screen.active { display: flex; }
+  /* Hide sidebar on login & client screens */
+  #app:has(#s-login.active) #sidebar,
+  #app:has(#s-client.active) #sidebar { display: none !important; }
+  /* Full-width login when no sidebar */
+  #app:has(#s-login.active) .app-content,
+  #app:has(#s-client.active) .app-content { width: 100%; }
 }
 
 /* ── PLANNING LAYOUT ── */
@@ -2400,11 +2405,15 @@ function updateNav(id) {
     document.querySelectorAll('.ni').forEach(n => {
       if ((n.getAttribute('onclick')||'').includes(target)) n.classList.add('on');
     });
-    // Show/hide global sidebar (hidden on login screen)
+  }
+  // Show/hide global sidebar (hidden on login and client screens)
   const sidebar = document.getElementById('sidebar');
-  if (sidebar) sidebar.style.setProperty('display', id === 's-login' || id === 's-client' ? 'none' : '', 'important');
+  const isAuthScreen = id === 's-login' || id === 's-client';
+  if (sidebar) sidebar.style.setProperty('display', isAuthScreen ? 'none' : '', 'important');
 }
-}
+
+// Hide sidebar on initial load (login screen is default active)
+document.addEventListener('DOMContentLoaded', () => { updateNav('s-login'); });
 
 // ── LOGIN / LOGOUT ───────────────────────────────────────────────
 async function doLogin() {
