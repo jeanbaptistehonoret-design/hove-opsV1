@@ -2414,22 +2414,51 @@ function updateNav(id) {
 }
 
 // ── LOGIN / LOGOUT ───────────────────────────────────────────────
+function debugLog(msg) {
+  const errEl = document.getElementById('login-error');
+  errEl.style.whiteSpace = 'pre-wrap';
+  errEl.style.fontSize = '11px';
+  errEl.style.color = '#f59e0b';
+  errEl.textContent += '\n' + msg;
+}
+
 async function doLogin() {
   const email = document.getElementById('login-email').value.trim();
   const password = document.getElementById('pin-in').value;
   const errEl = document.getElementById('login-error');
-  if (!email || !password) { errEl.textContent = 'Email et mot de passe requis.'; return; }
   errEl.textContent = '';
+  if (!email || !password) { errEl.textContent = 'Email et mot de passe requis.'; return; }
   const loginBtn = document.querySelector('.login-btn');
   loginBtn.textContent = 'Connexion...'; loginBtn.disabled = true;
   try {
-    const { data:{ user }, error } = await sb.auth.signInWithPassword({ email, password });
-    if (error) throw error;
-    await loadUserAndRedirect(user.id);
+    debugLog('1. Tentative auth Supabase...');
+    const { data, error } = await sb.auth.signInWithPassword({ email, password });
+    if (error) { debugLog('ERREUR AUTH: ' + error.message + ' (code: ' + (error.status||'?') + ')'); throw error; }
+    debugLog('2. Auth OK — user: ' + (data?.user?.id || '?'));
+    await loadUserAndRedirect(data.user.id);
   } catch(e) {
-    errEl.textContent = e.message || 'Accès refusé';
+    debugLog('CATCH: ' + (e.message || JSON.stringify(e)));
   } finally {
     loginBtn.textContent = 'Connexion'; loginBtn.disabled = false;
+  }
+}
+
+async function loadUserAndRedirect(userId) {
+  debugLog('3. Chargement profil pour: ' + userId);
+  const { data: profile, error } = await sb.from('profiles').select('*').eq('id', userId).single();
+  if (error) { debugLog('ERREUR PROFIL: ' + error.message + ' (code: ' + (error.code||'?') + ')'); throw error; }
+  if (!profile) { debugLog('ERREUR: profil null'); throw new Error('Profil introuvable'); }
+  debugLog('4. Profil OK — role: ' + profile.role);
+  currentUser = { ...profile, ...RC[profile.role] };
+  currentUser.compliance = buildCompliance(profile);
+  if (profile.role === 'admin' || profile.role === 'pilot') {
+    debugLog('5. Chargement données init...');
+    await loadInitData();
+    initHome();
+    goTo('s-home');
+  } else {
+    await initClientPortal();
+    goTo('s-client');
   }
 }
 
