@@ -4370,17 +4370,19 @@ function calcLanding(takeoffMass) {
   }
 }
 
-// ── SESSION RESTORE ──────────────────────────────────────────────
-(async () => {
-  const { data: { session } } = await sb.auth.getSession();
-  if (session?.user) {
-    try {
-      await loadUserAndRedirect(session.user.id);
-    } catch(e) {
-      console.error('Session restore failed:', e);
-    }
+// ── SESSION RESTORE — DÉSACTIVÉ POUR DEBUG ──────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  const errEl = document.getElementById('login-error');
+  if (errEl) {
+    errEl.style.color = '#22c55e';
+    errEl.style.fontSize = '11px';
+    errEl.textContent = '✓ JS chargé — cliquez sur Connexion';
   }
-})();
+  const btn = document.querySelector('.login-btn');
+  if (btn) {
+    btn.style.border = '3px solid lime';
+  }
+});
 </script>
 </body>
 </html>
